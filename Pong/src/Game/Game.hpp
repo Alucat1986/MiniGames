@@ -20,6 +20,11 @@ namespace Pong
 	public:
 		Game();
 		void run();
+
+	private:
+		void handleUserInput();
+		void render(float deltaTime);
+
 	private:
 		bool									m_IsRunning;
 		std::uint16_t							m_Score;

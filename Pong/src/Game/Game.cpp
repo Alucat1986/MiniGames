@@ -51,6 +51,34 @@ namespace Pong
 	} // void Game::run(...)
 
 	/**
+	 * @brief Handles the user's input.
+	 * @author Alucat1986
+	 * @date 04.01.2025
+	 */
+	void Game::handleUserInput()
+	{
+		while ( const std::optional event = m_Window->pollEvent() )
+		{
+			if ( event->is<sf::Event::Closed>() )
+			{
+				m_Window->close();
+				m_IsRunning = false;
+				break;
+			} // if ( event->is<sf::Event::Closed>() )
+
+			if ( event->is<sf::Event::KeyPressed>() )
+			{
+				if ( event->getIf<sf::Event::KeyPressed>()->scancode == sf::Keyboard::Scancode::Escape )
+				{
+					m_Window->close();
+					m_IsRunning = false;
+					break;
+				} // if ( event->getIf<sf::Event::KeyPressed>()->scancode == sf::Keyboard::Scancode::Escape )
+			} // if ( event->is<sf::Event::KeyPressed>() )
+		} // while ( const std::optional event = window.pollEvent() )
+	} // void Game::handleUserInput(...)
+
+	/**
 	 * @brief Renders the game.
 	 * @param[in] deltaTime Time since the last frame in seconds.
 	 * @author Alucat1986
