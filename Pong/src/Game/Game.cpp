@@ -9,9 +9,6 @@
 
 #include "Game.hpp"
 
-constexpr std::uint16_t WINDOW_WIDTH = 800u;
-constexpr std::uint16_t WINDOW_HEIGHT = 600u;
-
  // ****************************************************************************************************************** //
  //                                                                                                                    //
  //                                                      CLASSES                                                       //
