@@ -16,6 +16,10 @@ namespace Pong
 	{
 	public:
 		Ball();
+
+	private:
+		std::uint16_t	m_Speed;
+		sf::Vector2i	m_Direction;
 	}; // class Ball
 } // namespace Pong
 

@@ -22,7 +22,9 @@ namespace Pong
 	 * @date 04.01.2025
 	 */
 	Ball::Ball() :
-		sf::CircleShape(10.f)
+		sf::CircleShape(10.f),
+		m_Speed(50u),
+		m_Direction({ 0, 0 })
 	{
 		setFillColor(sf::Color::White);
 		setOrigin({ 10.f, 10.f });
