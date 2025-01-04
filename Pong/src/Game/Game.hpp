@@ -8,7 +8,12 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
+#include <cstdint>
+#include <memory>
+
+#include <SFML/Graphics/Font.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/Graphics/Text.hpp>
 
 #include "Paddles/PlayerPaddle.hpp"
 #include "Paddles/EnemyPaddle.hpp"
@@ -33,6 +38,9 @@ namespace Pong
 		std::unique_ptr<sf::RenderWindow>		m_Window;
 		std::unique_ptr<Pong::PlayerPaddle>		m_Player;
 		std::unique_ptr<Pong::EnemyPaddle>		m_Enemy;
+
+		std::unique_ptr<sf::Font>				FpsFont;
+		std::unique_ptr<sf::Text>				FpsText;
 	}; // class Game
 } // namespace Pong
 

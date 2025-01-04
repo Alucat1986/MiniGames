@@ -5,9 +5,12 @@
  * @date 04.01.2025
  */
 
+#include <iostream>
+
 #include <SFML/System/Clock.hpp>
 
 #include "Game.hpp"
+#include "../Utils/Constants.hpp"
 
  // ****************************************************************************************************************** //
  //                                                                                                                    //
@@ -32,6 +35,18 @@ namespace Pong
 
 		m_Player = std::make_unique<Pong::PlayerPaddle>();
 		m_Enemy = std::make_unique<Pong::EnemyPaddle>();
+
+		FpsFont = std::make_unique<sf::Font>();
+		if ( !FpsFont->openFromFile("C:/Windows/Fonts/arial.ttf") )
+		{
+			std::cerr << "Could not load font from file!\n";
+		} // if ( !FpsFont.loadFromFile("C:/Windows/Fonts/arial.ttf") )
+
+		FpsText = std::make_unique<sf::Text>(*FpsFont, "FPS: 0", 12);
+		FpsText->setFillColor(sf::Color::White);
+		sf::Vector2f center = FpsText->getLocalBounds().getCenter();
+		FpsText->setOrigin(center);
+		FpsText->setPosition({ WINDOW_WIDTH / 2, WINDOW_HEIGHT - 20.f });
 	} // Game::Game(...)
 
 	/**
@@ -86,10 +101,25 @@ namespace Pong
 	 */
 	void Game::render(float deltaTime)
 	{
+		static float fpsTimer = 0.f;
+		static int frameCount = 0;
+
+		fpsTimer += deltaTime;
+		frameCount++;
+
+		if ( fpsTimer >= 1.f )
+		{
+			float fps = frameCount / fpsTimer;
+			FpsText->setString("FPS: " + std::to_string(static_cast<int>(fps)));
+			fpsTimer = 0.f;
+			frameCount = 0;
+		} // if ( fpsTimer >= 1.f )
+
 		m_Window->clear();
 
-		m_Player->draw();
-		m_Enemy->draw();
+		m_Window->draw(*m_Player);
+		m_Window->draw(*m_Enemy);
+		m_Window->draw(*FpsText);
 
 		m_Window->display();
 	} // void Game::render(...)
