@@ -1,11 +1,11 @@
 /**
- * @file PlayerPaddle.cpp
- * @brief Contains the implementation of the PlayerPaddle class.
+ * @file Paddle.cpp
+ * @brief Contains the implementation of the Paddle class.
  * @author Alucat1986
  * @date 04.01.2025
  */
 
-#include "Paddles/PlayerPaddle.hpp"
+#include "Paddle.hpp"
 
 // ****************************************************************************************************************** //
 //                                                                                                                    //
@@ -19,13 +19,15 @@
 //                                                                                                                    //
 // ****************************************************************************************************************** //
 
-namespace Pong {
+namespace Pong
+{
 	/**
 	 * @brief Constructor.
 	 * @author Alucat1986
 	 * @date 04.01.2025
 	 */
-	PlayerPaddle::PlayerPaddle() {
-		
-	} // PlayerPaddle::PlayerPaddle()
+	Paddle::Paddle()
+	{
+
+	} // Paddle::Paddle(...)
 } // namespace Pong

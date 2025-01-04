@@ -8,13 +8,15 @@
 #ifndef PLAYERPADDLE_HPP
 #define PLAYERPADDLE_HPP
 
-namespace Pong {
-    class PlayerPaddle {
-    public:
-        PlayerPaddle();
+namespace Pong
+{
+	class PlayerPaddle
+	{
+	public:
+		PlayerPaddle();
 
-    private:
-    }; // class PlayerPaddle
+	private:
+	}; // class PlayerPaddle
 } // namespace Pong
 
 #endif

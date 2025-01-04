@@ -8,8 +8,10 @@
 #ifndef ENEMYPADDLE_HPP
 #define ENEMYPADDLE_HPP
 
-namespace Pong {
-	class EnemyPaddle {
+namespace Pong
+{
+	class EnemyPaddle
+	{
 	public:
 		EnemyPaddle();
 
