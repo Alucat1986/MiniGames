@@ -28,6 +28,6 @@ namespace Pong
 	 */
 	Paddle::Paddle()
 	{
-
+		setSize({ 10.f, 50.f });
 	} // Paddle::Paddle(...)
 } // namespace Pong

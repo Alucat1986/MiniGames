@@ -8,14 +8,14 @@
 #ifndef PADDLE_HPP
 #define PADDLE_HPP
 
+#include <SFML/Graphics/RectangleShape.hpp>
+
 namespace Pong
 {
-	class Paddle
+	class Paddle : public sf::RectangleShape
 	{
 	public:
 		Paddle();
-
-	private:
 	}; // class Paddle
 } // namespace Pong
 

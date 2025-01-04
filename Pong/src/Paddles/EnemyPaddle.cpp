@@ -5,7 +5,8 @@
  * @date 04.01.2025
  */
 
-#include "Paddles/EnemyPaddle.hpp"
+#include "EnemyPaddle.hpp"
+#include "../Utils/Constants.hpp"
 
 // ****************************************************************************************************************** //
 //                                                                                                                    //
@@ -22,6 +23,8 @@ namespace Pong
  */
 	EnemyPaddle::EnemyPaddle()
 	{
-
+		setFillColor(sf::Color::Red);
+		setOrigin({ 10.f, 0.f });
+		setPosition({ WINDOW_WIDTH - 10.f, 10.f });
 	} // EnemyPaddle::EnemyPaddle(...)
 } // namespace Pong

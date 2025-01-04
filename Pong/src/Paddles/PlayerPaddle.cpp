@@ -5,7 +5,7 @@
  * @date 04.01.2025
  */
 
-#include "Paddles/PlayerPaddle.hpp"
+#include "PlayerPaddle.hpp"
 
 // ****************************************************************************************************************** //
 //                                                                                                                    //
@@ -28,6 +28,7 @@ namespace Pong
 	 */
 	PlayerPaddle::PlayerPaddle()
 	{
-
+		setFillColor(sf::Color::Green);
+		setPosition({ 10.f, 10.f });
 	} // PlayerPaddle::PlayerPaddle(...)
 } // namespace Pong
