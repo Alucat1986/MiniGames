@@ -28,7 +28,8 @@ namespace Pong
 
 	private:
 		void handleUserInput();
-		void render(float deltaTime);
+		void update(const float& deltaTime);
+		void render(const float& deltaTime);
 
 	private:
 		bool									m_IsRunning;

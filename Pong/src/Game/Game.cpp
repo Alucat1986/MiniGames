@@ -46,7 +46,7 @@ namespace Pong
 		FpsText->setFillColor(sf::Color::White);
 		sf::Vector2f center = FpsText->getLocalBounds().getCenter();
 		FpsText->setOrigin(center);
-		FpsText->setPosition({ WINDOW_WIDTH / 2, WINDOW_HEIGHT - 20.f });
+		FpsText->setPosition({ static_cast<float>(WINDOW_WIDTH / 2.f), static_cast<float>(WINDOW_HEIGHT - 20.f) });
 	} // Game::Game(...)
 
 	/**
@@ -95,12 +95,23 @@ namespace Pong
 	} // void Game::handleUserInput(...)
 
 	/**
+	 * @brief Updates the positions of game objects.
+	 * @param[in] deltaTime Time since the last frame in seconds.
+	 * @author Alucat1986
+	 * @date 04.01.2025
+	 */
+	void Game::update(const float& deltaTime)
+	{
+		m_Player->move(deltaTime);
+		m_Enemy->move(deltaTime);
+	} // void Game::update(...)
+	/**
 	 * @brief Renders the game.
 	 * @param[in] deltaTime Time since the last frame in seconds.
 	 * @author Alucat1986
 	 * @date 04.01.2025
 	 */
-	void Game::render(float deltaTime)
+	void Game::render(const float& deltaTime)
 	{
 		static float fpsTimer = 0.f;
 		static int frameCount = 0;
