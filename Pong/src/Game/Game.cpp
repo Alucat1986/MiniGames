@@ -60,6 +60,7 @@ namespace Pong
 		while ( m_IsRunning )
 		{
 			sf::Time deltaTime = clock.restart();
+			handleUserInput();
 			
 			render(deltaTime.asSeconds());
 		} // while ( m_IsRunning )
