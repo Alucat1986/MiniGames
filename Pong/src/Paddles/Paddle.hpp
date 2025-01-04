@@ -16,6 +16,16 @@ namespace Pong
 	{
 	public:
 		Paddle();
+
+		virtual void move(const float& deltaTime);
+		void setSpeed(const std::uint16_t& speed);
+		std::uint16_t getSpeed() const;
+		void setDirection(const sf::Vector2i& direction);
+		sf::Vector2i getDirection() const;
+
+	private:
+		std::uint16_t	m_Speed;
+		sf::Vector2i	m_Direction;
 	}; // class Paddle
 } // namespace Pong
 
