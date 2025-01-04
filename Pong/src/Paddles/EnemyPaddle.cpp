@@ -16,11 +16,11 @@
 
 namespace Pong
 {
-/**
- * @brief Constructor.
- * @author Alucat1986
- * @date 04.01.2025
- */
+	/**
+	 * @brief Constructor.
+	 * @author Alucat1986
+	 * @date 04.01.2025
+	 */
 	EnemyPaddle::EnemyPaddle()
 	{
 		setFillColor(sf::Color::Red);
