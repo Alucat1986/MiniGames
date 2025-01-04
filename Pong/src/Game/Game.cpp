@@ -42,7 +42,7 @@ namespace Pong
 			std::cerr << "Could not load font from file!\n";
 		} // if ( !FpsFont.loadFromFile("C:/Windows/Fonts/arial.ttf") )
 
-		FpsText = std::make_unique<sf::Text>(*FpsFont, "FPS: 0", 12);
+		FpsText = std::make_unique<sf::Text>(*FpsFont, "FPS: 0", 16);
 		FpsText->setFillColor(sf::Color::White);
 		sf::Vector2f center = FpsText->getLocalBounds().getCenter();
 		FpsText->setOrigin(center);
