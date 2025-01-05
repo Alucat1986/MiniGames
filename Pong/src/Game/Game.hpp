@@ -50,8 +50,8 @@ namespace Pong
 		}; // struct PlayerInput
 
 		bool									m_IsRunning;
-		std::uint16_t							m_Score;
-		std::uint16_t							m_Lives;
+		std::uint16_t							m_PlayerScore;
+		std::uint16_t							m_EnemyScore;
 		PlayerInput								m_PlayerInput;
 
 		std::unique_ptr<sf::RenderWindow>		m_Window;
@@ -59,8 +59,10 @@ namespace Pong
 		std::unique_ptr<Pong::EnemyPaddle>		m_Enemy;
 		std::unique_ptr<Pong::Ball>				m_Ball;
 
-		std::unique_ptr<sf::Font>				FpsFont;
-		std::unique_ptr<sf::Text>				FpsText;
+		std::unique_ptr<sf::Font>				m_FpsFont;
+		std::unique_ptr<sf::Text>				m_FpsText;
+		std::unique_ptr<sf::Text>				m_PlayerScoreText;
+		std::unique_ptr<sf::Text>				m_EnemyScoreText;
 	}; // class Game
 } // namespace Pong
 

@@ -44,17 +44,24 @@ namespace Pong
 		m_Enemy->setPosition({ WINDOW_WIDTH - 10.f, WINDOW_HEIGHT / 2.f - (m_Enemy->getSize().y / 2.f)});
 		m_Ball->setPosition({ WINDOW_WIDTH / 2.f, WINDOW_HEIGHT / 2.f });
 
-		FpsFont = std::make_unique<sf::Font>();
-		if ( !FpsFont->openFromFile("C:/Windows/Fonts/arial.ttf") )
+		m_FpsFont = std::make_unique<sf::Font>();
+		if ( !m_FpsFont->openFromFile("C:/Windows/Fonts/arial.ttf") )
 		{
 			std::cerr << "Could not load font from file!\n";
 		} // if ( !FpsFont.loadFromFile("C:/Windows/Fonts/arial.ttf") )
 
-		FpsText = std::make_unique<sf::Text>(*FpsFont, "FPS: 0", 16);
-		FpsText->setFillColor(sf::Color::White);
-		sf::Vector2f center = FpsText->getLocalBounds().getCenter();
-		FpsText->setOrigin(center);
-		FpsText->setPosition({ WINDOW_WIDTH / 2.f, WINDOW_HEIGHT - 20.f });
+		m_FpsText = std::make_unique<sf::Text>(*m_FpsFont, "FPS: 0", 16);
+		m_FpsText->setFillColor(sf::Color::White);
+		m_FpsText->setOrigin(m_FpsText->getLocalBounds().getCenter());
+		m_FpsText->setPosition({ WINDOW_WIDTH / 2.f, WINDOW_HEIGHT - 20.f });
+
+		m_PlayerScoreText = std::make_unique<sf::Text>(*m_FpsFont, "0", 32);
+		m_EnemyScoreText = std::make_unique<sf::Text>(*m_FpsFont, "0", 32);
+
+		m_PlayerScoreText->setFillColor(sf::Color::Green);
+		m_PlayerScoreText->setPosition({ WINDOW_WIDTH / 4.f, 10.f });
+		m_EnemyScoreText->setFillColor(sf::Color::Red);
+		m_EnemyScoreText->setPosition({ WINDOW_WIDTH - WINDOW_WIDTH / 4.f, 10.f });
 	} // Game::Game(...)
 
 	/**
@@ -198,7 +205,7 @@ namespace Pong
 		if ( fpsTimer >= 1.f )
 		{
 			float fps = frameCount / fpsTimer;
-			FpsText->setString("FPS: " + std::to_string(static_cast<int>(fps)));
+			m_FpsText->setString("FPS: " + std::to_string(static_cast<int>(fps)));
 			fpsTimer = 0.f;
 			frameCount = 0;
 		} // if ( fpsTimer >= 1.f )
@@ -208,7 +215,9 @@ namespace Pong
 		m_Window->draw(*m_Player);
 		m_Window->draw(*m_Enemy);
 		m_Window->draw(*m_Ball);
-		m_Window->draw(*FpsText);
+		m_Window->draw(*m_FpsText);
+		m_Window->draw(*m_PlayerScoreText);
+		m_Window->draw(*m_EnemyScoreText);
 
 		m_Window->display();
 	} // void Game::render(...)
