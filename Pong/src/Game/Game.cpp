@@ -227,68 +227,101 @@ namespace Pong
 		sf::Vector2f playerSize = m_Player->getSize();
 
 		// Ball Collision with the player's paddle.
-		if ( ballPosition.y >= playerPosition.y && ballPosition.y <= playerPosition.y + playerSize.y )
+		// Closest point of the paddle to the ball's center.
+		sf::Vector2f closestPoint;
+		closestPoint.x = std::max(playerPosition.x, std::min(ballPosition.x, playerPosition.x + playerSize.x));
+		closestPoint.y = std::max(playerPosition.y, std::min(ballPosition.y, playerPosition.y + playerSize.y));
+
+		sf::Vector2f distanceVector;
+		distanceVector.x = ballPosition.x - closestPoint.x;
+		distanceVector.y = ballPosition.y - closestPoint.y;
+		
+		bool isColliding = distanceVector.lengthSquared() <= (ballRadius * ballRadius);
+
+		if ( isColliding )
 		{
-			if ( ballPosition.x - ballRadius <= playerPosition.x + playerSize.x )
+			if ( std::abs(distanceVector.x) > std::abs(distanceVector.y) )
 			{
-				ballDirection.x *= -1;
-				ballPosition.x = playerPosition.x + playerSize.x + ballRadius;
-				m_Ball->setPosition(ballPosition);
-				m_Ball->setDirection(ballDirection);
-			} // if ( ballPosition.x - ballRadius <= playerPosition.x + playerSize.x )
-		} // if ( ballPosition.y >= playerPosition.y && ballPosition.y <= playerPosition.y + playerSize.y )
-		else if ( ballPosition.x >= playerPosition.x && ballPosition.x <= playerPosition.x + playerSize.x )
-		{
-			if ( ballPosition.y + ballRadius >= playerPosition.y &&
-				ballPosition.y - ballRadius <= playerPosition.y + playerSize.y )
+				if ( distanceVector.x > 0 )
+				{
+					// Collision from right
+					ballDirection.x *= -1;
+					ballPosition.x = playerPosition.x + playerSize.x + ballRadius + 0.1f;
+				} // if ( distanceVector.x > 0 )
+				else
+				{
+					// Collsion from left
+					ballDirection.x *= -1;
+					ballPosition.x = playerPosition.x - ballRadius - 0.1f;
+				} // else if ( distanceVector.x < 0 )
+			} // if ( std::abs(distanceVector.x) > std::abs(distanceVector.y) )
+			else
 			{
-				if ( ballPosition.y + ballRadius >= playerPosition.y )
+				if ( distanceVector.y > 0 )
 				{
-					ballPosition.y = playerPosition.y - ballRadius;
-				} // if ( ballPosition.y + ballRadius >= playerPosition.y )
-				else if ( ballPosition.y - ballRadius <= playerPosition.y + playerSize.y )
+					// Collision from top
+					ballDirection.y *= -1;
+					ballPosition.y = playerPosition.y + playerSize.y + ballRadius + 0.1f;
+				} // if ( distanceVector.y > 0 )
+				else
 				{
-					ballPosition.y = playerPosition.y + playerSize.y + ballRadius;
-				} // else if ( ballPosition.y - ballRadius <= playerPosition.y + playerSize.y )
-				ballDirection.y *= -1;
-				m_Ball->setPosition(ballPosition);
-				m_Ball->setDirection(ballDirection);
-			} // if ( ballPosition.y+ballRadius>=playerPosition.y &&	ballPosition.y-ballRadius<=playerPosition.y+playerSize.y )
-		} // else if ( ballPosition.x >= playerPosition.x && ballPosition.x <= playerPosition.x + playerSize.x )
+					// Collision from below
+					ballDirection.y *= -1;
+					ballPosition.y = playerPosition.y - ballRadius - 0.1f;
+				} // else if ( distanceVector.y < 0 )
+			} // else if ( std::abs(distanceVector.x) > std::abs(distanceVector.y) )
+			m_Ball->setPosition(ballPosition);
+			m_Ball->setDirection(ballDirection);
+		} // if ( isColliding )
 
 		sf::Vector2f enemyPosition = m_Enemy->getPosition();
 		sf::Vector2f enemySize = m_Enemy->getSize();
 
 		// Ball Collision with the enemy's paddle.
-		// Keep in mind: Origin of the Enemies paddle is slightly shifted
-		if ( ballPosition.y >= enemyPosition.y && ballPosition.y <= enemyPosition.y + enemySize.y )
+		// Closest point of the paddle to the ball's center.
+		closestPoint.x = std::max(enemyPosition.x, std::min(ballPosition.x, enemyPosition.x + enemySize.x));
+		closestPoint.y = std::max(enemyPosition.y, std::min(ballPosition.y, enemyPosition.y + enemySize.y));
+
+		distanceVector.x = ballPosition.x - closestPoint.x;
+		distanceVector.y = ballPosition.y - closestPoint.y;
+
+		isColliding = distanceVector.lengthSquared() <= (ballRadius * ballRadius);
+
+		if ( isColliding )
 		{
-			if ( ballPosition.x + ballRadius >= enemyPosition.x - enemySize.x )
+			if ( std::abs(distanceVector.x) > std::abs(distanceVector.y) )
 			{
-				ballDirection.x *= -1;
-				ballPosition.x = enemyPosition.x - enemySize.x - ballRadius;
-				m_Ball->setPosition(ballPosition);
-				m_Ball->setDirection(ballDirection);
-			} // if ( ballPosition.x - ballRadius >= enemyPosition.x - enemySize.x )
-		} // if ( ballPosition.y >= enemyPosition.y && ballPosition.y <= enemyPosition.y + enemySize.y )
-		else if ( ballPosition.x >= enemyPosition.x - enemySize.x && ballPosition.x <= enemyPosition.x )
-		{
-			if ( ballPosition.y + ballRadius >= enemyPosition.y &&
-				 ballPosition.y - ballRadius <= enemyPosition.y + enemySize.y )
+				if ( distanceVector.x > 0 )
+				{
+					// Collision from right
+					ballDirection.x *= -1;
+					ballPosition.x = enemyPosition.x + ballRadius + 0.1f;
+				} // if ( distanceVector.x > 0 )
+				else
+				{
+					// Collsion from left
+					ballDirection.x *= -1;
+					ballPosition.x = enemyPosition.x - enemySize.x - ballRadius - 0.1f;
+				} // else if ( distanceVector.x < 0 )
+			} // if ( std::abs(distanceVector.x) > std::abs(distanceVector.y) )
+			else
 			{
-				if ( ballPosition.y + ballRadius >= enemyPosition.y )
+				if ( distanceVector.y > 0 )
 				{
-					ballPosition.y = enemyPosition.y - ballRadius;
-				} // if ( ballPosition.y + ballRadius >= enemyPosition.y )
-				else if ( ballPosition.y - ballRadius <= enemyPosition.y + enemySize.y )
+					// Collision from top
+					ballDirection.y *= -1;
+					ballPosition.y = enemyPosition.y + enemySize.y + ballRadius + 0.1f;
+				} // if ( distanceVector.y > 0 )
+				else
 				{
-					ballPosition.y = enemyPosition.y + enemySize.y + ballRadius;
-				} // else if ( ballPosition.y - ballRadius <= enemyPosition.y + enemySize.y )
-				ballDirection.y *= -1;
-				m_Ball->setPosition(ballPosition);
-				m_Ball->setDirection(ballDirection);
-			} // if ( ballPosition.y+ballRadius>=enemyPosition.y &&	ballPosition.y-ballRadius<=enemyPosition.y+enemySize.y )
-		} // else if ( ballPosition.x <= enemyPosition.x && ballPosition.x >= enemyPosition.x - enemySize.x )
+					// Collision from below
+					ballDirection.y *= -1;
+					ballPosition.y = enemyPosition.y - ballRadius - 0.1f;
+				} // else if ( distanceVector.y < 0 )
+			} // else if ( std::abs(distanceVector.x) > std::abs(distanceVector.y) )
+			m_Ball->setPosition(ballPosition);
+			m_Ball->setDirection(ballDirection);
+		} // if ( isColliding )
 	} // void Game::update(...)
 
 	/**
