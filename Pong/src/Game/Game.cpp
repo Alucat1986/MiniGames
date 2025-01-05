@@ -221,4 +221,17 @@ namespace Pong
 
 		m_Window->display();
 	} // void Game::render(...)
+
+	/**
+	 * @brief Resets the game to it's initial state.
+	 * @author Alunya
+	 * @date 05.01.2025
+	 */
+	void Game::resetGame()
+	{
+		m_Player->setPosition({ 10.f, WINDOW_HEIGHT / 2.f - (m_Player->getSize().y / 2.f) });
+		m_Enemy->setPosition({ WINDOW_WIDTH - 10.f, WINDOW_HEIGHT / 2.f - (m_Enemy->getSize().y / 2.f) });
+		m_Ball->setPosition({ WINDOW_WIDTH / 2.f, WINDOW_HEIGHT / 2.f });
+		m_Ball->setRandomDirection();
+	} // void Game::resetGame(...)
 } // namespace Pong

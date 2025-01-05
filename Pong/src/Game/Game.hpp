@@ -41,6 +41,7 @@ namespace Pong
 		void handleUserInput();
 		void update(const float& deltaTime);
 		void render(const float& deltaTime);
+		void resetGame();
 
 	private:
 		struct PlayerInput
