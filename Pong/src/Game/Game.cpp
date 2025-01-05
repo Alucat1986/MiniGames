@@ -149,6 +149,26 @@ namespace Pong
 			} // else if ( m_PlayerInput.Down )
 
 			m_Player->move(deltaTime);
+
+			// Collision check for the player's Paddle with the upper and lower window border.
+			bool collision = false;
+			sf::Vector2f position = m_Player->getPosition();
+			if ( position.y < 0 )
+			{
+				collision = true;
+				position.y = 0.f;
+			} // if ( position.x < 0 )
+			else if ( position.y + m_Player->getSize().y > static_cast<float>(WINDOW_HEIGHT) )
+			{
+				collision = true;
+				position.y = static_cast<float>(WINDOW_HEIGHT - m_Player->getSize().y);
+			} // else if ( position.y > WINDOW_HEIGHT )
+
+			if ( collision )
+			{
+				m_Player->setPosition(position);
+			} // if ( collision )
+				
 		} // if ( m_PlayerInput.Up ^ m_PlayerInput.Down )
 
 		// Enemy movement
