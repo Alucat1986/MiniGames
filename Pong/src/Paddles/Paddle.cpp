@@ -22,7 +22,7 @@ namespace Pong
 	 */
 	Paddle::Paddle() :
 		sf::RectangleShape({ 10.f, 50.f }),
-		m_Speed(300u),
+		m_Speed(400u),
 		m_Direction({ 0, 0 })
 	{
 		setFillColor(sf::Color::White);
