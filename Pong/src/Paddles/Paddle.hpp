@@ -12,6 +12,15 @@
 
 namespace Pong
 {
+	/**
+	 * @class Paddle
+	 * @brief Represents a basic paddle.
+	 * @author Alunya
+	 * @date 05.01.2025
+	 *
+	 * The Paddle class offers a basic functionality that every paddle in a pong
+	 * game should have.
+	 */
 	class Paddle : public sf::RectangleShape
 	{
 	public:

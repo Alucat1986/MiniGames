@@ -20,6 +20,16 @@
 
 namespace Pong
 {
+	/**
+	 * @class Game
+	 * @brief Manages the main game loop and state of the Pong game.
+	 * @author Alunya
+	 * @date 04.01.2025
+	 *
+	 * The Game class is responsible for orchestrating the game's lifecycle,
+	 * including processing input, updating the game state, and rendering the
+	 * game objects to the screen.
+	 */
 	class Game
 	{
 	public:
