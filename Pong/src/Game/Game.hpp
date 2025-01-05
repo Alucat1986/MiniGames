@@ -34,8 +34,8 @@ namespace Pong
 	private:
 		struct PlayerInput
 		{
-			bool Up,
-			bool Down
+			bool Up;
+			bool Down;
 		}; // struct PlayerInput
 
 		bool									m_IsRunning;
