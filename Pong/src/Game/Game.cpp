@@ -222,6 +222,73 @@ namespace Pong
 			m_PlayerScore++;
 			resetGame();
 		} // else if ( ballPosition.x + ballRadius > WINDOW_WIDTH )
+
+		sf::Vector2f playerPosition = m_Player->getPosition();
+		sf::Vector2f playerSize = m_Player->getSize();
+
+		// Ball Collision with the player's paddle.
+		if ( ballPosition.y >= playerPosition.y && ballPosition.y <= playerPosition.y + playerSize.y )
+		{
+			if ( ballPosition.x - ballRadius <= playerPosition.x + playerSize.x )
+			{
+				ballDirection.x *= -1;
+				ballPosition.x = playerPosition.x + playerSize.x + ballRadius;
+				m_Ball->setPosition(ballPosition);
+				m_Ball->setDirection(ballDirection);
+			} // if ( ballPosition.x - ballRadius <= playerPosition.x + playerSize.x )
+		} // if ( ballPosition.y >= playerPosition.y && ballPosition.y <= playerPosition.y + playerSize.y )
+		else if ( ballPosition.x >= playerPosition.x && ballPosition.x <= playerPosition.x + playerSize.x )
+		{
+			if ( ballPosition.y + ballRadius >= playerPosition.y &&
+				ballPosition.y - ballRadius <= playerPosition.y + playerSize.y )
+			{
+				if ( ballPosition.y + ballRadius >= playerPosition.y )
+				{
+					ballPosition.y = playerPosition.y - ballRadius;
+				} // if ( ballPosition.y + ballRadius >= playerPosition.y )
+				else if ( ballPosition.y - ballRadius <= playerPosition.y + playerSize.y )
+				{
+					ballPosition.y = playerPosition.y + playerSize.y + ballRadius;
+				} // else if ( ballPosition.y - ballRadius <= playerPosition.y + playerSize.y )
+				ballDirection.y *= -1;
+				m_Ball->setPosition(ballPosition);
+				m_Ball->setDirection(ballDirection);
+			} // if ( ballPosition.y+ballRadius>=playerPosition.y &&	ballPosition.y-ballRadius<=playerPosition.y+playerSize.y )
+		} // else if ( ballPosition.x >= playerPosition.x && ballPosition.x <= playerPosition.x + playerSize.x )
+
+		sf::Vector2f enemyPosition = m_Enemy->getPosition();
+		sf::Vector2f enemySize = m_Enemy->getSize();
+
+		// Ball Collision with the enemy's paddle.
+		// Keep in mind: Origin of the Enemies paddle is slightly shifted
+		if ( ballPosition.y >= enemyPosition.y && ballPosition.y <= enemyPosition.y + enemySize.y )
+		{
+			if ( ballPosition.x + ballRadius >= enemyPosition.x - enemySize.x )
+			{
+				ballDirection.x *= -1;
+				ballPosition.x = enemyPosition.x - enemySize.x - ballRadius;
+				m_Ball->setPosition(ballPosition);
+				m_Ball->setDirection(ballDirection);
+			} // if ( ballPosition.x - ballRadius >= enemyPosition.x - enemySize.x )
+		} // if ( ballPosition.y >= enemyPosition.y && ballPosition.y <= enemyPosition.y + enemySize.y )
+		else if ( ballPosition.x >= enemyPosition.x - enemySize.x && ballPosition.x <= enemyPosition.x )
+		{
+			if ( ballPosition.y + ballRadius >= enemyPosition.y &&
+				 ballPosition.y - ballRadius <= enemyPosition.y + enemySize.y )
+			{
+				if ( ballPosition.y + ballRadius >= enemyPosition.y )
+				{
+					ballPosition.y = enemyPosition.y - ballRadius;
+				} // if ( ballPosition.y + ballRadius >= enemyPosition.y )
+				else if ( ballPosition.y - ballRadius <= enemyPosition.y + enemySize.y )
+				{
+					ballPosition.y = enemyPosition.y + enemySize.y + ballRadius;
+				} // else if ( ballPosition.y - ballRadius <= enemyPosition.y + enemySize.y )
+				ballDirection.y *= -1;
+				m_Ball->setPosition(ballPosition);
+				m_Ball->setDirection(ballDirection);
+			} // if ( ballPosition.y+ballRadius>=enemyPosition.y &&	ballPosition.y-ballRadius<=enemyPosition.y+enemySize.y )
+		} // else if ( ballPosition.x <= enemyPosition.x && ballPosition.x >= enemyPosition.x - enemySize.x )
 	} // void Game::update(...)
 
 	/**
