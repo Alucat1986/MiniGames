@@ -53,7 +53,7 @@ namespace Pong
 	/**
 	 * @brief Main gameloop.
 	 * @author Alunya
-	 * @date 04.01.2025
+	 * @date 05.01.2025
 	 */
 	void Game::run()
 	{
@@ -62,6 +62,8 @@ namespace Pong
 		{
 			sf::Time deltaTime = clock.restart();
 			handleUserInput();
+			
+			update(deltaTime.asSeconds());
 			
 			render(deltaTime.asSeconds());
 		} // while ( m_IsRunning )
