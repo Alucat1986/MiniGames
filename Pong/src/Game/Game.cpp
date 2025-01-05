@@ -40,8 +40,8 @@ namespace Pong
 		m_Enemy = std::make_unique<Pong::EnemyPaddle>();
 		m_Ball = std::make_unique<Pong::Ball>();
 
-		m_Player->setPosition({ 10.f, WINDOW_HEIGHT / 2.f + (m_Player->getSize().y / 2.f) });
-		m_Enemy->setPosition({ WINDOW_WIDTH - 10.f, WINDOW_HEIGHT / 2.f + (m_Enemy->getSize().y / 2.f)});
+		m_Player->setPosition({ 10.f, WINDOW_HEIGHT / 2.f - (m_Player->getSize().y / 2.f) });
+		m_Enemy->setPosition({ WINDOW_WIDTH - 10.f, WINDOW_HEIGHT / 2.f - (m_Enemy->getSize().y / 2.f)});
 		m_Ball->setPosition({ WINDOW_WIDTH / 2.f, WINDOW_HEIGHT / 2.f });
 
 		FpsFont = std::make_unique<sf::Font>();
