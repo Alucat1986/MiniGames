@@ -28,7 +28,7 @@ namespace Pong
 	 */
 	Ball::Ball() :
 		sf::CircleShape(10.f),
-		m_Speed(50u),
+		m_Speed(400u),
 		m_Direction({ 0, 0 })
 	{
 		setFillColor(sf::Color::White);
@@ -46,6 +46,7 @@ namespace Pong
 	void Ball::move(const float& deltaTime)
 	{
 		sf::Vector2f position = getPosition();
+		position.x += m_Direction.x * m_Speed * deltaTime;
 		position.y += m_Direction.y * m_Speed * deltaTime;
 		setPosition(position);
 	} // void Ball::move(...)
