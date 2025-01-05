@@ -23,12 +23,12 @@ namespace Pong
 	/**
 	 * @brief Constructor.
 	 * @author Alunya
-	 * @date 04.01.2025
+	 * @date 05.01.2025
 	 */
 	Game::Game() :
 		m_IsRunning(true),
-		m_Score(0u),
-		m_Lives(3u),
+		m_PlayerScore(0u),
+		m_EnemyScore(0u),
 		m_PlayerInput({ false, false })
 	{
 		m_Window = std::make_unique<sf::RenderWindow>(sf::VideoMode({ 
@@ -145,7 +145,7 @@ namespace Pong
 	 * @brief Updates the positions of game objects.
 	 * @param[in] deltaTime Time since the last frame in seconds.
 	 * @author Alunya
-	 * @date 04.01.2025
+	 * @date 05.01.2025
 	 */
 	void Game::update(const float& deltaTime)
 	{
@@ -186,13 +186,49 @@ namespace Pong
 
 		// Enemy movement
 		m_Enemy->move(deltaTime);
+
+		// Ball movement
+		m_Ball->move(deltaTime);
+
+		sf::Vector2f ballPosition = m_Ball->getPosition();
+		sf::Vector2f ballDirection = m_Ball->getDirection();
+		float ballRadius = m_Ball->getRadius();
+
+		// Ball Collision with upper and lower window borders
+		if ( ballPosition.y - ballRadius < 0.f )
+		{
+			ballPosition.y = 0.f + ballRadius;
+			ballDirection.y *= -1;
+			m_Ball->setPosition(ballPosition);
+			m_Ball->setDirection(ballDirection);
+		} // if ( ballPosition.y - ballRadius < 0.f )
+		else if ( ballPosition.y + ballRadius > WINDOW_HEIGHT )
+		{
+			ballPosition.y = WINDOW_HEIGHT - ballRadius;
+			ballDirection.y *= -1;
+			m_Ball->setPosition(ballPosition);
+			m_Ball->setDirection(ballDirection);
+		} // else if ( ballPosition.y + ballRadius > WINDOW_HEIGHT )
+
+		// Ball Collision with left and right window borders
+		if ( ballPosition.x - ballRadius < 0.f )
+		{
+			// Enemy scores
+			m_EnemyScore++;
+			resetGame();
+		} // if ( ballPosition.x - ballRadius < 0.f )
+		else if ( ballPosition.x + ballRadius > WINDOW_WIDTH )
+		{
+			m_PlayerScore++;
+			resetGame();
+		} // else if ( ballPosition.x + ballRadius > WINDOW_WIDTH )
 	} // void Game::update(...)
 
 	/**
 	 * @brief Renders the game.
 	 * @param[in] deltaTime Time since the last frame in seconds.
 	 * @author Alunya
-	 * @date 04.01.2025
+	 * @date 05.01.2025
 	 */
 	void Game::render(const float& deltaTime)
 	{
@@ -229,6 +265,8 @@ namespace Pong
 	 */
 	void Game::resetGame()
 	{
+		m_PlayerScoreText->setString(std::to_string(m_PlayerScore));
+		m_EnemyScoreText->setString(std::to_string(m_EnemyScore));
 		m_Player->setPosition({ 10.f, WINDOW_HEIGHT / 2.f - (m_Player->getSize().y / 2.f) });
 		m_Enemy->setPosition({ WINDOW_WIDTH - 10.f, WINDOW_HEIGHT / 2.f - (m_Enemy->getSize().y / 2.f) });
 		m_Ball->setPosition({ WINDOW_WIDTH / 2.f, WINDOW_HEIGHT / 2.f });
