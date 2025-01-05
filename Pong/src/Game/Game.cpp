@@ -36,6 +36,7 @@ namespace Pong
 
 		m_Player = std::make_unique<Pong::PlayerPaddle>();
 		m_Enemy = std::make_unique<Pong::EnemyPaddle>();
+		m_Ball = std::make_unique<Pong::Ball>();
 
 		FpsFont = std::make_unique<sf::Font>();
 		if ( !FpsFont->openFromFile("C:/Windows/Fonts/arial.ttf") )
@@ -62,7 +63,7 @@ namespace Pong
 		{
 			sf::Time deltaTime = clock.restart();
 			handleUserInput();
-			
+
 			update(deltaTime.asSeconds());
 			
 			render(deltaTime.asSeconds());
@@ -147,7 +148,7 @@ namespace Pong
 				m_Player->setDirection({ 0, 1 });
 			} // else if ( m_PlayerInput.Down )
 
-		m_Player->move(deltaTime);
+			m_Player->move(deltaTime);
 		} // if ( m_PlayerInput.Up ^ m_PlayerInput.Down )
 
 		// Enemy movement
@@ -179,6 +180,7 @@ namespace Pong
 
 		m_Window->draw(*m_Player);
 		m_Window->draw(*m_Enemy);
+		m_Window->draw(*m_Ball);
 		m_Window->draw(*FpsText);
 
 		m_Window->display();
