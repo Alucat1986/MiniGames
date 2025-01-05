@@ -89,10 +89,10 @@ namespace Pong
 	 * @author Alunya
 	 * @date 05.01.2025
 	 */
-	sf::Vector2f Ball::getDirection()
+	sf::Vector2f Ball::getDirection() const
 	{
 		return m_Direction;
-	} // sf::Vector2f Ball::getDirection(...) const
+	} // sf::Vector2f Ball::getDirection(...)
 
 	/**
 	 * @brief Sets a random Direction for the Ball to start with.
