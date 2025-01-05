@@ -32,6 +32,8 @@ namespace Pong
 		m_PlayerInput({ false, false })
 	{
 		m_Window = std::make_unique<sf::RenderWindow>(sf::VideoMode({ 
+											static_cast<std::uint16_t>(WINDOW_WIDTH),
+											static_cast<std::uint16_t>(WINDOW_HEIGHT) }), "Pong");
 		m_Window->setVerticalSyncEnabled(true);
 
 		m_Player = std::make_unique<Pong::PlayerPaddle>();
