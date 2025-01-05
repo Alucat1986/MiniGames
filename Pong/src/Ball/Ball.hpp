@@ -1,7 +1,7 @@
 /**
  * @file Ball.hpp
  * @brief Contains the declaration of the Ball class.
- * @author Alucat1986
+ * @author Alunya
  * @date 04.01.2025
  */
 

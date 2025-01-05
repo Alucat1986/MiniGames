@@ -1,7 +1,7 @@
 /**
  * @file Constants.hpp
  * @brief Contains some constants for the game.
- * @author Alucat1986
+ * @author Alunya
  * @date 04.01.2025
  */
 

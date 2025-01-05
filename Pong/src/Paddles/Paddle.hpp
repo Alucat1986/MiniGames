@@ -1,7 +1,7 @@
 /**
  * @file Paddle.hpp
  * @brief Contains the declaration of the Paddle class.
- * @author Alucat1986
+ * @author Alunya
  * @date 04.01.2025
  */
 

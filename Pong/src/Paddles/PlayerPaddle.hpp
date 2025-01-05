@@ -1,7 +1,7 @@
 /**
  * @file PlayerPaddle.hpp
  * @brief Contains the declaration of the PlayerPaddle class.
- * @author Alucat1986
+ * @author Alunya
  * @date 04.01.2025
  */
 

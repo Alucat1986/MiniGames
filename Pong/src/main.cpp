@@ -1,7 +1,7 @@
 /**
  * @file main.cpp
  * @brief Contains the main function.
- * @author Alucat1986
+ * @author Alunya
  * @date 04.01.2025
  */
 #include <SFML/Graphics.hpp>

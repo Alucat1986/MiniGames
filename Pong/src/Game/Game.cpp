@@ -1,7 +1,7 @@
 /**
  * @file Game.cpp
  * @brief Contains the implementation of the Game class.
- * @author Alucat1986
+ * @author Alunya
  * @date 04.01.2025
  */
 
@@ -12,17 +12,17 @@
 #include "Game.hpp"
 #include "../Utils/Constants.hpp"
 
- // ****************************************************************************************************************** //
- //                                                                                                                    //
- //                                                      CLASSES                                                       //
- //                                                                                                                    //
- // ****************************************************************************************************************** //
+// ***************************************************************************************************************** //
+//                                                                                                                   //
+//                                                      CLASSES                                                      //
+//                                                                                                                   //
+// ***************************************************************************************************************** //
 
 namespace Pong
 {
 	/**
 	 * @brief Constructor.
-	 * @author Alucat1986
+	 * @author Alunya
 	 * @date 04.01.2025
 	 */
 	Game::Game() :
@@ -51,7 +51,7 @@ namespace Pong
 
 	/**
 	 * @brief Main gameloop.
-	 * @author Alucat1986
+	 * @author Alunya
 	 * @date 04.01.2025
 	 */
 	void Game::run()
@@ -68,7 +68,7 @@ namespace Pong
 
 	/**
 	 * @brief Handles the user's input.
-	 * @author Alucat1986
+	 * @author Alunya
 	 * @date 04.01.2025
 	 */
 	void Game::handleUserInput()
@@ -97,7 +97,7 @@ namespace Pong
 	/**
 	 * @brief Updates the positions of game objects.
 	 * @param[in] deltaTime Time since the last frame in seconds.
-	 * @author Alucat1986
+	 * @author Alunya
 	 * @date 04.01.2025
 	 */
 	void Game::update(const float& deltaTime)
@@ -108,7 +108,7 @@ namespace Pong
 	/**
 	 * @brief Renders the game.
 	 * @param[in] deltaTime Time since the last frame in seconds.
-	 * @author Alucat1986
+	 * @author Alunya
 	 * @date 04.01.2025
 	 */
 	void Game::render(const float& deltaTime)

@@ -1,7 +1,7 @@
 /**
  * @file Game.hpp
  * @brief Contains the declaration of the Game class.
- * @author Alucat1986
+ * @author Alunya
  * @date 04.01.2025
  */
 
