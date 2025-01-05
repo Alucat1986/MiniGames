@@ -31,8 +31,6 @@ namespace Pong
 		std::uint16_t getSpeed() const;
 		void setDirection(const sf::Vector2f& direction);
 		sf::Vector2f getDirection() const;
-
-	private:
 		void setRandomDirection();
 
 	private:
