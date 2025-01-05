@@ -11,7 +11,6 @@
 #include <random>
 
 #include "Ball.hpp"
-#include "../Utils/Constants.hpp"
 
 // ***************************************************************************************************************** //
 //                                                                                                                   //
@@ -33,7 +32,6 @@ namespace Pong
 	{
 		setFillColor(sf::Color::White);
 		setOrigin({ 10.f, 10.f });
-		setPosition({ WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 });
 		setRandomDirection();
 	} // Ball::Ball(...)
 

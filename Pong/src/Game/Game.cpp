@@ -31,12 +31,16 @@ namespace Pong
 		m_Lives(3u),
 		m_PlayerInput({ false, false })
 	{
-		m_Window = std::make_unique<sf::RenderWindow>(sf::VideoMode({ WINDOW_WIDTH, WINDOW_HEIGHT }), "Pong");
+		m_Window = std::make_unique<sf::RenderWindow>(sf::VideoMode({ 
 		m_Window->setVerticalSyncEnabled(true);
 
 		m_Player = std::make_unique<Pong::PlayerPaddle>();
 		m_Enemy = std::make_unique<Pong::EnemyPaddle>();
 		m_Ball = std::make_unique<Pong::Ball>();
+
+		m_Player->setPosition({ 10.f, WINDOW_HEIGHT / 2.f + (m_Player->getSize().y / 2.f) });
+		m_Enemy->setPosition({ WINDOW_WIDTH - 10.f, WINDOW_HEIGHT / 2.f + (m_Enemy->getSize().y / 2.f)});
+		m_Ball->setPosition({ WINDOW_WIDTH / 2.f, WINDOW_HEIGHT / 2.f });
 
 		FpsFont = std::make_unique<sf::Font>();
 		if ( !FpsFont->openFromFile("C:/Windows/Fonts/arial.ttf") )
@@ -48,7 +52,7 @@ namespace Pong
 		FpsText->setFillColor(sf::Color::White);
 		sf::Vector2f center = FpsText->getLocalBounds().getCenter();
 		FpsText->setOrigin(center);
-		FpsText->setPosition({ static_cast<float>(WINDOW_WIDTH / 2.f), static_cast<float>(WINDOW_HEIGHT - 20.f) });
+		FpsText->setPosition({ WINDOW_WIDTH / 2.f, WINDOW_HEIGHT - 20.f });
 	} // Game::Game(...)
 
 	/**
@@ -158,10 +162,10 @@ namespace Pong
 				collision = true;
 				position.y = 0.f;
 			} // if ( position.x < 0 )
-			else if ( position.y + m_Player->getSize().y > static_cast<float>(WINDOW_HEIGHT) )
+			else if ( position.y + m_Player->getSize().y > WINDOW_HEIGHT )
 			{
 				collision = true;
-				position.y = static_cast<float>(WINDOW_HEIGHT - m_Player->getSize().y);
+				position.y = WINDOW_HEIGHT - m_Player->getSize().y;
 			} // else if ( position.y > WINDOW_HEIGHT )
 
 			if ( collision )
@@ -174,6 +178,7 @@ namespace Pong
 		// Enemy movement
 		m_Enemy->move(deltaTime);
 	} // void Game::update(...)
+
 	/**
 	 * @brief Renders the game.
 	 * @param[in] deltaTime Time since the last frame in seconds.

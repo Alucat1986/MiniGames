@@ -23,6 +23,5 @@ namespace Pong
 	PlayerPaddle::PlayerPaddle()
 	{
 		setFillColor(sf::Color::Green);
-		setPosition({ 10.f, 10.f });
 	} // PlayerPaddle::PlayerPaddle(...)
 } // namespace Pong
