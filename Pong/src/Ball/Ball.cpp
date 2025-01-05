@@ -5,6 +5,11 @@
  * @date 04.01.2025
  */
 
+#include <cmath>
+#include <iostream>
+#include <numbers>
+#include <random>
+
 #include "Ball.hpp"
 #include "../Utils/Constants.hpp"
 
@@ -29,6 +34,7 @@ namespace Pong
 		setFillColor(sf::Color::White);
 		setOrigin({ 10.f, 10.f });
 		setPosition({ WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2 });
+		setRandomDirection();
 	} // Ball::Ball(...)
 
 	/**
@@ -42,7 +48,7 @@ namespace Pong
 		sf::Vector2f position = getPosition();
 		position.y += m_Direction.y * m_Speed * deltaTime;
 		setPosition(position);
-	}
+	} // void Ball::move(...)
 	
 	/**
 	 * @brief Sets the speed of the ball.
@@ -53,7 +59,7 @@ namespace Pong
 	void Ball::setSpeed(const std::uint16_t& speed)
 	{
 		m_Speed = speed;
-	}
+	} // void Ball::setSpeed(...)
 	
 	/**
 	 * @brief Returns the current speed of the ball.
@@ -64,7 +70,7 @@ namespace Pong
 	std::uint16_t Ball::getSpeed() const
 	{
 		return m_Speed;
-	}
+	} // std::uint16_t Ball::getSpeed(...)
 	
 	/**
 	 * @brief Sets the direction in which the ball moves.
@@ -75,7 +81,7 @@ namespace Pong
 	void Ball::setDirection(const sf::Vector2f& direction)
 	{
 		m_Direction = direction;
-	}
+	} // void Ball::setDirection(...)
 
 	/**
 	 * @brief Returns the balls' current direction.
@@ -83,8 +89,25 @@ namespace Pong
 	 * @author Alunya
 	 * @date 05.01.2025
 	 */
-	sf::Vector2f Ball::getDirection() const
+	sf::Vector2f Ball::getDirection()
 	{
 		return m_Direction;
-	}
+	} // sf::Vector2f Ball::getDirection(...) const
+
+	/**
+	 * @brief Sets a random Direction for the Ball to start with.
+	 * @author Alunya
+	 * @date 05.01.2025
+	 */
+	void Ball::setRandomDirection()
+	{
+		std::random_device random;
+		std::mt19937 gen(random());
+		std::uniform_real_distribution<float> distribution(0.f, 2.f * static_cast<float>(std::numbers::pi));
+
+		float angle = distribution(gen);
+
+		m_Direction.x = std::cos(angle);
+		m_Direction.y = std::sin(angle);
+	} // void Ball::setRandomDirection(...)
 } // namespace Pong

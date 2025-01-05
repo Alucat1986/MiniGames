@@ -33,6 +33,9 @@ namespace Pong
 		sf::Vector2f getDirection() const;
 
 	private:
+		void setRandomDirection();
+
+	private:
 		std::uint16_t	m_Speed;
 		sf::Vector2f	m_Direction;
 	}; // class Ball
