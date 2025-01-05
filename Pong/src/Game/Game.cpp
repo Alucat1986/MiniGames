@@ -28,7 +28,8 @@ namespace Pong
 	Game::Game() :
 		m_IsRunning(true),
 		m_Score(0u),
-		m_Lives(3u)
+		m_Lives(3u),
+		m_PlayerInput({ false, false })
 	{
 		m_Window = std::make_unique<sf::RenderWindow>(sf::VideoMode({ WINDOW_WIDTH, WINDOW_HEIGHT }), "Pong");
 		m_Window->setVerticalSyncEnabled(true);
@@ -84,13 +85,43 @@ namespace Pong
 
 			if ( event->is<sf::Event::KeyPressed>() )
 			{
-				if ( event->getIf<sf::Event::KeyPressed>()->scancode == sf::Keyboard::Scancode::Escape )
+				const auto eventKey = event->getIf<sf::Event::KeyPressed>();
+				if ( eventKey->scancode == sf::Keyboard::Scancode::Escape )
 				{
 					m_Window->close();
 					m_IsRunning = false;
 					break;
-				} // if ( event->getIf<sf::Event::KeyPressed>()->scancode == sf::Keyboard::Scancode::Escape )
+				} // if ( eventKey->scancode == sf::Keyboard::Scancode::Escape )
+
+				if ( eventKey->scancode == sf::Keyboard::Scancode::W ||
+					 eventKey->scancode == sf::Keyboard::Scancode::Up )
+				{
+					m_PlayerInput.Up = true;
+				} // if ( eventKey->scancode == sf::Keyboard::Scancode::W || sf::Keyboard::Scancode::Up )
+
+				if ( eventKey->scancode == sf::Keyboard::Scancode::S ||
+					 eventKey->scancode == sf::Keyboard::Scancode::Down )
+				{
+					m_PlayerInput.Down = true;
+				} // if ( eventKey->scancode == sf::Keyboard::Scancode::S || sf::Keyboard::Scancode::Down )
 			} // if ( event->is<sf::Event::KeyPressed>() )
+
+			if ( event->is<sf::Event::KeyReleased>() )
+			{
+				const auto eventKey = event->getIf<sf::Event::KeyReleased>();
+				
+				if ( eventKey->scancode == sf::Keyboard::Scancode::W ||
+					eventKey->scancode == sf::Keyboard::Scancode::Up )
+				{
+					m_PlayerInput.Up = false;
+				} // if ( eventKey->scancode == sf::Keyboard::Scancode::W || sf::Keyboard::Scancode::Up )
+
+				if ( eventKey->scancode == sf::Keyboard::Scancode::S ||
+					eventKey->scancode == sf::Keyboard::Scancode::Down )
+				{
+					m_PlayerInput.Down = false;
+				} // if ( eventKey->scancode == sf::Keyboard::Scancode::S || sf::Keyboard::Scancode::Down )
+			} // if ( event->is<sf::Event::KeyReleased>() )
 		} // while ( const std::optional event = window.pollEvent() )
 	} // void Game::handleUserInput(...)
 
@@ -102,7 +133,22 @@ namespace Pong
 	 */
 	void Game::update(const float& deltaTime)
 	{
+		// Player movement
+		if ( m_PlayerInput.Up ^ m_PlayerInput.Down )
+		{
+			if ( m_PlayerInput.Up )
+			{
+				m_Player->setDirection({ 0, -1 });
+			} // if ( m_PlayerInput.Up )
+			else if ( m_PlayerInput.Down )
+			{
+				m_Player->setDirection({ 0, 1 });
+			} // else if ( m_PlayerInput.Down )
+
 		m_Player->move(deltaTime);
+		} // if ( m_PlayerInput.Up ^ m_PlayerInput.Down )
+
+		// Enemy movement
 		m_Enemy->move(deltaTime);
 	} // void Game::update(...)
 	/**

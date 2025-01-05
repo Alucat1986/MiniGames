@@ -32,9 +32,16 @@ namespace Pong
 		void render(const float& deltaTime);
 
 	private:
+		struct PlayerInput
+		{
+			bool Up,
+			bool Down
+		}; // struct PlayerInput
+
 		bool									m_IsRunning;
 		std::uint16_t							m_Score;
 		std::uint16_t							m_Lives;
+		PlayerInput								m_PlayerInput;
 
 		std::unique_ptr<sf::RenderWindow>		m_Window;
 		std::unique_ptr<Pong::PlayerPaddle>		m_Player;
