@@ -34,4 +34,11 @@ constexpr float WINDOW_HEIGHT = 600.f;
  * @}
  */ // End of GameWindowConstants
 
+/**
+ * @brief The padding the paddle should have from the window border. (left and right)
+ * @author Alunya
+ * @date 05.01.2025
+ */
+constexpr float PADDLE_PADDING = 30.f;
+
 #endif
