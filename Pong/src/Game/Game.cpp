@@ -184,13 +184,46 @@ namespace Pong
 				
 		} // if ( m_PlayerInput.Up ^ m_PlayerInput.Down )
 
+		sf::Vector2f ballPosition = m_Ball->getPosition();
+
 		// Enemy movement
+		if ( ballPosition.y < m_Enemy->getPosition().y )
+		{
+			m_Enemy->setDirection(sf::Vector2i(0, -1));
+		} // if ( ballPosition.y < m_Enemy->getPosition().y )
+		else if ( ballPosition.y > m_Enemy->getPosition().y + m_Enemy->getSize().y )
+		{
+			m_Enemy->setDirection(sf::Vector2i(0, 1));
+		} // else if ( ballPosition.y > m_Enemy->getPosition().y )
+		else
+		{
+			m_Enemy->setDirection(sf::Vector2i(0, 0));
+		} // else
+
 		m_Enemy->move(deltaTime);
+
+		// Collision check for the enemy's Paddle with the upper and lower window border.
+		bool collision = false;
+		sf::Vector2f position = m_Enemy->getPosition();
+		if ( position.y < 0 )
+		{
+			collision = true;
+			position.y = 0.f;
+		} // if ( position.x < 0 )
+		else if ( position.y + m_Enemy->getSize().y > WINDOW_HEIGHT )
+		{
+			collision = true;
+			position.y = WINDOW_HEIGHT - m_Enemy->getSize().y;
+		} // else if ( position.y > WINDOW_HEIGHT )
+
+		if ( collision )
+		{
+			m_Enemy->setPosition(position);
+		} // if ( collision )
 
 		// Ball movement
 		m_Ball->move(deltaTime);
 
-		sf::Vector2f ballPosition = m_Ball->getPosition();
 		sf::Vector2f ballDirection = m_Ball->getDirection();
 		float ballRadius = m_Ball->getRadius();
 
