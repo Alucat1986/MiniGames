@@ -8,10 +8,13 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
+#include <array>
 #include <cstdint>
 #include <memory>
 
+#include <SFML/Graphics/CircleShape.hpp>
 #include <SFML/Graphics/Font.hpp>
+#include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics/Text.hpp>
 
@@ -64,6 +67,9 @@ namespace Pong
 		std::unique_ptr<sf::Text>				m_FpsText;
 		std::unique_ptr<sf::Text>				m_PlayerScoreText;
 		std::unique_ptr<sf::Text>				m_EnemyScoreText;
+
+		std::unique_ptr<sf::CircleShape>		m_MiddlePoint;
+		std::array<sf::RectangleShape, 5>		m_Lines; // 0-3 = outer field lines, 4 = middleline
 	}; // class Game
 } // namespace Pong
 

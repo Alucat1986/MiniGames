@@ -62,6 +62,33 @@ namespace Pong
 		m_PlayerScoreText->setPosition({ WINDOW_WIDTH / 4.f, 10.f });
 		m_EnemyScoreText->setFillColor(sf::Color::Red);
 		m_EnemyScoreText->setPosition({ WINDOW_WIDTH - WINDOW_WIDTH / 4.f, 10.f });
+
+		m_MiddlePoint = std::make_unique<sf::CircleShape>(30.f);
+		m_MiddlePoint->setOrigin({ 30.f, 30.f });
+		m_MiddlePoint->setOutlineColor(sf::Color::White);
+		m_MiddlePoint->setOutlineThickness(10.f);
+		m_MiddlePoint->setFillColor(sf::Color(120, 120, 120));
+		m_MiddlePoint->setPosition({ WINDOW_WIDTH / 2.f, WINDOW_HEIGHT / 2.f });
+
+		m_Lines[0] = sf::RectangleShape({ WINDOW_WIDTH, 10.f });
+		m_Lines[0].setFillColor(sf::Color::White);
+		m_Lines[0].setPosition({ 0.f, 0.f });
+
+		m_Lines[1] = sf::RectangleShape({ WINDOW_WIDTH, 10.f });
+		m_Lines[1].setFillColor(sf::Color::White);
+		m_Lines[1].setPosition({ 0.f, WINDOW_HEIGHT - 10.f });
+
+		m_Lines[2] = sf::RectangleShape({ 10.f, WINDOW_HEIGHT - 20.f });
+		m_Lines[2].setFillColor(sf::Color::White);
+		m_Lines[2].setPosition({ 0.f, 10.f });
+
+		m_Lines[3] = sf::RectangleShape({ 10.f, WINDOW_HEIGHT - 20.f });
+		m_Lines[3].setFillColor(sf::Color::White);
+		m_Lines[3].setPosition({ WINDOW_WIDTH - 10.f, 10.f });
+
+		m_Lines[4] = sf::RectangleShape({ 10.f, WINDOW_HEIGHT - 20.f });
+		m_Lines[4].setFillColor(sf::Color::White);
+		m_Lines[4].setPosition({ WINDOW_WIDTH / 2.f - 5.f, 10.f });
 	} // Game::Game(...)
 
 	/**
@@ -379,7 +406,14 @@ namespace Pong
 			frameCount = 0;
 		} // if ( fpsTimer >= 1.f )
 
-		m_Window->clear();
+		m_Window->clear(sf::Color(120, 120, 120));
+
+		m_Window->draw(m_Lines[0]);
+		m_Window->draw(m_Lines[1]);
+		m_Window->draw(m_Lines[2]);
+		m_Window->draw(m_Lines[3]);
+		m_Window->draw(m_Lines[4]);
+		m_Window->draw(*m_MiddlePoint);
 
 		m_Window->draw(*m_Player);
 		m_Window->draw(*m_Enemy);
