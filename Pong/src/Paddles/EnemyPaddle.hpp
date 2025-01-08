@@ -27,8 +27,6 @@ namespace Pong
 	{
 	public:
 		EnemyPaddle();
-
-	private:
 	}; // class EnemyPaddle
 } // namespace Pong
 

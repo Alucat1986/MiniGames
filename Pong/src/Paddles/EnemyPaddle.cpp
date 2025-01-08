@@ -22,6 +22,7 @@ namespace Pong
 	 */
 	EnemyPaddle::EnemyPaddle()
 	{
+		setSpeed(200u);
 		setFillColor(sf::Color::Red);
 		setOrigin({ 10.f, 0.f });
 	} // EnemyPaddle::EnemyPaddle(...)
