@@ -10,8 +10,7 @@
 
 #include "Paddle.hpp"
 
-namespace Pong
-{
+namespace Pong {
 	/**
 	 * @class EnemyPaddle
 	 * @brief Represents the paddle controlled by the AI.
@@ -23,8 +22,7 @@ namespace Pong
 	 * and position, as well as a specified movement algorithm to determine where
 	 * to move to.
 	 */
-	class EnemyPaddle : public Paddle
-	{
+	class EnemyPaddle : public Paddle {
 	public:
 		EnemyPaddle();
 	}; // class EnemyPaddle

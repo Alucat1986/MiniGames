@@ -5,6 +5,9 @@
  * @date 04.01.2025
  */
 
+#include <SFML/Graphics/Color.hpp>
+#include <SFML/System/Vector2.hpp>
+
 #include "Paddle.hpp"
 
 // ***************************************************************************************************************** //
@@ -13,19 +16,17 @@
 //                                                                                                                   //
 // ***************************************************************************************************************** //
 
-namespace Pong
-{
+namespace Pong {
 	/**
 	 * @brief Constructor.
 	 * @author Alunya
 	 * @date 04.01.2025
 	 */
 	Paddle::Paddle() :
-		sf::RectangleShape({ 10.f, 50.f }),
-		m_Speed(400u),
-		m_Direction({ 0, 0 })
-	{
-		setFillColor(sf::Color::White);
+		sf::RectangleShape( { 10.0f, 50.0f } ),
+		m_Speed( 400u ),
+		m_Direction( { 0.0f, 0.0f } ) {
+		setFillColor( sf::Color::White );
 	} // Paddle::Paddle(...)
 
 	/**
@@ -34,11 +35,10 @@ namespace Pong
 	 * @author Alunya
 	 * @date 04.01.2025
 	 */
-	void Paddle::move(const float& deltaTime)
-	{
+	void Paddle::move( const float& deltaTime ) {
 		sf::Vector2f position = getPosition();
 		position.y += m_Direction.y * m_Speed * deltaTime;
-		setPosition(position);
+		setPosition( position );
 	} // void Paddle::move(...)
 
 	/**
@@ -47,8 +47,7 @@ namespace Pong
 	 * @author Alunya
 	 * @date 04.01.2025
 	 */
-	void Paddle::setSpeed(const std::uint16_t& speed)
-	{
+	void Paddle::setSpeed( const std::uint16_t& speed ) {
 		m_Speed = speed;
 	} // void Paddle::setSpeed(...)
 
@@ -58,8 +57,7 @@ namespace Pong
 	 * @author Alunya
 	 * @date 04.01.2025
 	 */
-	std::uint16_t Paddle::getSpeed() const
-	{
+	std::uint16_t Paddle::getSpeed() const {
 		return m_Speed;
 	} // std::uint16_t Paddle::getSpeed(...)
 
@@ -69,8 +67,7 @@ namespace Pong
 	 * @author Alunya
 	 * @date 04.01.2025
 	 */
-	void Paddle::setDirection(const sf::Vector2i& direction)
-	{
+	void Paddle::setDirection( const sf::Vector2i& direction ) {
 		m_Direction = direction;
 	} // void Paddle::setDirection(...)
 
@@ -80,8 +77,7 @@ namespace Pong
 	 * @author Alunya
 	 * @date 04.01.2025
 	 */
-	sf::Vector2i Paddle::getDirection() const
-	{
+	sf::Vector2i Paddle::getDirection() const {
 		return m_Direction;
 	} // sf::Vector2i Paddle::getDirection(...)
 } // namespace Pong

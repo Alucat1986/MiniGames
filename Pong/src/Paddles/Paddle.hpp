@@ -8,10 +8,11 @@
 #ifndef PADDLE_HPP
 #define PADDLE_HPP
 
+#include <cstdint>
+
 #include <SFML/Graphics/RectangleShape.hpp>
 
-namespace Pong
-{
+namespace Pong {
 	/**
 	 * @class Paddle
 	 * @brief Represents a basic paddle.
@@ -21,20 +22,19 @@ namespace Pong
 	 * The Paddle class offers a basic functionality that every paddle in a pong
 	 * game should have.
 	 */
-	class Paddle : public sf::RectangleShape
-	{
+	class Paddle : public sf::RectangleShape {
 	public:
-		Paddle();
+								Paddle();
 
-		virtual void move(const float& deltaTime);
-		void setSpeed(const std::uint16_t& speed);
-		std::uint16_t getSpeed() const;
-		void setDirection(const sf::Vector2i& direction);
-		sf::Vector2i getDirection() const;
+		virtual void			move( const float& deltaTime );
+		void					setSpeed( const std::uint16_t& speed );
+		std::uint16_t			getSpeed() const;
+		void					setDirection( const sf::Vector2i& direction );
+		sf::Vector2i			getDirection() const;
 
 	private:
-		std::uint16_t	m_Speed;
-		sf::Vector2i	m_Direction;
+		std::uint16_t			m_Speed;
+		sf::Vector2i			m_Direction;
 	}; // class Paddle
 } // namespace Pong
 

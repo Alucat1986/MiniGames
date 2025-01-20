@@ -22,8 +22,7 @@
 #include "Paddles/PlayerPaddle.hpp"
 #include "Paddles/EnemyPaddle.hpp"
 
-namespace Pong
-{
+namespace Pong {
 	/**
 	 * @class Game
 	 * @brief Manages the main game loop and state of the Pong game.
@@ -34,21 +33,19 @@ namespace Pong
 	 * including processing input, updating the game state, and rendering the
 	 * game objects to the screen.
 	 */
-	class Game
-	{
+	class Game {
 	public:
-		Game();
-		void run();
+								Game();
+		void					run();
 
 	private:
-		void handleUserInput();
-		void update(const float& deltaTime);
-		void render(const float& deltaTime);
-		void resetGame();
+		void					handleUserInput();
+		void					update( const float& deltaTime );
+		void					render( const float& deltaTime );
+		void					resetGame();
 
 	private:
-		struct PlayerInput
-		{
+		struct PlayerInput {
 			bool Up;
 			bool Down;
 		}; // struct PlayerInput

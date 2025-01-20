@@ -5,6 +5,8 @@
  * @date 04.01.2025
  */
 
+#include <SFML/Graphics/Color.hpp>
+
 #include "EnemyPaddle.hpp"
 
 // ***************************************************************************************************************** //
@@ -13,17 +15,15 @@
 //                                                                                                                   //
 // ***************************************************************************************************************** //
 
-namespace Pong
-{
+namespace Pong {
 	/**
 	 * @brief Constructor.
 	 * @author Alunya
 	 * @date 04.01.2025
 	 */
-	EnemyPaddle::EnemyPaddle()
-	{
-		setSpeed(200u);
-		setFillColor(sf::Color::Red);
-		setOrigin({ 10.f, 0.f });
+	EnemyPaddle::EnemyPaddle() {
+		setSpeed( 200u );
+		setFillColor( sf::Color::Red );
+		setOrigin( { 10.0f, 0.0f } );
 	} // EnemyPaddle::EnemyPaddle(...)
 } // namespace Pong
