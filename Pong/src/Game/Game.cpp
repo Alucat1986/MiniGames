@@ -163,10 +163,10 @@ namespace Pong {
 		// Player movement
 		if ( m_PlayerInput.Up ^ m_PlayerInput.Down ) {
 			if ( m_PlayerInput.Up ) {
-				m_Player->setDirection( { 0.0f, -1.0f } );
+				m_Player->setDirection( { 0, -1 } );
 			} // if ( m_PlayerInput.Up )
 			else if ( m_PlayerInput.Down ) {
-				m_Player->setDirection( { 0.0f, 1.0f } );
+				m_Player->setDirection( { 0, 1 } );
 			} // else if ( m_PlayerInput.Down )
 
 			m_Player->move( deltaTime );
