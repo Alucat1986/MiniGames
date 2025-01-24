@@ -28,7 +28,8 @@ namespace Pong {
 		m_IsRunning( true ),
 		m_PlayerScore( 0u ),
 		m_EnemyScore( 0u ),
-		m_PlayerInput( { false, false } ) {
+		m_PlayerInput( { false, false } )
+	{
 		m_Window = std::make_unique<sf::RenderWindow>( sf::VideoMode( {
 			static_cast<std::uint16_t>( WINDOW_WIDTH ),
 			static_cast<std::uint16_t>( WINDOW_HEIGHT ) } ), "Pong" );

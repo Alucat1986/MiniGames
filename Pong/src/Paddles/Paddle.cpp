@@ -25,7 +25,8 @@ namespace Pong {
 	Paddle::Paddle() :
 		sf::RectangleShape( { 10.0f, 50.0f } ),
 		m_Speed( 400u ),
-		m_Direction( { 0, 0 } ) {
+		m_Direction( { 0, 0 } )
+	{
 		setFillColor( sf::Color::White );
 	} // Paddle::Paddle(...)
 

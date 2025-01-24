@@ -31,7 +31,8 @@ namespace Pong {
 	Ball::Ball() :
 		sf::CircleShape( 10.0f ),
 		m_Speed( 400u ),
-		m_Direction( { 0.0f, 0.0f } ) {
+		m_Direction( { 0.0f, 0.0f } )
+	{
 		setFillColor( sf::Color::White );
 		setOrigin( { 10.0f, 10.0f } );
 		setRandomDirection();
