@@ -6,10 +6,10 @@
  */
 #include <optional>
 
-#include <SFML\Graphics\CircleShape.hpp>
-#include <SFML\Graphics\Color.hpp>
-#include <SFML\Graphics\RenderWindow.hpp>
-#include <SFML\Window\Event.hpp>
+#include <SFML/Graphics/CircleShape.hpp>
+#include <SFML/Graphics/Color.hpp>
+#include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/Window/Event.hpp>
 
 #include "Game/Game.hpp"
 
