@@ -28,6 +28,8 @@ I am planning on making a clone of "Snake" as well as "Space Invaders", perhaps 
 I am not decided on this yet, but I could also try out other libraries instead of SFML 3.0 since SDL3.2 was released or Raylib 5.5 ([See Libs](#used-and-mentioned-libraries)). But that's something future me has to decide on :)
 
 ## Used and Mentioned Libraries
-* SFML   3.0: [SFML Homepage](https://www.sfml-dev.org)
-* SDL    3.2: [SDL Homepage](https://www.libsdl.org)
-* Raylib 5.5: [Raylib Homepage](https://www.raylib.com)
+| Library | Link |
+| :--- | :--- |
+| SFML 3.0: | [SFML Homepage](https://www.sfml-dev.org) |
+| SDL 3.2: | [SDL Homepage](https://www.libsdl.org) |
+| Raylib 5.5: | [Raylib Homepage](https://www.raylib.com) |
