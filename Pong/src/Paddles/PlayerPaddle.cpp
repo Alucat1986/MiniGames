@@ -5,9 +5,9 @@
  * @date 04.01.2025
  */
 
-#include <SFML/Graphics/Color.hpp>
-
 #include "PlayerPaddle.hpp"
+
+#include <SFML/Graphics/Color.hpp>
 
 // ***************************************************************************************************************** //
 //                                                                                                                   //
@@ -16,12 +16,13 @@
 // ***************************************************************************************************************** //
 
 namespace Pong {
-	/**
-	 * @brief Constructor.
-	 * @author Alunya
-	 * @date 04.01.2025
-	 */
-	PlayerPaddle::PlayerPaddle() {
-		setFillColor( sf::Color::Green );
-	} // PlayerPaddle::PlayerPaddle(...)
+/**
+ * @brief Constructor.
+ * @author Alunya
+ * @date 04.01.2025
+ */
+PlayerPaddle::PlayerPaddle() {
+    setFillColor( sf::Color::Green );
+} // PlayerPaddle::PlayerPaddle(...)
+
 } // namespace Pong
