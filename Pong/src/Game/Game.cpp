@@ -32,7 +32,7 @@ Game::Game()
           m_EnemyScore( 0u ),
           m_PlayerInput( { false, false } ) {
     m_Window = std::make_unique<sf::RenderWindow>(
-        sf::VideoMode( { static_cast<uint16_t>( WINDOW_WIDTH ), static_cast<uint16_t>( WINDOW_HEIGHT ) } ),
+        sf::VideoMode( { static_cast<std::uint16_t>( WINDOW_WIDTH ), static_cast<std::uint16_t>( WINDOW_HEIGHT ) } ),
         "Pong" );
     m_Window->setVerticalSyncEnabled( true );
 
@@ -174,7 +174,6 @@ void Game::update( const float& deltaTime ) {
         // Collision check for the player's Paddle with the upper and lower window border.
         bool         collision = false;
         sf::Vector2f position  = m_Player->getPosition();
-
         if ( position.y < 0.0f ) {
             collision  = true;
             position.y = 0.0f;
@@ -208,7 +207,6 @@ void Game::update( const float& deltaTime ) {
     // Collision check for the enemy's Paddle with the upper and lower window border.
     bool         collision = false;
     sf::Vector2f position  = m_Enemy->getPosition();
-
     if ( position.y < 0.0f ) {
         collision  = true;
         position.y = 0.0f;
@@ -304,7 +302,7 @@ void Game::update( const float& deltaTime ) {
     // Closest point of the paddle to the ball's center.
     closestPoint.x             = std::max( enemyPosition.x, std::min( ballPosition.x, enemyPosition.x + enemySize.x ) );
     closestPoint.y             = std::max( enemyPosition.y, std::min( ballPosition.y, enemyPosition.y + enemySize.y ) );
-
+    
     distanceVector.x           = ballPosition.x - closestPoint.x;
     distanceVector.y           = ballPosition.y - closestPoint.y;
 

@@ -27,16 +27,16 @@ class Ball : public sf::CircleShape {
 public:
     Ball();
 
-    void         move( const float& deltaTime );
-    void         setSpeed( const uint16_t& speed );
-    uint16_t     getSpeed() const;
-    void         setDirection( const sf::Vector2f& direction );
-    sf::Vector2f getDirection() const;
-    void         setRandomDirection();
+    void          move( const float& deltaTime );
+    void          setSpeed( const std::uint16_t& speed );
+    std::uint16_t getSpeed() const;
+    void          setDirection( const sf::Vector2f& direction );
+    sf::Vector2f  getDirection() const;
+    void          setRandomDirection();
 
 private:
-    uint16_t     m_Speed;
-    sf::Vector2f m_Direction;
+    std::uint16_t m_Speed;
+    sf::Vector2f  m_Direction;
 }; // class Ball
 
 } // namespace Pong

@@ -50,10 +50,10 @@ private:
         bool Down;
     }; // struct PlayerInput
 
-    bool        m_IsRunning;
-    uint16_t    m_PlayerScore;
-    uint16_t    m_EnemyScore;
-    PlayerInput m_PlayerInput;
+    bool          m_IsRunning;
+    std::uint16_t m_PlayerScore;
+    std::uint16_t m_EnemyScore;
+    PlayerInput   m_PlayerInput;
 
     std::unique_ptr<sf::RenderWindow>   m_Window;
     std::unique_ptr<Pong::PlayerPaddle> m_Player;

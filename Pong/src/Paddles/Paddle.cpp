@@ -47,7 +47,7 @@ void Paddle::move( const float& deltaTime ) {
  * @author Alunya
  * @date 04.01.2025
  */
-void Paddle::setSpeed( const uint16_t& speed ) {
+void Paddle::setSpeed( const std::uint16_t& speed ) {
     m_Speed = speed;
 } // void Paddle::setSpeed(...)
 
@@ -57,7 +57,7 @@ void Paddle::setSpeed( const uint16_t& speed ) {
  * @author Alunya
  * @date 04.01.2025
  */
-uint16_t Paddle::getSpeed() const {
+std::uint16_t Paddle::getSpeed() const {
     return m_Speed;
 } // std::uint16_t Paddle::getSpeed(...)
 
