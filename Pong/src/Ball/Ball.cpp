@@ -56,7 +56,7 @@ void Ball::move( const float& deltaTime ) {
  * @author Alunya
  * @date 05.01.2025
  */
-void Ball::setSpeed( const std::uint16_t& speed ) {
+void Ball::setSpeed( const uint16_t& speed ) {
     m_Speed = speed;
 } // void Ball::setSpeed(...)
 
@@ -66,7 +66,7 @@ void Ball::setSpeed( const std::uint16_t& speed ) {
  * @author Alunya
  * @date 05.01.2025
  */
-std::uint16_t Ball::getSpeed() const {
+uint16_t Ball::getSpeed() const {
     return m_Speed;
 } // std::uint16_t Ball::getSpeed(...)
 
