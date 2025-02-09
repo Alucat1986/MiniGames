@@ -22,8 +22,9 @@ int main() {
 
 /**
  * @brief A little test function to see if a window with a green circle is displayed correctly using SFML.
+ * @author SFML-Authors
  *
- * @depracated Might be removed in the future.
+ * @deprecated Might be removed in the future.
  */
 [[deprecated( "Might be removed in the future. Just for testing" )]]
 void HelloSFML() {
