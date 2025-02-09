@@ -21,6 +21,11 @@ A simple Pong clone made with C++20 and SFML 3.0.
 
 The aim for using Pong as the first project was to get back into SFML as well as getting used to the new way of using it, quite a bit changed in their syntax. It will probably just stay as a pure pong clone without any new additions or twists.
 
+## Snake [[SFML](#used-and-mentioned-libraries)]
+A clone of Snake made with C++20 and SFML 3.0.
+
+In comparison to the Pong clone this one will use sprites and textures instead of just simple shapes to present the snake and the food. Plus this project will have "Managers" who overview and do stuff on the board, for example the food manager will make sure that there is at least one food always present on the board and of course the snake itself who manages itself as it can grow, move and die.
+
 ## What is further planned?
 I am planning on making a clone of "Snake" as well as "Space Invaders", perhaps a Tetris one too, but the last one depends on how confident I get with SFML 3.0 during "Snake" and "Space Invaders". Otherwise I can imagine going for a slightly bigger Project, be it something new or just giving one of these other projects a twist... idk like turn "Space Invaders" into a rogue-like where you can get upgrades because the enemies grow stronger and stronger.
 

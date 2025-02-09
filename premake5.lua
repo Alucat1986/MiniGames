@@ -11,3 +11,4 @@ workspace "MiniGames"
 	OutputDir = "%{cfg.system}-%{cfg.architecture}/%{cfg.buildcfg}"
 
 	include "Pong/Build-Pong.lua"
+	include "Snake/Build-Snake.lua"
