@@ -26,6 +26,8 @@ A clone of Snake made with C++20 and SFML 3.0.
 
 In comparison to the Pong clone this one will use sprites and textures instead of just simple shapes to present the snake and the food. Plus this project will have "Managers" who overview and do stuff on the board, for example the food manager will make sure that there is at least one food always present on the board and of course the snake itself who manages itself as it can grow, move and die.
 
+The game level will be a grid system for 'easier', I'm missing a proper word here, movement as well as food spawning. The cells of the grid will be squares, meaning that their $`WxH`$ will have $`W=H`$ with currently $`W=H=64`$. There is also a margin around each cell, mostly used to be able to draw an actual grid around the cells for debug purposes.
+
 ## What is further planned?
 I am planning on making a clone of "Snake" as well as "Space Invaders", perhaps a Tetris one too, but the last one depends on how confident I get with SFML 3.0 during "Snake" and "Space Invaders". Otherwise I can imagine going for a slightly bigger Project, be it something new or just giving one of these other projects a twist... idk like turn "Space Invaders" into a rogue-like where you can get upgrades because the enemies grow stronger and stronger.
 
