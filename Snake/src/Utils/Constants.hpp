@@ -2,11 +2,51 @@
  * @file Constants.hpp
  * @brief Contains some constants for the game.
  * @author Alunya
- * @date 04.01.2025
+ * @date 09.02.2025
  */
 
 #ifndef CONSTANTS_HPP
 #define CONSTANTS_HPP
+
+/**
+ * @defgroup GameGridInformationConstants Game Grid Information Constants
+ * @brief Constants that define the size of a single cell and the amount of cells in x and y directions.
+ * @author Alunya
+ * @date 09.02.2025
+ * @{
+ */
+
+/**
+ * @brief The size of a cell, cells are squares.
+ * @author Alunya
+ * @date 09.02.2025
+ */
+constexpr float CELL_SIZE            = 64.0f;
+
+/**
+ * @brief The margin of a cell.
+ * @author Alunya
+ * @date 09.02.2025
+ */
+constexpr float CELL_MARGIN          = 1.0f;
+
+/**
+ * @brief The amount of columns of cells.
+ * @author Alunya
+ * @date 09.02.2025
+ */
+constexpr std::uint16_t CELL_COLUMNS = 20;
+
+/**
+ * @brief The amount of rows of cells.
+ * @author Alunya
+ * @date 09.02.2025
+ */
+constexpr std::uint16_t CELL_ROWS    = 10;
+
+/**
+ * @}
+ */ // End of GameWindowConstants
 
 /**
  * @defgroup GameWindowConstants Game Window Constants
@@ -21,24 +61,17 @@
  * @author Alunya
  * @date 04.01.2025
  */
-constexpr float WINDOW_WIDTH   = 800.f;
+constexpr float WINDOW_WIDTH         = 800.0f;
 
 /**
  * @brief The height of the game window in pixels.
  * @author Alunya
  * @date 04.01.2025
  */
-constexpr float WINDOW_HEIGHT  = 600.f;
+constexpr float WINDOW_HEIGHT        = 600.0f;
 
 /**
  * @}
  */ // End of GameWindowConstants
-
-/**
- * @brief The padding the paddle should have from the window border. (left and right)
- * @author Alunya
- * @date 05.01.2025
- */
-constexpr float PADDLE_PADDING = 30.f;
 
 #endif
