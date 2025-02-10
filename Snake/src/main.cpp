@@ -16,9 +16,9 @@
 void HelloSFML();
 
 int main() {
-    HelloSFML();
-    /*snake::Game game;
-    game.run();*/
+    // HelloSFML();
+    snake::Game game;
+    game.run();
 }
 
 /**

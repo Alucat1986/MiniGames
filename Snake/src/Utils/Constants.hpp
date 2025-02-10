@@ -28,7 +28,7 @@ constexpr float CELL_SIZE            = 64.0f;
  * @author Alunya
  * @date 09.02.2025
  */
-constexpr float CELL_MARGIN          = 1.0f;
+constexpr float CELL_MARGIN          = 2.0f;
 
 /**
  * @brief The amount of columns of cells.
@@ -60,15 +60,20 @@ constexpr std::uint16_t CELL_ROWS    = 10;
  * @brief The width of the game window in pixels.
  * @author Alunya
  * @date 04.01.2025
+ *
+ * (CELL_COLUMNS * CELL_SIZE) + (CELL_COLUMNS * CELL_MARGIN) + CELL_MARGIN
  */
-constexpr float WINDOW_WIDTH         = 800.0f;
+constexpr float WINDOW_WIDTH         = 1322.0f;
 
 /**
  * @brief The height of the game window in pixels.
  * @author Alunya
  * @date 04.01.2025
+ *
+ * (CELL_ROWS * CELL_SIZE) + (CELL_ROWS * CELL_MARGIN) + CELL_MARGIN
+ * @todo It's missing another margin for some hud elements like showing points or the snake's length.
  */
-constexpr float WINDOW_HEIGHT        = 600.0f;
+constexpr float WINDOW_HEIGHT        = 662.0f;
 
 /**
  * @}
