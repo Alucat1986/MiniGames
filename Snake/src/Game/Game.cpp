@@ -20,6 +20,7 @@
 //***************************************************************************************************************** //
 
 namespace snake {
+
 /**
  * @brief Constructor.
  * @author Alunya
@@ -41,7 +42,7 @@ Game::Game()
     m_FpsText = std::make_unique<sf::Text>( *m_FpsFont, "FPS: 0", 16 );
     m_FpsText->setFillColor( sf::Color::White );
     m_FpsText->setOrigin( m_FpsText->getLocalBounds().getCenter() );
-    m_FpsText->setPosition( { WINDOW_WIDTH / 2.f, WINDOW_HEIGHT - 20.f } );
+    m_FpsText->setPosition( { WINDOW_WIDTH / 2.0f, WINDOW_HEIGHT - 20.0f } );
 } // Game::Game(...)
 
 /**
@@ -75,54 +76,48 @@ void Game::handleUserInput() {
         } // if ( event->is<sf::Event::Closed>() )
 
         if ( event->is<sf::Event::KeyPressed>() ) {
-            const auto eventKey = event->getIf<sf::Event::KeyPressed>();
-            if ( eventKey->scancode == sf::Keyboard::Scancode::Escape ) {
+            const auto eventScanCode = event->getIf<sf::Event::KeyPressed>()->scancode;
+            if ( eventScanCode == sf::Keyboard::Scancode::Escape ) {
                 m_Window->close();
                 m_IsRunning = false;
                 break;
             } // if ( eventKey->scancode == sf::Keyboard::Scancode::Escape )
 
-            if ( eventKey->scancode == sf::Keyboard::Scancode::W || eventKey->scancode == sf::Keyboard::Scancode::Up ) {
+            if ( eventScanCode == sf::Keyboard::Scancode::W || eventScanCode == sf::Keyboard::Scancode::Up ) {
                 m_PlayerInput.Up = true;
             } // if ( eventKey->scancode == sf::Keyboard::Scancode::W || sf::Keyboard::Scancode::Up )
 
-            if ( eventKey->scancode == sf::Keyboard::Scancode::D ||
-                 eventKey->scancode == sf::Keyboard::Scancode::Right ) {
+            if ( eventScanCode == sf::Keyboard::Scancode::D || eventScanCode == sf::Keyboard::Scancode::Right ) {
                 m_PlayerInput.Right = true;
             } // if ( eventKey->scancode == sf::Keyboard::Scancode::D || sf::Keyboard::Scancode::Right )
 
-            if ( eventKey->scancode == sf::Keyboard::Scancode::S ||
-                 eventKey->scancode == sf::Keyboard::Scancode::Down ) {
+            if ( eventScanCode == sf::Keyboard::Scancode::S || eventScanCode == sf::Keyboard::Scancode::Down ) {
                 m_PlayerInput.Down = true;
-            } // if ( eventKey->scancode == sf::Keyboard::Scancode::S || sf::Keyboard::Scancode::Down )
+            } // if ( eventScanCode == sf::Keyboard::Scancode::S || sf::Keyboard::Scancode::Down )
 
-            if ( eventKey->scancode == sf::Keyboard::Scancode::A ||
-                 eventKey->scancode == sf::Keyboard::Scancode::Left ) {
+            if ( eventScanCode == sf::Keyboard::Scancode::A || eventScanCode == sf::Keyboard::Scancode::Left ) {
                 m_PlayerInput.Left = true;
-            } // if ( eventKey->scancode == sf::Keyboard::Scancode::A || sf::Keyboard::Scancode::Left )
+            } // if ( eventScanCode == sf::Keyboard::Scancode::A || sf::Keyboard::Scancode::Left )
         } // if ( event->is<sf::Event::KeyPressed>() )
 
         if ( event->is<sf::Event::KeyReleased>() ) {
-            const auto eventKey = event->getIf<sf::Event::KeyReleased>();
+            const auto eventScanCode = event->getIf<sf::Event::KeyPressed>()->scancode;
 
-            if ( eventKey->scancode == sf::Keyboard::Scancode::W || eventKey->scancode == sf::Keyboard::Scancode::Up ) {
+            if ( eventScanCode == sf::Keyboard::Scancode::W || eventScanCode == sf::Keyboard::Scancode::Up ) {
                 m_PlayerInput.Up = false;
-            } // if ( eventKey->scancode == sf::Keyboard::Scancode::W || sf::Keyboard::Scancode::Up )
+            } // if ( eventScanCode == sf::Keyboard::Scancode::W || sf::Keyboard::Scancode::Up )
 
-            if ( eventKey->scancode == sf::Keyboard::Scancode::D ||
-                 eventKey->scancode == sf::Keyboard::Scancode::Right ) {
+            if ( eventScanCode == sf::Keyboard::Scancode::D || eventScanCode == sf::Keyboard::Scancode::Right ) {
                 m_PlayerInput.Right = false;
-            } // if ( eventKey->scancode == sf::Keyboard::Scancode::D || sf::Keyboard::Scancode::Right )
+            } // if ( eventScanCode == sf::Keyboard::Scancode::D || sf::Keyboard::Scancode::Right )
 
-            if ( eventKey->scancode == sf::Keyboard::Scancode::S ||
-                 eventKey->scancode == sf::Keyboard::Scancode::Down ) {
+            if ( eventScanCode == sf::Keyboard::Scancode::S || eventScanCode == sf::Keyboard::Scancode::Down ) {
                 m_PlayerInput.Down = false;
-            } // if ( eventKey->scancode == sf::Keyboard::Scancode::S || sf::Keyboard::Scancode::Down )
+            } // if ( eventScanCode == sf::Keyboard::Scancode::S || sf::Keyboard::Scancode::Down )
 
-            if ( eventKey->scancode == sf::Keyboard::Scancode::A ||
-                 eventKey->scancode == sf::Keyboard::Scancode::Left ) {
+            if ( eventScanCode == sf::Keyboard::Scancode::A || eventScanCode == sf::Keyboard::Scancode::Left ) {
                 m_PlayerInput.Left = false;
-            } // if ( eventKey->scancode == sf::Keyboard::Scancode::A || sf::Keyboard::Scancode::Left )
+            } // if ( eventScanCode == sf::Keyboard::Scancode::A || sf::Keyboard::Scancode::Left )
         } // if ( event->is<sf::Event::KeyReleased>() )
     } // while ( const std::optional event = window.pollEvent() )
 } // void Game::handleUserInput(...)
@@ -133,7 +128,10 @@ void Game::handleUserInput() {
  * @author Alunya
  * @date 09.02.2025
  */
-void Game::update( const float& deltaTime ) {} // void Game::update(...)
+void Game::update( const float& deltaTime ) {
+    handleUserInput();
+    m_Player.update( deltaTime );
+} // void Game::update(...)
 
 /**
  * @brief Renders the game.
@@ -142,18 +140,18 @@ void Game::update( const float& deltaTime ) {} // void Game::update(...)
  * @date 09.02.2025
  */
 void Game::render( const float& deltaTime ) {
-    static float fpsTimer    = 0.f;
+    static float fpsTimer    = 0.0f;
     static int   frameCount  = 0;
 
     fpsTimer                += deltaTime;
     frameCount++;
 
-    if ( fpsTimer >= 1.f ) {
+    if ( fpsTimer >= 1.0f ) {
         float fps = frameCount / fpsTimer;
         m_FpsText->setString( "FPS: " + std::to_string( static_cast<int>( fps ) ) );
-        fpsTimer   = 0.f;
+        fpsTimer   = 0.0f;
         frameCount = 0;
-    } // if ( fpsTimer >= 1.f )
+    } // if ( fpsTimer >= 1.0f )
 
     m_Window->clear();
 

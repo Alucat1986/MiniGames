@@ -8,6 +8,8 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
+#include "Snake/Snake.hpp"
+
 #include <SFML/Graphics/Font.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics/Text.hpp>
@@ -16,6 +18,7 @@
 #include <memory>
 
 namespace snake {
+
 /**
  * @class Game
  * @brief Manages the main game loop and state of the Pong game.
@@ -47,6 +50,7 @@ private:
     }; // struct PlayerInput
 
     bool        m_IsRunning;
+    Snake       m_Player;
     PlayerInput m_PlayerInput;
 
     std::unique_ptr<sf::RenderWindow> m_Window;
