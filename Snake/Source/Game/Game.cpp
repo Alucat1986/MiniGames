@@ -129,7 +129,6 @@ void Game::handleUserInput() {
  * @date 14.05.2025
  */
 void Game::update( const float& deltaTime ) {
-    handleUserInput();
     mPlayer.update( deltaTime );
 } // void Game::update(...)
 
