@@ -140,10 +140,10 @@ void Game::update( const float& deltaTime ) {
  * @date 14.05.2025
  */
 void Game::render( const float& deltaTime ) {
-    static float fpsTimer    = 0.0f;
-    static int   frameCount  = 0;
+    static float        fpsTimer    = 0.0f;
+    static std::int64_t frameCount  = 0;
 
-    fpsTimer                += deltaTime;
+    fpsTimer                       += deltaTime;
     frameCount++;
 
     if ( fpsTimer >= 1.0f ) {
