@@ -7,11 +7,23 @@
 
 #include "Include/Game/Game.hpp"
 
+#include "Include/Grid/Grid.hpp"
 #include "Include/Utils/Constants.hpp"
 
+#include <SFML/Graphics/Color.hpp>
+#include <SFML/Graphics/Font.hpp>
+#include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/Graphics/Text.hpp>
 #include <SFML/System/Clock.hpp>
+#include <SFML/System/Time.hpp>
+#include <SFML/Window/Event.hpp>
+#include <SFML/Window/Keyboard.hpp>
+#include <SFML/Window/VideoMode.hpp>
 
+#include <cstdint>
 #include <iostream>
+#include <memory>
+#include <string>
 
 // ****************************************************************************************************************** //
 //                                                                                                                    //

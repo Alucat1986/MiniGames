@@ -8,9 +8,10 @@
 #ifndef GRID_HPP
 #define GRID_HPP
 
-#include "Include/Utils/Constants.hpp"
+#include <SFML/Graphics/RectangleShape.hpp>
+#include <SFML/Graphics/RenderWindow.hpp>
 
-#include <SFML/Graphics.hpp>
+#include <vector>
 
 namespace snake {
 
