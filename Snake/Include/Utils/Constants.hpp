@@ -26,28 +26,28 @@ namespace constants {
  * @author Alunya
  * @date 09.02.2025
  */
-constexpr float CELL_SIZE            = 64.0f;
+constexpr float CELL_SIZE             = 64.0f;
 
 /**
- * @brief The margin of a cell.
+ * @brief The outline thickness of a cell.
  * @author Alunya
- * @date 09.02.2025
+ * @date 14.05.2025
  */
-constexpr float CELL_MARGIN          = 2.0f;
+constexpr float CELL_OUTLINETHICKNESS = 1.0f;
 
 /**
  * @brief The amount of columns of cells.
  * @author Alunya
- * @date 09.02.2025
+ * @date 14.05.2025
  */
-constexpr std::uint16_t CELL_COLUMNS = 20;
+constexpr std::size_t CELL_COLUMNS    = 20;
 
 /**
  * @brief The amount of rows of cells.
  * @author Alunya
- * @date 09.02.2025
+ * @date 14.05.2025
  */
-constexpr std::uint16_t CELL_ROWS    = 10;
+constexpr std::size_t CELL_ROWS       = 10;
 
 /**
  * @}
@@ -62,23 +62,28 @@ constexpr std::uint16_t CELL_ROWS    = 10;
  */
 
 /**
+ * @brief The margin of the game window.
+ * @author Alunya
+ * @date 14.05.2025
+ *
+ * The margin is used to center the grid in the window.
+ */
+constexpr float WINDOW_MARGIN         = 20.0f;
+
+/**
  * @brief The width of the game window in pixels.
  * @author Alunya
- * @date 04.01.2025
- *
- * (CELL_COLUMNS * CELL_SIZE) + (CELL_COLUMNS * CELL_MARGIN) + CELL_MARGIN
+ * @date 14.05.2025
  */
-constexpr float WINDOW_WIDTH         = 1322.0f;
+constexpr float WINDOW_WIDTH          = CELL_COLUMNS * CELL_SIZE + 2 * WINDOW_MARGIN;
 
 /**
  * @brief The height of the game window in pixels.
  * @author Alunya
- * @date 04.01.2025
- *
- * (CELL_ROWS * CELL_SIZE) + (CELL_ROWS * CELL_MARGIN) + CELL_MARGIN
- * @todo It's missing another margin for some hud elements like showing points or the snake's length.
+ * @date 14.05.2025
  */
-constexpr float WINDOW_HEIGHT        = 662.0f;
+constexpr float WINDOW_HEIGHT         = CELL_ROWS * CELL_SIZE + 2 * WINDOW_MARGIN;
+;
 
 /**
  * @}

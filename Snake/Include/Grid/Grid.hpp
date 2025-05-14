@@ -30,7 +30,10 @@ public:
     void draw( sf::RenderWindow& window );
 
 private:
-    sf::RectangleShape mCellShape;
+    void createCells();
+
+private:
+    std::vector<sf::RectangleShape> mCells;
 };
 
 } // namespace snake
