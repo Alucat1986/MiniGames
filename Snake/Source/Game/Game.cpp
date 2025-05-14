@@ -2,7 +2,7 @@
  * @file Game.cpp
  * @brief Contains the implementation of the Game class.
  * @author Alunya
- * @date 09.02.2025
+ * @date 14.05.2025
  */
 
 #include "Game.hpp"
@@ -24,7 +24,7 @@ namespace snake {
 /**
  * @brief Constructor.
  * @author Alunya
- * @date 09.02.2025
+ * @date 14.05.2025
  */
 Game::Game()
         : m_IsRunning( true ),
