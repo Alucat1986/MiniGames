@@ -23,11 +23,13 @@ namespace snake {
  * * growing, after eating food
  * * dying
  * The movement is given by the players input and happens in a grid system, it will move one cell into the desired
- * direction. When the snake eats food, collides with the corresponding entity, it will grow a new mid part, so over
- * time it will be harder for the player to evade its own size. As soon as the snake collides with itself or the walls
- * the snake dies. All those "systems" though will be called by it's own update function as that will ask the grid class
- * if it's colliding with something and act accordingly. The snake will start with a length of 2, which is only the head
- * and the tail of it. Each food item will grow it by 1 cell. It also starts facing/moving east.
+ * direction. The snake can't stop so even when the player stops holding down a key the snake keeps going into the last
+ * known direction the player wanted until a new command is received. When the snake eats food, collides with the
+ * corresponding entity, it will grow a new mid part, so over time it will be harder for the player to evade its own
+ * size. As soon as the snake collides with itself or the walls the snake dies. All those "systems" though will be
+ * called by it's own update function as that will ask the grid class if it's colliding with something and act
+ * accordingly. The snake will start with a length of 2, which is only the head and the tail of it. Each food item will
+ * grow it by 1 cell. It also starts facing/moving east.
  */
 class Snake {
 public:
@@ -47,7 +49,7 @@ private:
 
     bool          mDead;
     float         mMoveTimestamp; // every m_MoveTimestamp milliseconds the snake moves 1 cell.
-    std::uint32_t mCurrentLength;
+    std::uint64_t mCurrentLength;
     Direction     mCurrentDirection;
 }; // class Snake
 
