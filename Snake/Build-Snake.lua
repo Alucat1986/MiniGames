@@ -6,14 +6,14 @@ project "Snake"
     staticruntime "off"
 
     files {
-        "src/**.hpp",
-        "src/**.cpp",
+        "Source/**.hpp",
+        "Source/**.cpp",
         "**.lua",
         "**.md"
     }
 
     includedirs {
-        "src",
+        "Source",
         "../3rdParty/SFML/include"
     }
 
