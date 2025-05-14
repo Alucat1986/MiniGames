@@ -1,14 +1,14 @@
 /**
  * @file Game.hpp
- * @brief Contains the declaration of the Game class.
+ * @brief Contains the game class declaration.
  * @author Alunya
- * @date 09.02.2025
+ * @date 14.05.2025
  */
 
 #ifndef GAME_HPP
 #define GAME_HPP
 
-#include "Snake/Snake.hpp"
+#include "Include/Snake/Snake.hpp"
 
 #include <SFML/Graphics/Font.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
@@ -61,4 +61,4 @@ private:
 
 } // namespace snake
 
-#endif
+#endif // #ifndef GAME_HPP

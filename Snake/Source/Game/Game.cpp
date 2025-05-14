@@ -1,23 +1,23 @@
 /**
  * @file Game.cpp
- * @brief Contains the implementation of the Game class.
+ * @brief Contains the game class implementation.
  * @author Alunya
  * @date 14.05.2025
  */
 
-#include "Game.hpp"
+#include "Include/Game/Game.hpp"
 
-#include "../Utils/Constants.hpp"
+#include "Include/Utils/Constants.hpp"
 
 #include <SFML/System/Clock.hpp>
 
 #include <iostream>
 
-//***************************************************************************************************************** //
-//                                                                                                                  //
-//                                                     CLASSES                                                      //
-//                                                                                                                  //
-//***************************************************************************************************************** //
+// ****************************************************************************************************************** //
+//                                                                                                                    //
+//                                                      CLASSES                                                       //
+//                                                                                                                    //
+// ****************************************************************************************************************** //
 
 namespace snake {
 

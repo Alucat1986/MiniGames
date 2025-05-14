@@ -2,11 +2,13 @@
  * @file Constants.hpp
  * @brief Contains some constants for the game.
  * @author Alunya
- * @date 09.02.2025
+ * @date 14.05.2025
  */
 
 #ifndef CONSTANTS_HPP
 #define CONSTANTS_HPP
+
+#include <cstdint>
 
 /**
  * @defgroup GameGridInformationConstants Game Grid Information Constants

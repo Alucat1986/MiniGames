@@ -1,8 +1,8 @@
 /**
  * @file Snake.hpp
- * @brief Contains the declaration of the Snake class.
+ * @brief Contains the snake class declaration.
  * @author Alunya
- * @date 20.02.2025
+ * @date 14.05.2025
  */
 
 #ifndef SNAKE_HPP
@@ -51,4 +51,5 @@ private:
 }; // class Snake
 
 } // namespace snake
-#endif // SNAKE_HPP
+
+#endif // #ifndef SNAKE_HPP

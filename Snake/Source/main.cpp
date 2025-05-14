@@ -2,9 +2,10 @@
  * @file main.cpp
  * @brief Contains the main function.
  * @author Alunya
- * @date 09.02.2025
+ * @date 14.05.2025
  */
-#include "Game/Game.hpp"
+
+#include "Include/Game/Game.hpp"
 
 #include <SFML/Graphics/CircleShape.hpp>
 #include <SFML/Graphics/Color.hpp>
