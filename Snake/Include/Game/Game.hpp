@@ -8,6 +8,7 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
+#include "Include/Grid/Grid.hpp"
 #include "Include/Snake/Snake.hpp"
 
 #include <SFML/Graphics/Font.hpp>
@@ -53,6 +54,7 @@ private:
     PlayerInput mPlayerInput;
 
     std::unique_ptr<sf::RenderWindow> mWindow;
+    std::unique_ptr<Grid>             mGrid;
 
     std::unique_ptr<sf::Font> mFpsFont;
     std::unique_ptr<sf::Text> mFpsText;

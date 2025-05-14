@@ -47,6 +47,8 @@ Game::Game()
                                             "Snake Clone" );
     mWindow->setVerticalSyncEnabled( true );
 
+    mGrid    = std::make_unique<Grid>();
+
     mFpsFont = std::make_unique<sf::Font>();
     if ( !mFpsFont->openFromFile( "C:/Windows/Fonts/arial.ttf" ) ) {
         std::cerr << "Could not load font from file!\n";
@@ -167,6 +169,7 @@ void Game::render( const float& deltaTime ) {
 
     mWindow->clear();
 
+    mGrid->draw( *mWindow );
     mWindow->draw( *mFpsText );
 
     mWindow->display();
