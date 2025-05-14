@@ -18,7 +18,7 @@ namespace snake {
 /**
  * @brief Constructor.
  * @author Alunya
- * @date 20.02.2025
+ * @date 14.05.2025
  */
 Snake::Snake()
         : mDead( false ),
