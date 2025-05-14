@@ -21,10 +21,10 @@ namespace snake {
  * @date 20.02.2025
  */
 Snake::Snake()
-        : m_Dead( false ),
-          m_MoveTimestamp( 0.2f ),
-          m_CurrentLength( 2 ),
-          m_CurrentDirection( Direction::East ) {
+        : mDead( false ),
+          mMoveTimestamp( 0.2f ),
+          mCurrentLength( 2 ),
+          mCurrentDirection( Direction::East ) {
     /** @todo Do some stuff, I guess. */
 } // Snake::Snake(...)
 
@@ -47,13 +47,13 @@ void Snake::update( const float& deltaTime ) {
 /**
  * @brief To check if the snake is dead or alive.
  * @author Alunya
- * @date 22.02.2025
+ * @date 14.05.2025
  *
  * @return true When the snake is dead.
  * @return false When the snake is alive.
  */
 bool Snake::isDead() const {
-    return m_Dead;
+    return mDead;
 }
 
 /**

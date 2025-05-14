@@ -29,7 +29,7 @@ public:
     void draw( sf::RenderWindow& window );
 
 private:
-    sf::RectangleShape cellShape;
+    sf::RectangleShape mCellShape;
 };
 
 } // namespace snake

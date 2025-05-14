@@ -38,16 +38,17 @@ public:
     bool isDead() const;
 
 private:
-    enum class Direction { North, East, South, West };
-
-    bool          m_Dead;
-    float         m_MoveTimestamp; // every m_MoveTimestamp milliseconds the snake moves 1 cell.
-    std::uint32_t m_CurrentLength;
-    Direction     m_CurrentDirection;
-
     void move();
     void grow();
     void die();
+
+private:
+    enum class Direction { North, East, South, West };
+
+    bool          mDead;
+    float         mMoveTimestamp; // every m_MoveTimestamp milliseconds the snake moves 1 cell.
+    std::uint32_t mCurrentLength;
+    Direction     mCurrentDirection;
 }; // class Snake
 
 } // namespace snake

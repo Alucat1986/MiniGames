@@ -49,14 +49,14 @@ private:
         bool Left;
     }; // struct PlayerInput
 
-    bool        m_IsRunning;
-    Snake       m_Player;
-    PlayerInput m_PlayerInput;
+    bool        mIsRunning;
+    Snake       mPlayer;
+    PlayerInput mPlayerInput;
 
-    std::unique_ptr<sf::RenderWindow> m_Window;
+    std::unique_ptr<sf::RenderWindow> mWindow;
 
-    std::unique_ptr<sf::Font> m_FpsFont;
-    std::unique_ptr<sf::Text> m_FpsText;
+    std::unique_ptr<sf::Font> mFpsFont;
+    std::unique_ptr<sf::Text> mFpsText;
 }; // class Game
 
 } // namespace snake
