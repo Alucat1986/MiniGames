@@ -102,7 +102,7 @@ void Game::handleUserInput() {
         } // if ( event->is<sf::Event::KeyPressed>() )
 
         if ( event->is<sf::Event::KeyReleased>() ) {
-            const auto eventScanCode = event->getIf<sf::Event::KeyPressed>()->scancode;
+            const auto eventScanCode = event->getIf<sf::Event::KeyReleased>()->scancode;
 
             if ( eventScanCode == sf::Keyboard::Scancode::W || eventScanCode == sf::Keyboard::Scancode::Up ) {
                 mPlayerInput.Up = false;
