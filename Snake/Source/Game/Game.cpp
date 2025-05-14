@@ -31,7 +31,7 @@ Game::Game()
           m_PlayerInput( { .Up = false, .Right = false, .Down = false, .Left = false } ) {
     m_Window = std::make_unique<sf::RenderWindow>(
         sf::VideoMode( { static_cast<std::uint16_t>( WINDOW_WIDTH ), static_cast<std::uint16_t>( WINDOW_HEIGHT ) } ),
-        "Pong" );
+        "Snake Clone" );
     m_Window->setVerticalSyncEnabled( true );
 
     m_FpsFont = std::make_unique<sf::Font>();
