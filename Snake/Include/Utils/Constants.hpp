@@ -10,6 +10,9 @@
 
 #include <cstdint>
 
+namespace snake {
+namespace constants {
+
 /**
  * @defgroup GameGridInformationConstants Game Grid Information Constants
  * @brief Constants that define the size of a single cell and the amount of cells in x and y directions.
@@ -81,4 +84,7 @@ constexpr float WINDOW_HEIGHT        = 662.0f;
  * @}
  */ // End of GameWindowConstants
 
-#endif
+} // namespace constants
+} // namespace snake
+
+#endif // #ifndef CONSTANTS_HPP

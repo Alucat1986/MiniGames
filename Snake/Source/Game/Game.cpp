@@ -29,9 +29,10 @@ namespace snake {
 Game::Game()
         : mIsRunning( true ),
           mPlayerInput( { .Up = false, .Right = false, .Down = false, .Left = false } ) {
-    mWindow = std::make_unique<sf::RenderWindow>(
-        sf::VideoMode( { static_cast<std::uint16_t>( WINDOW_WIDTH ), static_cast<std::uint16_t>( WINDOW_HEIGHT ) } ),
-        "Snake Clone" );
+    mWindow =
+        std::make_unique<sf::RenderWindow>( sf::VideoMode( { static_cast<std::uint16_t>( constants::WINDOW_WIDTH ),
+                                                             static_cast<std::uint16_t>( constants::WINDOW_HEIGHT ) } ),
+                                            "Snake Clone" );
     mWindow->setVerticalSyncEnabled( true );
 
     mFpsFont = std::make_unique<sf::Font>();
@@ -42,7 +43,7 @@ Game::Game()
     mFpsText = std::make_unique<sf::Text>( *mFpsFont, "FPS: 0", 16 );
     mFpsText->setFillColor( sf::Color::White );
     mFpsText->setOrigin( mFpsText->getLocalBounds().getCenter() );
-    mFpsText->setPosition( { WINDOW_WIDTH / 2.0f, WINDOW_HEIGHT - 20.0f } );
+    mFpsText->setPosition( { constants::WINDOW_WIDTH / 2.0f, constants::WINDOW_HEIGHT - 20.0f } );
 } // Game::Game(...)
 
 /**
