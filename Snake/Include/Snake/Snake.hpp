@@ -2,13 +2,14 @@
  * @file Snake.hpp
  * @brief Contains the snake class declaration.
  * @author Alunya
- * @date 14.05.2025
+ * @date 16.05.2025
  */
 
 #ifndef SNAKE_HPP
 #define SNAKE_HPP
 
-#include <cstdint>
+#include <list>
+#include <memory>
 
 namespace snake {
 
@@ -16,7 +17,7 @@ namespace snake {
  * @class Snake
  * @brief Manages the snake, provides methods to grow the snake and move it.
  * @author Alunya
- * @date 20.02.2025
+ * @date 16.05.2025
  *
  * The snake class represents the players snake. It provides following functionality:
  * * moving
@@ -46,11 +47,20 @@ private:
 
 private:
     enum class Direction { North, East, South, West };
+    enum class BodyPart { Head, Body, Tail };
 
-    bool          mDead;
-    float         mMoveTimestamp; // every m_MoveTimestamp milliseconds the snake moves 1 cell.
-    std::uint64_t mCurrentLength;
-    Direction     mCurrentDirection;
+    struct SnakePart {
+        std::size_t x;
+        std::size_t y;
+        Direction   direction;
+        BodyPart    part;
+    };
+
+    bool  mDead;
+    bool  mGrow;
+    float mMoveTimestamp; // every m_MoveTimestamp milliseconds the snake moves 1 cell.
+
+    std::unique_ptr<std::list<SnakePart>> mSnakeBody;
 }; // class Snake
 
 } // namespace snake
