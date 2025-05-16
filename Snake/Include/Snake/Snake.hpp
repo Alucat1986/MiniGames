@@ -58,7 +58,8 @@ private:
 
     bool  mDead;
     bool  mGrow;
-    float mMoveTimestamp; // every m_MoveTimestamp milliseconds the snake moves 1 cell.
+    float mMoveTimeThreshold; // every m_MoveTimeThreshold milliseconds the snake moves 1 cell.
+    float mCurrentTimeStamp;  // the current time since the last move.
 
     std::unique_ptr<std::list<SnakePart>> mSnakeBody;
 }; // class Snake

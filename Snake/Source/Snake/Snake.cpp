@@ -30,7 +30,8 @@ namespace snake {
 Snake::Snake()
         : mDead( false ),
           mGrow( false ),
-          mMoveTimestamp( 0.2f ) {
+          mMoveTimeThreshold( 0.2f ),
+          mCurrentTimeStamp( 0.0f ) {
     mSnakeBody = std::make_unique<std::list<SnakePart>>();
     mSnakeBody->emplace_back( SnakePart{ .x         = ( constants::CELL_COLUMNS / 2 ) - 1,
                                          .y         = constants::CELL_ROWS / 2,
@@ -45,7 +46,7 @@ Snake::Snake()
 /**
  * @brief Updates the snakes state.
  * @author Alunya
- * @date 20.02.2025
+ * @date 16.05.2025
  * @param[in] deltaTime The time that has passed since the last update had been called.
  *
  * Is called by Game::update(). It moves the snake into the current direction by a cell and then checks if it collides
@@ -54,8 +55,13 @@ Snake::Snake()
  * cell into the set current direction.
  */
 void Snake::update( const float& deltaTime ) {
+    mCurrentTimeStamp += deltaTime;
     /** @todo Either before or after moving find out if we collide or might collide with something and do the
      * corresponding action, aka grow, die or just move. */
+    if ( mCurrentTimeStamp >= mMoveTimeThreshold ) {
+        move();
+        mCurrentTimeStamp -= mMoveTimeThreshold;
+    } // if ( mCurrentTimestamp >= mMoveTimestamp )
 } // Snake::update(...)
 
 /**
