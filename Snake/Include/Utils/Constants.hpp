@@ -2,7 +2,7 @@
  * @file Constants.hpp
  * @brief Contains some constants for the game.
  * @author Alunya
- * @date 14.05.2025
+ * @date 16.05.2025
  */
 
 #ifndef CONSTANTS_HPP
@@ -83,11 +83,31 @@ constexpr float WINDOW_WIDTH          = CELL_COLUMNS * CELL_SIZE + 2 * WINDOW_MA
  * @date 14.05.2025
  */
 constexpr float WINDOW_HEIGHT         = CELL_ROWS * CELL_SIZE + 2 * WINDOW_MARGIN;
-;
 
 /**
  * @}
  */ // End of GameWindowConstants
+
+/**
+ * @defgroup GameConstants Game Constants
+ * @brief Constants that work as game settings.
+ * @author Alunya
+ * @date 16.05.2025
+ * @{
+ */
+
+/**
+ * @brief The maximum length of the snake.
+ * @author Alunya
+ * @date 16.05.2025
+ *
+ * The maximum length of the snake is equal to the amount of cells in the grid.
+ */
+constexpr float MAX_SNAKE_LENGTH      = CELL_COLUMNS * CELL_ROWS;
+
+/**
+ * @}
+ */ // End of GameConstants
 
 } // namespace constants
 } // namespace snake
