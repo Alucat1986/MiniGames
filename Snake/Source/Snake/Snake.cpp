@@ -88,6 +88,7 @@ void Snake::move() {
                                                        .part      = BodyPart::Body } );
         mGrow = false;
     } // if ( mGrow )
+
     for ( ; snakeIterator != mSnakeBody->end(); std::advance( snakeIterator, 1 ) ) {
         switch ( snakeIterator->direction ) {
             case Direction::North : snakeIterator->y--; break;
@@ -107,10 +108,13 @@ void Snake::move() {
 /**
  * @brief Grows the snake by 1 cell.
  * @author Alunya
- * @date 20.02.2025
+ * @date 16.05.2025
  */
 void Snake::grow() {
-    /** @todo Do some stuff, I guess. */
+    // Probably unnecessary as when the snake reaches it's max length it's about to die anyway.
+    if ( mSnakeBody->size() < constants::MAX_SNAKE_LENGTH ) {
+        mGrow = true;
+    } // if ( mSnakeBody->size() < constants::MAX_SNAKE_LENGTH)
 } // Snake::grow(...)
 
 /**
