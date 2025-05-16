@@ -120,10 +120,10 @@ void Snake::grow() {
 /**
  * @brief Kills the snake.
  * @author Alunya
- * @date 20.02.2025
+ * @date 16.05.2025
  */
 void Snake::die() {
-    /** @todo Do some stuff, I guess. */
+    mDead = true;
 } // Snake::die(...)
 
 } // namespace snake
