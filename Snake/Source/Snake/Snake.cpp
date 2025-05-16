@@ -39,7 +39,6 @@ Snake::Snake()
                                          .y         = constants::CELL_ROWS / 2,
                                          .direction = Direction::East,
                                          .part      = BodyPart::Head } );
-    /** @todo Do some stuff, I guess. */
 } // Snake::Snake(...)
 
 /**
