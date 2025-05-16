@@ -10,6 +10,7 @@
 #include "Include/Utils/Constants.hpp"
 
 #include <iostream>
+#include <iterator>
 #include <list>
 #include <memory>
 
@@ -72,10 +73,35 @@ bool Snake::isDead() const {
 /**
  * @brief Moves the snake into the current direction.
  * @author Alunya
- * @date 20.02.2025
+ * @date 16.05.2025
+ *
+ * Movement starts from the tail, when the grow flag is set the tail will be skipped to put a new body part right
+ * infront of the tail.
  */
 void Snake::move() {
-    /** @todo Do some stuff, I guess. */
+    std::list<SnakePart>::iterator snakeIterator = mSnakeBody->begin();
+    if ( mGrow ) {
+        std::advance( snakeIterator, 1 ); // Should never be mSnakeBody->end(), otherwise something went wrong.
+        mSnakeBody->emplace( snakeIterator, SnakePart{ .x         = snakeIterator->x,
+                                                       .y         = snakeIterator->y,
+                                                       .direction = snakeIterator->direction,
+                                                       .part      = BodyPart::Body } );
+        mGrow = false;
+    } // if ( mGrow )
+    for ( ; snakeIterator != mSnakeBody->end(); std::advance( snakeIterator, 1 ) ) {
+        switch ( snakeIterator->direction ) {
+            case Direction::North : snakeIterator->y--; break;
+            case Direction::East  : snakeIterator->x++; break;
+            case Direction::South : snakeIterator->y++; break;
+            case Direction::West  : snakeIterator->x--; break;
+        } // switch ( SnakeIterator->Direction )
+
+        if ( snakeIterator->part == BodyPart::Head ) {
+            break;
+        } // if ( SnakeIterator->part == BodyPart::Head )
+
+        snakeIterator->direction = std::next( snakeIterator )->direction;
+    } // for ( ; SnakeIterator != mSnakeBody->end(); std::next( SnakeIterator ) )
 } // Snake::move(...)
 
 /**
