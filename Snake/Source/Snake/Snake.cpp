@@ -61,7 +61,7 @@ void Snake::update( const float& deltaTime ) {
     if ( mCurrentTimeStamp >= mMoveTimeThreshold ) {
         move();
         mCurrentTimeStamp -= mMoveTimeThreshold;
-    } // if ( mCurrentTimestamp >= mMoveTimestamp )
+    } // if ( mCurrentTimeStamp >= mMoveTimeThreshold )
 } // Snake::update(...)
 
 /**
