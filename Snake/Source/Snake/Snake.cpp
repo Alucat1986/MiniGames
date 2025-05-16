@@ -2,10 +2,16 @@
  * @file Snake.cpp
  * @brief Contains the snake class implementation.
  * @author Alunya
- * @date 14.05.2025
+ * @date 16.05.2025
  */
 
 #include "Include/Snake/Snake.hpp"
+
+#include "Include/Utils/Constants.hpp"
+
+#include <iostream>
+#include <list>
+#include <memory>
 
 // ****************************************************************************************************************** //
 //                                                                                                                    //
@@ -18,13 +24,21 @@ namespace snake {
 /**
  * @brief Constructor.
  * @author Alunya
- * @date 14.05.2025
+ * @date 16.05.2025
  */
 Snake::Snake()
         : mDead( false ),
-          mMoveTimestamp( 0.2f ),
-          mCurrentLength( 2 ),
-          mCurrentDirection( Direction::East ) {
+          mGrow( false ),
+          mMoveTimestamp( 0.2f ) {
+    mSnakeBody = std::make_unique<std::list<SnakePart>>();
+    mSnakeBody->emplace_back( SnakePart{ .x         = ( constants::CELL_COLUMNS / 2 ) - 1,
+                                         .y         = constants::CELL_ROWS / 2,
+                                         .direction = Direction::East,
+                                         .part      = BodyPart::Tail } );
+    mSnakeBody->emplace_back( SnakePart{ .x         = constants::CELL_COLUMNS / 2,
+                                         .y         = constants::CELL_ROWS / 2,
+                                         .direction = Direction::East,
+                                         .part      = BodyPart::Head } );
     /** @todo Do some stuff, I guess. */
 } // Snake::Snake(...)
 
