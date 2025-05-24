@@ -46,8 +46,18 @@ private:
     void die();
 
 private:
-    enum class Direction { North, East, South, West };
-    enum class BodyPart { Head, Body, Tail };
+    enum class Direction {
+        North,
+        East,
+        South,
+        West
+    };
+
+    enum class BodyPart {
+        Head,
+        Body,
+        Tail
+    };
 
     struct SnakePart {
         std::size_t x;

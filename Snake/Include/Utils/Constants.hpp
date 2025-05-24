@@ -26,28 +26,28 @@ namespace constants {
  * @author Alunya
  * @date 09.02.2025
  */
-constexpr float CELL_SIZE             = 64.0f;
+constexpr float       CELL_SIZE             = 64.0f;
 
 /**
  * @brief The outline thickness of a cell.
  * @author Alunya
  * @date 14.05.2025
  */
-constexpr float CELL_OUTLINETHICKNESS = 1.0f;
+constexpr float       CELL_OUTLINETHICKNESS = 1.0f;
 
 /**
  * @brief The amount of columns of cells.
  * @author Alunya
  * @date 14.05.2025
  */
-constexpr std::size_t CELL_COLUMNS    = 20;
+constexpr std::size_t CELL_COLUMNS          = 20;
 
 /**
  * @brief The amount of rows of cells.
  * @author Alunya
  * @date 14.05.2025
  */
-constexpr std::size_t CELL_ROWS       = 10;
+constexpr std::size_t CELL_ROWS             = 10;
 
 /**
  * @}
@@ -68,21 +68,21 @@ constexpr std::size_t CELL_ROWS       = 10;
  *
  * The margin is used to center the grid in the window.
  */
-constexpr float WINDOW_MARGIN         = 20.0f;
+constexpr float       WINDOW_MARGIN         = 20.0f;
 
 /**
  * @brief The width of the game window in pixels.
  * @author Alunya
  * @date 14.05.2025
  */
-constexpr float WINDOW_WIDTH          = CELL_COLUMNS * CELL_SIZE + 2 * WINDOW_MARGIN;
+constexpr float       WINDOW_WIDTH          = CELL_COLUMNS * CELL_SIZE + 2 * WINDOW_MARGIN;
 
 /**
  * @brief The height of the game window in pixels.
  * @author Alunya
  * @date 14.05.2025
  */
-constexpr float WINDOW_HEIGHT         = CELL_ROWS * CELL_SIZE + 2 * WINDOW_MARGIN;
+constexpr float       WINDOW_HEIGHT         = CELL_ROWS * CELL_SIZE + 2 * WINDOW_MARGIN;
 
 /**
  * @}
@@ -103,7 +103,7 @@ constexpr float WINDOW_HEIGHT         = CELL_ROWS * CELL_SIZE + 2 * WINDOW_MARGI
  *
  * The maximum length of the snake is equal to the amount of cells in the grid.
  */
-constexpr float MAX_SNAKE_LENGTH      = CELL_COLUMNS * CELL_ROWS;
+constexpr float       MAX_SNAKE_LENGTH      = CELL_COLUMNS * CELL_ROWS;
 
 /**
  * @}
