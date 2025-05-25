@@ -40,14 +40,13 @@ namespace snake {
  */
 Game::Game()
         : mIsRunning( true ),
-          mPlayerInput( { .Up = false, .Right = false, .Down = false, .Left = false } ) {
+          mPlayerInput( { .Up = false, .Right = false, .Down = false, .Left = false } ),
+          mGrid( std::make_unique<Grid>() ) {
     mWindow =
         std::make_unique<sf::RenderWindow>( sf::VideoMode( { static_cast<std::uint16_t>( constants::WINDOW_WIDTH ),
                                                              static_cast<std::uint16_t>( constants::WINDOW_HEIGHT ) } ),
                                             "Snake Clone" );
     mWindow->setVerticalSyncEnabled( true );
-
-    mGrid    = std::make_unique<Grid>();
 
     mFpsFont = std::make_unique<sf::Font>();
     if ( !mFpsFont->openFromFile( "C:/Windows/Fonts/arial.ttf" ) ) {
