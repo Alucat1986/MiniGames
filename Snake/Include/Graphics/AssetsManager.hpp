@@ -11,6 +11,7 @@
 #include <SFML/Graphics/Font.hpp>
 #include <SFML/Graphics/Texture.hpp>
 
+#include <filesystem>
 #include <memory>
 #include <string>
 #include <unordered_map>
@@ -31,7 +32,7 @@ public:
     ~AssetsManager() = default;
 
 private:
-    std::string                                                   mAssetsPath;
+    std::filesystem::path                                         mAssetsPath;
     std::unique_ptr<std::unordered_map<std::string, sf::Font>>    mFonts;
     std::unique_ptr<std::unordered_map<std::string, sf::Texture>> mTextures;
 };
