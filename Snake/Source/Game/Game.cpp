@@ -173,6 +173,7 @@ void Game::render( const float& deltaTime ) {
 
     mGrid->draw( *mWindow );
     mWindow->draw( *mFpsText );
+    mPlayer.draw( *mWindow, *mGrid );
 
     mWindow->display();
 } // void Game::render(...)

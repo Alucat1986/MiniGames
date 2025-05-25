@@ -83,6 +83,34 @@ void Snake::update( const float& deltaTime ) {
 } // Snake::update(...)
 
 /**
+ * @brief Draws the snake on the given render window.
+ * @author Alunya
+ * @date 25.05.2025
+ * @param[in] window The render window to draw the snake on.
+ */
+void Snake::draw( sf::RenderWindow& window, const Grid& grid ) const {
+    for ( const auto& bodyPart : *mSnakeBody ) {
+        switch ( bodyPart.part ) {
+            case BodyPart::Head :
+                mSnakeHeadSprite->setPosition(
+                    grid.getCoordinates( { static_cast<float>( bodyPart.x ), static_cast<float>( bodyPart.y ) } ) );
+                window.draw( *mSnakeHeadSprite );
+                break;
+            case BodyPart::Body :
+                mSnakeBodySprite->setPosition(
+                    grid.getCoordinates( { static_cast<float>( bodyPart.x ), static_cast<float>( bodyPart.y ) } ) );
+                window.draw( *mSnakeBodySprite );
+                break;
+            case BodyPart::Tail :
+                mSnakeTailSprite->setPosition(
+                    grid.getCoordinates( { static_cast<float>( bodyPart.x ), static_cast<float>( bodyPart.y ) } ) );
+                window.draw( *mSnakeTailSprite );
+                break;
+        } // switch ( bodyPart.part )
+    } // for ( const auto& bodyPart : *mSnakeBody )
+} // void draw(...) const
+
+/**
  * @brief To check if the snake is dead or alive.
  * @author Alunya
  * @date 14.05.2025

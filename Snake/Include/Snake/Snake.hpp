@@ -9,6 +9,9 @@
 #define SNAKE_HPP
 
 #include "Include/Graphics/AssetsManager.hpp"
+#include "Include/Grid/Grid.hpp"
+
+#include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics/Sprite.hpp>
 
 #include <list>
@@ -43,6 +46,7 @@ public:
     ~Snake() = default;
 
     void update( const float& deltaTime );
+    void draw( sf::RenderWindow& window, const Grid& grid ) const;
     bool isDead() const;
 
 private:
