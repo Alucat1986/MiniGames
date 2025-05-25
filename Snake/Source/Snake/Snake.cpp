@@ -7,7 +7,10 @@
 
 #include "Include/Snake/Snake.hpp"
 
+#include "Include/Graphics/AssetsManager.hpp"
 #include "Include/Utils/Constants.hpp"
+#include <SFML/Graphics/Sprite.hpp>
+#include <SFML/System/Angle.hpp>
 
 #include <iostream>
 #include <iterator>
@@ -27,11 +30,14 @@ namespace snake {
  * @author Alunya
  * @date 16.05.2025
  */
-Snake::Snake()
+Snake::Snake( const AssetsManager& assetsManager )
         : mDead( false ),
           mGrow( false ),
           mMoveTimeThreshold( 0.2f ),
-          mCurrentTimeStamp( 0.0f ) {
+          mCurrentTimeStamp( 0.0f ),
+          mSnakeHeadSprite( std::make_unique<sf::Sprite>( assetsManager.getTexture( "SnakeHead" ) ) ),
+          mSnakeBodySprite( std::make_unique<sf::Sprite>( assetsManager.getTexture( "SnakeBody" ) ) ),
+          mSnakeTailSprite( std::make_unique<sf::Sprite>( assetsManager.getTexture( "SnakeTail" ) ) ) {
     mSnakeBody = std::make_unique<std::list<SnakePart>>();
     mSnakeBody->emplace_back( SnakePart{ .x         = ( constants::CELL_COLUMNS / 2 ) - 1,
                                          .y         = constants::CELL_ROWS / 2,
@@ -41,6 +47,18 @@ Snake::Snake()
                                          .y         = constants::CELL_ROWS / 2,
                                          .direction = Direction::East,
                                          .part      = BodyPart::Head } );
+
+    mSnakeHeadSprite->setTextureRect(
+        { { 0, 0 }, { static_cast<int>( constants::CELL_SIZE ), static_cast<int>( constants::CELL_SIZE ) } } );
+    mSnakeBodySprite->setTextureRect(
+        { { 0, 0 }, { static_cast<int>( constants::CELL_SIZE ), static_cast<int>( constants::CELL_SIZE ) } } );
+    mSnakeTailSprite->setTextureRect(
+        { { 0, 0 }, { static_cast<int>( constants::CELL_SIZE ), static_cast<int>( constants::CELL_SIZE ) } } );
+
+    sf::Angle rotation = sf::degrees( -90.0f );
+    mSnakeHeadSprite->rotate( rotation );
+    mSnakeBodySprite->rotate( rotation );
+    mSnakeTailSprite->rotate( rotation );
 } // Snake::Snake(...)
 
 /**

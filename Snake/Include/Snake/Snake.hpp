@@ -8,6 +8,9 @@
 #ifndef SNAKE_HPP
 #define SNAKE_HPP
 
+#include "Include/Graphics/AssetsManager.hpp"
+#include <SFML/Graphics/Sprite.hpp>
+
 #include <list>
 #include <memory>
 
@@ -36,7 +39,7 @@ using std::size_t;
  */
 class Snake {
 public:
-    Snake();
+    Snake( const AssetsManager& assetsManager );
     ~Snake() = default;
 
     void update( const float& deltaTime );
@@ -74,6 +77,9 @@ private:
     float mCurrentTimeStamp;  // the current time since the last move.
 
     std::unique_ptr<std::list<SnakePart>> mSnakeBody;
+    std::unique_ptr<sf::Sprite>           mSnakeHeadSprite;
+    std::unique_ptr<sf::Sprite>           mSnakeBodySprite;
+    std::unique_ptr<sf::Sprite>           mSnakeTailSprite;
 }; // class Snake
 
 } // namespace snake

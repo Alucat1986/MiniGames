@@ -7,7 +7,9 @@
 
 #include "Include/Game/Game.hpp"
 
+#include "Include/Graphics/AssetsManager.hpp"
 #include "Include/Grid/Grid.hpp"
+#include "Include/Snake/Snake.hpp"
 #include "Include/Utils/Constants.hpp"
 
 #include <SFML/Graphics/Color.hpp>
@@ -42,9 +44,10 @@ using std::uint16_t, std::int64_t;
  */
 Game::Game()
         : mIsRunning( true ),
-          mPlayerInput( { .Up = false, .Right = false, .Down = false, .Left = false } ),
           mAssetsManager( std::make_unique<AssetsManager>() ),
-          mGrid( std::make_unique<Grid>() ) {
+          mGrid( std::make_unique<Grid>() ),
+          mPlayerInput( { .Up = false, .Right = false, .Down = false, .Left = false } ),
+          mPlayer( *mAssetsManager ) {
     mWindow =
         std::make_unique<sf::RenderWindow>( sf::VideoMode( { static_cast<uint16_t>( constants::WINDOW_WIDTH ),
                                                              static_cast<uint16_t>( constants::WINDOW_HEIGHT ) } ),
