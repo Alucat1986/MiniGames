@@ -51,10 +51,10 @@ Game::Game()
 
     mFpsFont = std::make_unique<sf::Font>( mAssetsManager->getFont( "MainFont" ) );
 
-    mFpsText = std::make_unique<sf::Text>( *mFpsFont, "FPS: 0", 16 );
+    mFpsText = std::make_unique<sf::Text>( *mFpsFont, "FPS: 60", 16 );
     mFpsText->setFillColor( sf::Color::White );
-    mFpsText->setOrigin( mFpsText->getLocalBounds().getCenter() );
-    mFpsText->setPosition( { constants::WINDOW_WIDTH / 2.0f, constants::WINDOW_HEIGHT - 20.0f } );
+    mFpsText->setOrigin( { mFpsText->getLocalBounds().size.x, 0.0f } );
+    mFpsText->setPosition( { constants::WINDOW_WIDTH - constants::WINDOW_MARGIN, 1.0f } );
 } // Game::Game(...)
 
 /**
