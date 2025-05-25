@@ -97,10 +97,18 @@ void Snake::move() {
 
     for ( ; snakeIterator != mSnakeBody->end(); std::advance( snakeIterator, 1 ) ) {
         switch ( snakeIterator->direction ) {
-            case Direction::North : snakeIterator->y--; break;
-            case Direction::East  : snakeIterator->x++; break;
-            case Direction::South : snakeIterator->y++; break;
-            case Direction::West  : snakeIterator->x--; break;
+            case Direction::North :
+                snakeIterator->y--;
+                break;
+            case Direction::East :
+                snakeIterator->x++;
+                break;
+            case Direction::South :
+                snakeIterator->y++;
+                break;
+            case Direction::West :
+                snakeIterator->x--;
+                break;
         } // switch ( SnakeIterator->Direction )
 
         if ( snakeIterator->part == BodyPart::Head ) {
