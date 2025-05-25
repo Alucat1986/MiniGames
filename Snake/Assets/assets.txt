@@ -1,0 +1,5 @@
+FONT    MonaspaceXenon-Medium.otf   MainFont
+TEX     SnakeHead.png               SnakeHead       2
+TEX     SnakeBody.png               SnakeBody       2
+TEX     SnakeTail.png               SnakeTail       2
+TEX     MausSheet.png               Mouse           2
