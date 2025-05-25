@@ -10,6 +10,7 @@
 
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/System/Vector2.hpp>
 
 #include <vector>
 
@@ -27,7 +28,8 @@ namespace snake {
 class Grid {
 public:
     Grid();
-    void draw( sf::RenderWindow& window );
+    void         draw( sf::RenderWindow& window );
+    sf::Vector2f getCoordinates( const sf::Vector2f& position ) const;
 
 private:
     void createCells();

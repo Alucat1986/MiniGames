@@ -37,6 +37,20 @@ void Grid::draw( sf::RenderWindow& window ) {
     }
 } // void Grid::draw(...)
 
+/**
+ * @brief Converts a grid position to pixel coordinates.
+ * @author Alunya
+ * @date 25.05.2025
+ * @param[in] position The grid position to convert.
+ * @return sf::Vector2f The pixel coordinates.
+ */
+sf::Vector2f Grid::getCoordinates( const sf::Vector2f& position ) const {
+    sf::Vector2f coordinates{ constants::WINDOW_MARGIN, constants::WINDOW_MARGIN };
+    coordinates.x += position.x * constants::CELL_SIZE;
+    coordinates.y += position.y * constants::CELL_SIZE;
+    return coordinates;
+} // sf::Vector2f Grid::getCoordinates(...) const
+
 void Grid::createCells() {
     sf::Vector2f cellSize( { constants::CELL_SIZE, constants::CELL_SIZE } );
     for ( std::size_t row{ 0 }; row < constants::CELL_ROWS; row++ ) {
