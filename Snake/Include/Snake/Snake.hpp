@@ -13,6 +13,8 @@
 
 namespace snake {
 
+using std::size_t;
+
 /**
  * @class Snake
  * @brief Manages the snake, provides methods to grow the snake and move it.
@@ -60,10 +62,10 @@ private:
     };
 
     struct SnakePart {
-        std::size_t x;
-        std::size_t y;
-        Direction   direction;
-        BodyPart    part;
+        size_t    x;
+        size_t    y;
+        Direction direction;
+        BodyPart  part;
     };
 
     bool  mDead;
