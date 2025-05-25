@@ -8,6 +8,7 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
+#include "Include/Graphics/AssetsManager.hpp"
 #include "Include/Grid/Grid.hpp"
 #include "Include/Snake/Snake.hpp"
 
@@ -53,6 +54,7 @@ private:
     Snake                             mPlayer;
     PlayerInput                       mPlayerInput;
 
+    std::unique_ptr<AssetsManager>    mAssetsManager;
     std::unique_ptr<sf::RenderWindow> mWindow;
     std::unique_ptr<Grid>             mGrid;
 
