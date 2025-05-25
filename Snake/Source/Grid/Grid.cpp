@@ -2,7 +2,7 @@
  * @file Grid.cpp
  * @brief Contains the grid class implementation.
  * @author Alunya
- * @date 14.05.2025
+ * @date 25.05.2025
  */
 
 #include "Include/Grid/Grid.hpp"
@@ -26,11 +26,22 @@
 
 namespace snake {
 
+/**
+ * @brief Constructor.
+ * @author Alunya
+ * @date 25.05.2025
+ */
 Grid::Grid() {
     mCells.reserve( constants::CELL_COLUMNS * constants::CELL_ROWS );
     createCells();
 } // Grid::Grid(...)
 
+/**
+ * @brief Draws the grid to the specified window.
+ * @author Alunya
+ * @date 25.05.2025
+ * @param[in] window The window to draw the grid on.
+ */
 void Grid::draw( sf::RenderWindow& window ) {
     for ( const auto& cell : mCells ) {
         window.draw( cell );
@@ -51,6 +62,13 @@ sf::Vector2f Grid::getCoordinates( const sf::Vector2f& position ) const {
     return coordinates;
 } // sf::Vector2f Grid::getCoordinates(...) const
 
+/**
+ * @brief Creates the cells for the grid.
+ * @author Alunya
+ * @date 25.05.2025
+ *
+ * This function initializes the grid cells with their size, position, fill color, outline color, and outline thickness.
+ */
 void Grid::createCells() {
     sf::Vector2f cellSize( { constants::CELL_SIZE, constants::CELL_SIZE } );
     for ( std::size_t row{ 0 }; row < constants::CELL_ROWS; row++ ) {

@@ -2,7 +2,7 @@
  * @file Grid.hpp
  * @brief Contains the grid class declaration.
  * @author Alunya
- * @date 14.05.2025
+ * @date 25.05.2025
  */
 
 #ifndef GRID_HPP
@@ -20,7 +20,7 @@ namespace snake {
  * @class Grid
  * @brief Manages the grid system for the game.
  * @author Alunya
- * @date 14.05.2025
+ * @date 25.05.2025
  *
  * The grid class is responsible for managing the grid system used in the game.
  * It provides methods to draw the grid and handle cell-related operations.
@@ -28,6 +28,7 @@ namespace snake {
 class Grid {
 public:
     Grid();
+
     void         draw( sf::RenderWindow& window );
     sf::Vector2f getCoordinates( const sf::Vector2f& position ) const;
 
