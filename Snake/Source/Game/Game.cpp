@@ -2,7 +2,7 @@
  * @file Game.cpp
  * @brief Contains the game class implementation.
  * @author Alunya
- * @date 14.05.2025
+ * @date 25.05.2025
  */
 
 #include "Include/Game/Game.hpp"
@@ -153,7 +153,7 @@ void Game::update( const float& deltaTime ) {
  * @brief Renders the game.
  * @param[in] deltaTime Time since the last frame in seconds.
  * @author Alunya
- * @date 14.05.2025
+ * @date 25.05.2025
  */
 void Game::render( const float& deltaTime ) {
     static float   fpsTimer    = 0.0f;

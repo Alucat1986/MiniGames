@@ -2,7 +2,7 @@
  * @file Game.hpp
  * @brief Contains the game class declaration.
  * @author Alunya
- * @date 14.05.2025
+ * @date 25.05.2025
  */
 
 #ifndef GAME_HPP
@@ -24,7 +24,7 @@ namespace snake {
  * @class Game
  * @brief Manages the main game loop and state of the Pong game.
  * @author Alunya
- * @date 09.02.2025
+ * @date 25.02.2025
  *
  * The Game class is responsible for orchestrating the game's lifecycle,
  * including processing input, updating the game state, and rendering the

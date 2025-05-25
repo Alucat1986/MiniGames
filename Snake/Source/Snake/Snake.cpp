@@ -2,13 +2,16 @@
  * @file Snake.cpp
  * @brief Contains the snake class implementation.
  * @author Alunya
- * @date 16.05.2025
+ * @date 25.05.2025
  */
 
 #include "Include/Snake/Snake.hpp"
 
 #include "Include/Graphics/AssetsManager.hpp"
+#include "Include/Grid/Grid.hpp"
 #include "Include/Utils/Constants.hpp"
+
+#include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/System/Angle.hpp>
 
@@ -28,7 +31,7 @@ namespace snake {
 /**
  * @brief Constructor.
  * @author Alunya
- * @date 16.05.2025
+ * @date 25.05.2025
  */
 Snake::Snake( const AssetsManager& assetsManager )
         : mDead( false ),
@@ -64,7 +67,7 @@ Snake::Snake( const AssetsManager& assetsManager )
 /**
  * @brief Updates the snakes state.
  * @author Alunya
- * @date 16.05.2025
+ * @date 25.05.2025
  * @param[in] deltaTime The time that has passed since the last update had been called.
  *
  * Is called by Game::update(). It moves the snake into the current direction by a cell and then checks if it collides
@@ -77,7 +80,7 @@ void Snake::update( const float& deltaTime ) {
     /** @todo Either before or after moving find out if we collide or might collide with something and do the
      * corresponding action, aka grow, die or just move. */
     if ( mCurrentTimeStamp >= mMoveTimeThreshold ) {
-        move();
+        // move();
         mCurrentTimeStamp -= mMoveTimeThreshold;
     } // if ( mCurrentTimeStamp >= mMoveTimeThreshold )
 } // Snake::update(...)

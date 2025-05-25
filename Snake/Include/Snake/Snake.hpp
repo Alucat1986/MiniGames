@@ -2,7 +2,7 @@
  * @file Snake.hpp
  * @brief Contains the snake class declaration.
  * @author Alunya
- * @date 16.05.2025
+ * @date 25.05.2025
  */
 
 #ifndef SNAKE_HPP
@@ -25,7 +25,7 @@ using std::size_t;
  * @class Snake
  * @brief Manages the snake, provides methods to grow the snake and move it.
  * @author Alunya
- * @date 16.05.2025
+ * @date 25.05.2025
  *
  * The snake class represents the players snake. It provides following functionality:
  * * moving
