@@ -33,10 +33,12 @@
 
 namespace snake {
 
+using std::uint16_t, std::int64_t;
+
 /**
  * @brief Constructor.
  * @author Alunya
- * @date 14.05.2025
+ * @date 25.05.2025
  */
 Game::Game()
         : mIsRunning( true ),
@@ -44,8 +46,8 @@ Game::Game()
           mAssetsManager( std::make_unique<AssetsManager>() ),
           mGrid( std::make_unique<Grid>() ) {
     mWindow =
-        std::make_unique<sf::RenderWindow>( sf::VideoMode( { static_cast<std::uint16_t>( constants::WINDOW_WIDTH ),
-                                                             static_cast<std::uint16_t>( constants::WINDOW_HEIGHT ) } ),
+        std::make_unique<sf::RenderWindow>( sf::VideoMode( { static_cast<uint16_t>( constants::WINDOW_WIDTH ),
+                                                             static_cast<uint16_t>( constants::WINDOW_HEIGHT ) } ),
                                             "Snake Clone" );
     mWindow->setVerticalSyncEnabled( true );
 
@@ -151,10 +153,10 @@ void Game::update( const float& deltaTime ) {
  * @date 14.05.2025
  */
 void Game::render( const float& deltaTime ) {
-    static float        fpsTimer    = 0.0f;
-    static std::int64_t frameCount  = 0;
+    static float   fpsTimer    = 0.0f;
+    static int64_t frameCount  = 0;
 
-    fpsTimer                       += deltaTime;
+    fpsTimer                  += deltaTime;
     frameCount++;
 
     if ( fpsTimer >= 1.0f ) {
