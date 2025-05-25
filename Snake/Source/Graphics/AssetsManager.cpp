@@ -70,4 +70,26 @@ AssetsManager::AssetsManager()
     } // while ( std::getline( fileToRead, line) )
 } // AssetManager::AssetManager(...)
 
+/**
+ * @brief Retrieves a font by its name.
+ * @author Alunya
+ * @date 25.05.2025
+ * @param[in] fontName The name of the font to retrieve.
+ * @return sf::Font& A reference to the requested font.
+ */
+sf::Font& AssetsManager::getFont( const std::string& fontName ) const {
+    return mFonts->at( fontName );
+} // sf::Font& AssetsManager::getFont( const std::string& fontName )
+
+/**
+ * @brief Retrieves a texture by its name.
+ * @author Alunya
+ * @date 25.05.2025
+ * @param[in] textureName The name of the texture to retrieve.
+ * @return sf::Texture& A reference to the requested texture.
+ */
+sf::Texture& AssetsManager::getTexture( const std::string& textureName ) const {
+    return mTextures->at( textureName );
+} // sf::Texture& AssetsManager::getTexture( const std::string& textureName ) const
+
 } // namespace snake

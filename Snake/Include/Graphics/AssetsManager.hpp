@@ -31,6 +31,9 @@ public:
     AssetsManager();
     ~AssetsManager() = default;
 
+    sf::Font&    getFont( const std::string& fontName ) const;
+    sf::Texture& getTexture( const std::string& textureName ) const;
+
 private:
     std::filesystem::path                                         mAssetsPath;
     std::unique_ptr<std::unordered_map<std::string, sf::Font>>    mFonts;
