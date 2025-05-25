@@ -49,10 +49,7 @@ Game::Game()
                                             "Snake Clone" );
     mWindow->setVerticalSyncEnabled( true );
 
-    mFpsFont = std::make_unique<sf::Font>();
-    if ( !mFpsFont->openFromFile( "C:/Windows/Fonts/arial.ttf" ) ) {
-        std::cerr << "Could not load font from file!\n";
-    } // if ( !FpsFont.loadFromFile("C:/Windows/Fonts/arial.ttf") )
+    mFpsFont = std::make_unique<sf::Font>( mAssetsManager->getFont( "MainFont" ) );
 
     mFpsText = std::make_unique<sf::Text>( *mFpsFont, "FPS: 0", 16 );
     mFpsText->setFillColor( sf::Color::White );
