@@ -36,7 +36,7 @@ namespace snake {
 Snake::Snake( const AssetsManager& assetsManager )
         : mDead( false ),
           mGrow( false ),
-          mMoveTimeThreshold( 0.2f ),
+          mMoveTimeThreshold( 0.3f ),
           mCurrentTimeStamp( 0.0f ),
           mSnakeHeadSprite( std::make_unique<sf::Sprite>( assetsManager.getTexture( "SnakeHead" ) ) ),
           mSnakeMidSprite( std::make_unique<sf::Sprite>( assetsManager.getTexture( "SnakeMid" ) ) ),
