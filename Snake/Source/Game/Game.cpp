@@ -2,7 +2,7 @@
  * @file Game.cpp
  * @brief Contains the game class implementation.
  * @author Alunya
- * @date 25.05.2025
+ * @date 31.05.2025
  */
 
 #include "Include/Game/Game.hpp"
@@ -40,10 +40,11 @@ using std::uint16_t, std::int64_t;
 /**
  * @brief Constructor.
  * @author Alunya
- * @date 25.05.2025
+ * @date 31.05.2025
  */
 Game::Game()
         : mIsRunning( true ),
+          mDrawGrid( false ),
           mAssetsManager( std::make_unique<AssetsManager>() ),
           mGrid( std::make_unique<Grid>() ),
           mPlayerInput( { .Up = false, .Right = false, .Down = false, .Left = false } ),
@@ -82,7 +83,7 @@ void Game::run() {
 /**
  * @brief Handles the user's input.
  * @author Alunya
- * @date 14.05.2025
+ * @date 31.05.2025
  */
 void Game::handleUserInput() {
     while ( const std::optional event = mWindow->pollEvent() ) {
@@ -115,6 +116,10 @@ void Game::handleUserInput() {
             if ( eventScanCode == sf::Keyboard::Scancode::A || eventScanCode == sf::Keyboard::Scancode::Left ) {
                 mPlayerInput.Left = true;
             } // if ( eventScanCode == sf::Keyboard::Scancode::A || sf::Keyboard::Scancode::Left )
+
+            if ( eventScanCode == sf::Keyboard::Scancode::G ) {
+                toggleGridDrawing();
+            } // if ( eventScanCode == sf::Keyboard::Scancode::G )
         } // if ( event->is<sf::Event::KeyPressed>() )
 
         if ( event->is<sf::Event::KeyReleased>() ) {
@@ -171,7 +176,7 @@ void Game::render( const float& deltaTime ) {
 
     mWindow->clear();
 
-    mGrid->draw( *mWindow );
+    mGrid->draw( *mWindow, mDrawGrid );
     mWindow->draw( *mFpsText );
     mPlayer.draw( *mWindow, *mGrid );
 
@@ -184,5 +189,14 @@ void Game::render( const float& deltaTime ) {
  * @date 09.02.2025
  */
 void Game::resetGame() {} // void Game::resetGame(...)
+
+/**
+ * @brief Toggles the grid drawing state.
+ * @author Alunya
+ * @date 31.05.2025
+ */
+void Game::toggleGridDrawing() {
+    mDrawGrid = !mDrawGrid;
+} // void Game::toggleGridDrawing(...)
 
 } // namespace snake

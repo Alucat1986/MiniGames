@@ -2,7 +2,7 @@
  * @file Game.hpp
  * @brief Contains the game class declaration.
  * @author Alunya
- * @date 25.05.2025
+ * @date 31.05.2025
  */
 
 #ifndef GAME_HPP
@@ -24,7 +24,7 @@ namespace snake {
  * @class Game
  * @brief Manages the main game loop and state of the Pong game.
  * @author Alunya
- * @date 25.02.2025
+ * @date 31.02.2025
  *
  * The Game class is responsible for orchestrating the game's lifecycle,
  * including processing input, updating the game state, and rendering the
@@ -42,6 +42,8 @@ private:
     void render( const float& deltaTime );
     void resetGame();
 
+    void toggleGridDrawing();
+
 private:
     struct PlayerInput {
         bool Up;
@@ -51,6 +53,7 @@ private:
     }; // struct PlayerInput
 
     bool                              mIsRunning;
+    bool                              mDrawGrid;
 
     std::unique_ptr<AssetsManager>    mAssetsManager;
     std::unique_ptr<sf::RenderWindow> mWindow;

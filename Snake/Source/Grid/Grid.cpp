@@ -2,7 +2,7 @@
  * @file Grid.cpp
  * @brief Contains the grid class implementation.
  * @author Alunya
- * @date 25.05.2025
+ * @date 31.05.2025
  */
 
 #include "Include/Grid/Grid.hpp"
@@ -16,6 +16,7 @@
 
 #include <cassert>
 #include <cstdint>
+#include <memory>
 #include <vector>
 
 // ****************************************************************************************************************** //
@@ -29,9 +30,15 @@ namespace snake {
 /**
  * @brief Constructor.
  * @author Alunya
- * @date 25.05.2025
+ * @date 31.05.2025
  */
-Grid::Grid() {
+Grid::Grid()
+        : mGameField( std::make_unique<sf::RectangleShape>( sf::Vector2f{
+              constants::CELL_COLUMNS * constants::CELL_SIZE, constants::CELL_ROWS * constants::CELL_SIZE } ) ) {
+    mGameField->setPosition( { constants::WINDOW_MARGIN, constants::WINDOW_MARGIN } );
+    mGameField->setOutlineColor( sf::Color::White );
+    mGameField->setOutlineThickness( constants::CELL_OUTLINETHICKNESS * 2.0f );
+    mGameField->setFillColor( sf::Color::Black );
     mCells.reserve( constants::CELL_COLUMNS * constants::CELL_ROWS );
     createCells();
 } // Grid::Grid(...)
@@ -39,13 +46,16 @@ Grid::Grid() {
 /**
  * @brief Draws the grid to the specified window.
  * @author Alunya
- * @date 25.05.2025
+ * @date 31.05.2025
  * @param[in] window The window to draw the grid on.
  */
-void Grid::draw( sf::RenderWindow& window ) {
-    for ( const auto& cell : mCells ) {
-        window.draw( cell );
-    }
+void Grid::draw( sf::RenderWindow& window, bool drawGrid ) const {
+    window.draw( *mGameField );
+    if ( drawGrid ) {
+        for ( const auto& cell : mCells ) {
+            window.draw( cell );
+        } // for ( const auto& cell : mCells )
+    } // if ( drawGrid )
 } // void Grid::draw(...)
 
 /**
