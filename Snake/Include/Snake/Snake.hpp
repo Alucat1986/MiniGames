@@ -2,7 +2,7 @@
  * @file Snake.hpp
  * @brief Contains the snake class declaration.
  * @author Alunya
- * @date 25.05.2025
+ * @date 31.05.2025
  */
 
 #ifndef SNAKE_HPP
@@ -25,7 +25,7 @@ using std::size_t;
  * @class Snake
  * @brief Manages the snake, provides methods to grow the snake and move it.
  * @author Alunya
- * @date 25.05.2025
+ * @date 31.05.2025
  *
  * The snake class represents the players snake. It provides following functionality:
  * * moving
@@ -63,6 +63,8 @@ private:
     void grow();
     void die();
 
+    void rotateBodySprites();
+
 private:
     enum class BodyPart {
         Head,
@@ -71,21 +73,20 @@ private:
     };
 
     struct SnakePart {
-        size_t    x;
-        size_t    y;
-        Direction direction;
-        BodyPart  part;
+        size_t     x;
+        size_t     y;
+        Direction  direction;
+        BodyPart   part;
+        sf::Sprite sprite;
     };
 
-    bool  mDead;
-    bool  mGrow;
-    float mMoveTimeThreshold; // every m_MoveTimeThreshold milliseconds the snake moves 1 cell.
-    float mCurrentTimeStamp;  // the current time since the last move.
+    bool                 mDead;
+    bool                 mGrow;
+    float                mMoveTimeThreshold; // every m_MoveTimeThreshold milliseconds the snake moves 1 cell.
+    float                mCurrentTimeStamp;  // the current time since the last move.
 
+    const AssetsManager& mAssetsManager;
     std::unique_ptr<std::list<SnakePart>> mSnakeBody;
-    std::unique_ptr<sf::Sprite>           mSnakeHeadSprite;
-    std::unique_ptr<sf::Sprite>           mSnakeMidSprite;
-    std::unique_ptr<sf::Sprite>           mSnakeTailSprite;
 }; // class Snake
 
 } // namespace snake
