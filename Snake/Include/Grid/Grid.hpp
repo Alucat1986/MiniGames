@@ -31,7 +31,8 @@ public:
     Grid();
 
     void         draw( sf::RenderWindow& window, bool drawGrid ) const;
-    sf::Vector2f getCoordinates( const sf::Vector2f& position ) const;
+    sf::Vector2f getCoordinates( const sf::Vector2f& cellCoordinates ) const;
+    bool         isCellInGameField( const sf::Vector2f& cellCoordinates ) const;
 
 private:
     void createCells();

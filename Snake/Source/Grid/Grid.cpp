@@ -61,16 +61,28 @@ void Grid::draw( sf::RenderWindow& window, bool drawGrid ) const {
 /**
  * @brief Converts a grid position to pixel coordinates.
  * @author Alunya
- * @date 25.05.2025
- * @param[in] position The grid position to convert.
+ * @date 31.05.2025
+ * @param[in] cellCoordinates The grid position to convert.
  * @return sf::Vector2f The pixel coordinates.
  */
-sf::Vector2f Grid::getCoordinates( const sf::Vector2f& position ) const {
+sf::Vector2f Grid::getCoordinates( const sf::Vector2f& cellCoordinates ) const {
     sf::Vector2f coordinates{ constants::WINDOW_MARGIN, constants::WINDOW_MARGIN };
-    coordinates.x += position.x * constants::CELL_SIZE;
-    coordinates.y += position.y * constants::CELL_SIZE;
+    coordinates.x += cellCoordinates.x * constants::CELL_SIZE;
+    coordinates.y += cellCoordinates.y * constants::CELL_SIZE;
     return coordinates;
 } // sf::Vector2f Grid::getCoordinates(...) const
+
+/**
+ * @brief Checks if a cell is within the game field.
+ * @author Alunya
+ * @date 31.05.2025
+ * @param[in] cellCoordinates The cell to check.
+ * @return true If the cell is within the game field, otherwise false.
+ */
+bool Grid::isCellInGameField( const sf::Vector2f& cellCoordinates ) const {
+    return cellCoordinates.x >= 0 && cellCoordinates.x <= constants::CELL_COLUMNS && cellCoordinates.y >= 0 &&
+           cellCoordinates.y <= constants::CELL_ROWS;
+} // bool Grid::isCellInGameField(...)
 
 /**
  * @brief Creates the cells for the grid.
