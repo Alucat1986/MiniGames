@@ -64,7 +64,7 @@ private:
 
     enum class BodyPart {
         Head,
-        Body,
+        Mid,
         Tail
     };
 
@@ -82,7 +82,7 @@ private:
 
     std::unique_ptr<std::list<SnakePart>> mSnakeBody;
     std::unique_ptr<sf::Sprite>           mSnakeHeadSprite;
-    std::unique_ptr<sf::Sprite>           mSnakeBodySprite;
+    std::unique_ptr<sf::Sprite>           mSnakeMidSprite;
     std::unique_ptr<sf::Sprite>           mSnakeTailSprite;
 }; // class Snake
 
