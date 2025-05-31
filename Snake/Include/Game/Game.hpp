@@ -43,9 +43,11 @@ private:
     void resetGame();
 
     void toggleGridDrawing();
+    void togglePause();
 
 private:
     bool                              mIsRunning;
+    bool                              mIsPaused;
     bool                              mDrawGrid;
 
     std::unique_ptr<AssetsManager>    mAssetsManager;

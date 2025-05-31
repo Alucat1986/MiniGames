@@ -44,6 +44,7 @@ using std::uint16_t, std::int64_t;
  */
 Game::Game()
         : mIsRunning( true ),
+          mIsPaused( false ),
           mDrawGrid( false ),
           mAssetsManager( std::make_unique<AssetsManager>() ),
           mGrid( std::make_unique<Grid>() ),
@@ -119,6 +120,9 @@ void Game::handleUserInput() {
                 case sf::Keyboard::Scancode::G:
                     toggleGridDrawing();
                     break;
+                case sf::Keyboard::Scancode::P:
+                    togglePause();
+                    break;
                 default:
                     std::cout << "Unhandled key pressed: " << static_cast<char>( eventScanCode ) << "\n";
                     break;
@@ -146,7 +150,9 @@ void Game::handleUserInput() {
  * @date 14.05.2025
  */
 void Game::update( const float& deltaTime ) {
-    mPlayer.update( deltaTime );
+    if ( !mIsPaused ) {
+        mPlayer.update( deltaTime );
+    } // if ( !mIsPaused )
 } // void Game::update(...)
 
 /**
@@ -194,4 +200,12 @@ void Game::toggleGridDrawing() {
     mDrawGrid = !mDrawGrid;
 } // void Game::toggleGridDrawing(...)
 
+/**
+ * @brief Toggles the pause state of the game.
+ * @author Alunya
+ * @date 31.05.2025
+ */
+void Game::togglePause() {
+    mIsPaused = !mIsPaused;
+} // void Game::togglePause(...)
 } // namespace snake
