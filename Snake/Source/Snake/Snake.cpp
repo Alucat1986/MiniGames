@@ -80,7 +80,7 @@ void Snake::update( const float& deltaTime ) {
     /** @todo Either before or after moving find out if we collide or might collide with something and do the
      * corresponding action, aka grow, die or just move. */
     if ( mCurrentTimeStamp >= mMoveTimeThreshold ) {
-        // move();
+        move();
         mCurrentTimeStamp -= mMoveTimeThreshold;
     } // if ( mCurrentTimeStamp >= mMoveTimeThreshold )
 } // Snake::update(...)
@@ -123,6 +123,17 @@ void Snake::draw( sf::RenderWindow& window, const Grid& grid ) const {
  */
 bool Snake::isDead() const {
     return mDead;
+}
+
+/**
+ * @brief Sets the direction of the snake.
+ * @author Alunya
+ * @date 31.05.2025
+ * @param[in] newDirection The new direction to set.
+ */
+void Snake::setDirection( Direction newDirection ) {
+    // front(): tail, back(): head
+    mSnakeBody->back().direction = newDirection;
 }
 
 /**

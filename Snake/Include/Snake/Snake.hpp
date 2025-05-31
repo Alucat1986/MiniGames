@@ -42,19 +42,6 @@ using std::size_t;
  */
 class Snake {
 public:
-    Snake( const AssetsManager& assetsManager );
-    ~Snake() = default;
-
-    void update( const float& deltaTime );
-    void draw( sf::RenderWindow& window, const Grid& grid ) const;
-    bool isDead() const;
-
-private:
-    void move();
-    void grow();
-    void die();
-
-private:
     enum class Direction {
         North,
         East,
@@ -62,6 +49,21 @@ private:
         West
     };
 
+public:
+    Snake( const AssetsManager& assetsManager );
+    ~Snake() = default;
+
+    void update( const float& deltaTime );
+    void draw( sf::RenderWindow& window, const Grid& grid ) const;
+    bool isDead() const;
+    void setDirection( Direction newDirection );
+
+private:
+    void move();
+    void grow();
+    void die();
+
+private:
     enum class BodyPart {
         Head,
         Mid,

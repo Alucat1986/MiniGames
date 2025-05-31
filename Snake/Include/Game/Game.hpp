@@ -45,13 +45,6 @@ private:
     void toggleGridDrawing();
 
 private:
-    struct PlayerInput {
-        bool Up;
-        bool Right;
-        bool Down;
-        bool Left;
-    }; // struct PlayerInput
-
     bool                              mIsRunning;
     bool                              mDrawGrid;
 
@@ -60,7 +53,6 @@ private:
     std::unique_ptr<Grid>             mGrid;
 
     Snake                             mPlayer;
-    PlayerInput                       mPlayerInput;
 
     std::unique_ptr<sf::Font>         mFpsFont;
     std::unique_ptr<sf::Text>         mFpsText;
