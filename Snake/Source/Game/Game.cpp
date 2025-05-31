@@ -95,51 +95,61 @@ void Game::handleUserInput() {
 
         if ( event->is<sf::Event::KeyPressed>() ) {
             const auto eventScanCode = event->getIf<sf::Event::KeyPressed>()->scancode;
-            if ( eventScanCode == sf::Keyboard::Scancode::Escape ) {
-                mWindow->close();
-                mIsRunning = false;
-                break;
-            } // if ( eventKey->scancode == sf::Keyboard::Scancode::Escape )
 
-            if ( eventScanCode == sf::Keyboard::Scancode::W || eventScanCode == sf::Keyboard::Scancode::Up ) {
-                mPlayerInput.Up = true;
-            } // if ( eventKey->scancode == sf::Keyboard::Scancode::W || sf::Keyboard::Scancode::Up )
-
-            if ( eventScanCode == sf::Keyboard::Scancode::D || eventScanCode == sf::Keyboard::Scancode::Right ) {
-                mPlayerInput.Right = true;
-            } // if ( eventKey->scancode == sf::Keyboard::Scancode::D || sf::Keyboard::Scancode::Right )
-
-            if ( eventScanCode == sf::Keyboard::Scancode::S || eventScanCode == sf::Keyboard::Scancode::Down ) {
-                mPlayerInput.Down = true;
-            } // if ( eventScanCode == sf::Keyboard::Scancode::S || sf::Keyboard::Scancode::Down )
-
-            if ( eventScanCode == sf::Keyboard::Scancode::A || eventScanCode == sf::Keyboard::Scancode::Left ) {
-                mPlayerInput.Left = true;
-            } // if ( eventScanCode == sf::Keyboard::Scancode::A || sf::Keyboard::Scancode::Left )
-
-            if ( eventScanCode == sf::Keyboard::Scancode::G ) {
-                toggleGridDrawing();
-            } // if ( eventScanCode == sf::Keyboard::Scancode::G )
+            switch ( eventScanCode ) {
+                case sf::Keyboard::Scancode::Escape:
+                    mWindow->close();
+                    mIsRunning = false;
+                    break;
+                case sf::Keyboard::Scancode::W:
+                case sf::Keyboard::Scancode::Up:
+                    mPlayerInput.Up = true;
+                    break;
+                case sf::Keyboard::Scancode::D:
+                case sf::Keyboard::Scancode::Right:
+                    mPlayerInput.Right = true;
+                    break;
+                case sf::Keyboard::Scancode::S:
+                case sf::Keyboard::Scancode::Down:
+                    mPlayerInput.Down = true;
+                    break;
+                case sf::Keyboard::Scancode::A:
+                case sf::Keyboard::Scancode::Left:
+                    mPlayerInput.Left = true;
+                    break;
+                case sf::Keyboard::Scancode::G:
+                    toggleGridDrawing();
+                    break;
+                default:
+                    std::cout << "Unhandled key pressed: " << static_cast<char>( eventScanCode ) << "\n";
+                    break;
+            } // switch(eventScanCode)
         } // if ( event->is<sf::Event::KeyPressed>() )
 
         if ( event->is<sf::Event::KeyReleased>() ) {
             const auto eventScanCode = event->getIf<sf::Event::KeyReleased>()->scancode;
 
-            if ( eventScanCode == sf::Keyboard::Scancode::W || eventScanCode == sf::Keyboard::Scancode::Up ) {
-                mPlayerInput.Up = false;
-            } // if ( eventScanCode == sf::Keyboard::Scancode::W || sf::Keyboard::Scancode::Up )
-
-            if ( eventScanCode == sf::Keyboard::Scancode::D || eventScanCode == sf::Keyboard::Scancode::Right ) {
-                mPlayerInput.Right = false;
-            } // if ( eventScanCode == sf::Keyboard::Scancode::D || sf::Keyboard::Scancode::Right )
-
-            if ( eventScanCode == sf::Keyboard::Scancode::S || eventScanCode == sf::Keyboard::Scancode::Down ) {
-                mPlayerInput.Down = false;
-            } // if ( eventScanCode == sf::Keyboard::Scancode::S || sf::Keyboard::Scancode::Down )
-
-            if ( eventScanCode == sf::Keyboard::Scancode::A || eventScanCode == sf::Keyboard::Scancode::Left ) {
-                mPlayerInput.Left = false;
-            } // if ( eventScanCode == sf::Keyboard::Scancode::A || sf::Keyboard::Scancode::Left )
+            switch ( eventScanCode ) {
+                case sf::Keyboard::Scancode::W:
+                case sf::Keyboard::Scancode::Up:
+                    mPlayerInput.Up = false;
+                    break;
+                case sf::Keyboard::Scancode::D:
+                case sf::Keyboard::Scancode::Right:
+                    mPlayerInput.Right = false;
+                    break;
+                case sf::Keyboard::Scancode::S:
+                case sf::Keyboard::Scancode::Down:
+                    mPlayerInput.Down = false;
+                    break;
+                case sf::Keyboard::Scancode::A:
+                case sf::Keyboard::Scancode::Left:
+                    mPlayerInput.Left = false;
+                    break;
+                default:
+                    std::cout << "Unhandled key released: " << static_cast<char>( eventScanCode ) << "\n";
+                    break;
+            } // switch(eventScanCode)
         } // if ( event->is<sf::Event::KeyReleased>() )
     } // while ( const std::optional event = window.pollEvent() )
 } // void Game::handleUserInput(...)
