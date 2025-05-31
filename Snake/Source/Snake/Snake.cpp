@@ -94,17 +94,17 @@ void Snake::update( const float& deltaTime ) {
 void Snake::draw( sf::RenderWindow& window, const Grid& grid ) const {
     for ( const auto& bodyPart : *mSnakeBody ) {
         switch ( bodyPart.part ) {
-            case BodyPart::Head :
+            case BodyPart::Head:
                 mSnakeHeadSprite->setPosition(
                     grid.getCoordinates( { static_cast<float>( bodyPart.x ), static_cast<float>( bodyPart.y ) } ) );
                 window.draw( *mSnakeHeadSprite );
                 break;
-            case BodyPart::Mid :
+            case BodyPart::Mid:
                 mSnakeMidSprite->setPosition(
                     grid.getCoordinates( { static_cast<float>( bodyPart.x ), static_cast<float>( bodyPart.y ) } ) );
                 window.draw( *mSnakeMidSprite );
                 break;
-            case BodyPart::Tail :
+            case BodyPart::Tail:
                 mSnakeTailSprite->setPosition(
                     grid.getCoordinates( { static_cast<float>( bodyPart.x ), static_cast<float>( bodyPart.y ) } ) );
                 window.draw( *mSnakeTailSprite );
@@ -146,16 +146,16 @@ void Snake::move() {
 
     for ( ; snakeIterator != mSnakeBody->end(); std::advance( snakeIterator, 1 ) ) {
         switch ( snakeIterator->direction ) {
-            case Direction::North :
+            case Direction::North:
                 snakeIterator->y--;
                 break;
-            case Direction::East :
+            case Direction::East:
                 snakeIterator->x++;
                 break;
-            case Direction::South :
+            case Direction::South:
                 snakeIterator->y++;
                 break;
-            case Direction::West :
+            case Direction::West:
                 snakeIterator->x--;
                 break;
         } // switch ( SnakeIterator->Direction )
