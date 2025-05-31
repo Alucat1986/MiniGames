@@ -31,7 +31,7 @@ namespace snake {
 /**
  * @brief Constructor.
  * @author Alunya
- * @date 25.05.2025
+ * @date 31.05.2025
  */
 Snake::Snake( const AssetsManager& assetsManager )
         : mDead( false ),
