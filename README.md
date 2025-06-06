@@ -5,10 +5,17 @@ Since I really want to get into game development, I want to start with cloning s
 To build the repository follow the steps:
 
 1) Open a console and navigate to the repository folder
-2) Make sure SFML is either a submodule inside the folder `3rdParty`. Have it build in debug or release as a static library, depending on if you want to compile my projects as debug or release configuration.  
--> The libraries: "freetype.lib" and "freetyped.lib" should be part of the submodule.  
--> If you don't add it as a submodule, edit the project premake file `<Game>/Build-<Game>.lua`s `includedirs` and `libdirs` variables to let it know where your SFML installation can be found.
-3) It needs the following 3 libraries: "opengl32.lib", "winmm.lib" and "gdi32.lib". I haven't found anything on this and I was able to just link to them, so I assume they are part of the OS?
+2) Make sure SFML is a submodule inside the folder `3rdParty`, I'm using the tag for `3.0.0` here. Have it build in debug or release as a static library, depending on if you want to compile my projects as debug or release configuration.  
+-> These two libraries should be part of the submodule:  
+    `freetype.lib`  
+    `freetyped.lib`  
+-> If you don't add it as a submodule, In the premake file `<Game>/Build-<Game>.lua` edit the `includedirs` and `libdirs` variables to let it know where your SFML includes and compiled libraries can be found.
+3) The following 3 libraries are needed outside of SFML:  
+    `opengl32.lib`  
+    `winmm.lib`  
+    `gdi32.lib`  
+
+    I haven't found anything on this and I was able to just link to them, so I assume they are part of the OS?  
 4) Use `premake5` if you have it installed on your pc, otherwise `3rdParty/Binaries/Premake/YourOS/premake5`
 
     For windows:
