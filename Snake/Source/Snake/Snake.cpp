@@ -101,7 +101,7 @@ void Snake::update( const float& deltaTime ) {
         rotateBodySprites();
         mCurrentTimeStamp -= mMoveTimeThreshold;
     } // if ( mCurrentTimeStamp >= mMoveTimeThreshold )
-} // Snake::update(...)
+} // void Snake::update(...)
 
 /**
  * @brief Draws the snake on the given render window.
@@ -139,7 +139,7 @@ void Snake::draw( sf::RenderWindow& window, const Grid& grid ) const {
  */
 bool Snake::isDead() const {
     return mDead;
-}
+} // bool Snake::isDead(...) const
 
 /**
  * @brief Sets the direction of the snake.
@@ -150,7 +150,11 @@ bool Snake::isDead() const {
 void Snake::setDirection( Direction newDirection ) {
     // front(): tail, back(): head
     mSnakeBody->back().direction = newDirection;
-}
+} // void Snake::setDirection(...)
+
+// ****************************************************************************************************************** //
+//                                                      PRIVATE                                                       //
+// ****************************************************************************************************************** //
 
 /**
  * @brief Moves the snake into the current direction.
@@ -194,7 +198,7 @@ void Snake::move() {
 
         snakeIterator->direction = std::next( snakeIterator )->direction;
     } // for ( ; SnakeIterator != mSnakeBody->end(); std::next( SnakeIterator ) )
-} // Snake::move(...)
+} // void Snake::move(...)
 
 /**
  * @brief Grows the snake by 1 cell.
@@ -206,7 +210,7 @@ void Snake::grow() {
     if ( mSnakeBody->size() < constants::MAX_CELL_AMOUNT ) {
         mGrow = true;
     } // if ( mSnakeBody->size() < constants::MAX_CELL_AMOUNT)
-} // Snake::grow(...)
+} // void Snake::grow(...)
 
 /**
  * @brief Kills the snake.
@@ -215,7 +219,7 @@ void Snake::grow() {
  */
 void Snake::die() {
     mDead = true;
-} // Snake::die(...)
+} // void Snake::die(...)
 
 /**
  * @brief Rotates the body part sprites to face the current direction.
