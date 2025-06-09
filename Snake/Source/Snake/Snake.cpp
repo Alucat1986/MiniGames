@@ -42,7 +42,7 @@ Snake::Snake( const AssetsManager& assetsManager )
                                          .y         = constants::CELL_ROWS / 2,
                                          .direction = Direction::East,
                                          .part      = BodyPart::Tail,
-                                         .sprite    = sf::Sprite( mAssetsManager.getTexture( "SnakeTail" ) ) } );
+                                         .sprite    = sf::Sprite( mAssetsManager.texture( "SnakeTail" ) ) } );
     mSnakeBody->back().sprite.setTextureRect(
         { { 0, 0 }, { static_cast<int>( constants::CELL_SIZE ), static_cast<int>( constants::CELL_SIZE ) } } );
 
@@ -50,7 +50,7 @@ Snake::Snake( const AssetsManager& assetsManager )
                                          .y         = constants::CELL_ROWS / 2,
                                          .direction = Direction::East,
                                          .part      = BodyPart::Mid,
-                                         .sprite    = sf::Sprite( mAssetsManager.getTexture( "SnakeMid" ) ) } );
+                                         .sprite    = sf::Sprite( mAssetsManager.texture( "SnakeMid" ) ) } );
     mSnakeBody->back().sprite.setTextureRect(
         { { 0, 0 }, { static_cast<int>( constants::CELL_SIZE ), static_cast<int>( constants::CELL_SIZE ) } } );
 
@@ -58,7 +58,7 @@ Snake::Snake( const AssetsManager& assetsManager )
                                          .y         = constants::CELL_ROWS / 2,
                                          .direction = Direction::East,
                                          .part      = BodyPart::Mid,
-                                         .sprite    = sf::Sprite( mAssetsManager.getTexture( "SnakeMid" ) ) } );
+                                         .sprite    = sf::Sprite( mAssetsManager.texture( "SnakeMid" ) ) } );
     mSnakeBody->back().sprite.setTextureRect(
         { { 0, 0 }, { static_cast<int>( constants::CELL_SIZE ), static_cast<int>( constants::CELL_SIZE ) } } );
 
@@ -66,7 +66,7 @@ Snake::Snake( const AssetsManager& assetsManager )
                                          .y         = constants::CELL_ROWS / 2,
                                          .direction = Direction::East,
                                          .part      = BodyPart::Mid,
-                                         .sprite    = sf::Sprite( mAssetsManager.getTexture( "SnakeMid" ) ) } );
+                                         .sprite    = sf::Sprite( mAssetsManager.texture( "SnakeMid" ) ) } );
     mSnakeBody->back().sprite.setTextureRect(
         { { 0, 0 }, { static_cast<int>( constants::CELL_SIZE ), static_cast<int>( constants::CELL_SIZE ) } } );
 
@@ -74,7 +74,7 @@ Snake::Snake( const AssetsManager& assetsManager )
                                          .y         = constants::CELL_ROWS / 2,
                                          .direction = Direction::East,
                                          .part      = BodyPart::Head,
-                                         .sprite    = sf::Sprite( mAssetsManager.getTexture( "SnakeHead" ) ) } );
+                                         .sprite    = sf::Sprite( mAssetsManager.texture( "SnakeHead" ) ) } );
     mSnakeBody->back().sprite.setTextureRect(
         { { 0, 0 }, { static_cast<int>( constants::CELL_SIZE ), static_cast<int>( constants::CELL_SIZE ) } } );
 
@@ -164,12 +164,11 @@ void Snake::move() {
     std::list<SnakePart>::iterator snakeIterator = mSnakeBody->begin();
     if ( mGrow ) {
         std::advance( snakeIterator, 1 ); // Should never be mSnakeBody->end(), otherwise something went wrong.
-        mSnakeBody->emplace( snakeIterator,
-                             SnakePart{ .x         = snakeIterator->x,
-                                        .y         = snakeIterator->y,
-                                        .direction = snakeIterator->direction,
-                                        .part      = BodyPart::Mid,
-                                        .sprite    = sf::Sprite( mAssetsManager.getTexture( "SnakeMid" ) ) } );
+        mSnakeBody->emplace( snakeIterator, SnakePart{ .x         = snakeIterator->x,
+                                                       .y         = snakeIterator->y,
+                                                       .direction = snakeIterator->direction,
+                                                       .part      = BodyPart::Mid,
+                                                       .sprite = sf::Sprite( mAssetsManager.texture( "SnakeMid" ) ) } );
         mGrow = false;
     } // if ( mGrow )
 

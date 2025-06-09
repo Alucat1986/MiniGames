@@ -52,7 +52,7 @@ Game::Game()
                                             "Snake Clone" );
     mWindow->setVerticalSyncEnabled( true );
 
-    mFpsFont = std::make_unique<sf::Font>( mAssetsManager->getFont( "MainFont" ) );
+    mFpsFont = std::make_unique<sf::Font>( mAssetsManager->font( "MainFont" ) );
 
     mFpsText = std::make_unique<sf::Text>( *mFpsFont, "FPS: 60", 16 );
     mFpsText->setFillColor( sf::Color::White );
