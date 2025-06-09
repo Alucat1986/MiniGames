@@ -2,7 +2,7 @@
  * @file Snake.cpp
  * @brief Contains the snake class implementation.
  * @author Alunya
- * @date 31.05.2025
+ * @date 09.06.2025
  */
 
 #include "Include/Snake/Snake.hpp"
@@ -200,13 +200,13 @@ void Snake::move() {
 /**
  * @brief Grows the snake by 1 cell.
  * @author Alunya
- * @date 16.05.2025
+ * @date 09.06.2025
  */
 void Snake::grow() {
     // Probably unnecessary as when the snake reaches it's max length it's about to die anyway.
-    if ( mSnakeBody->size() < constants::MAX_SNAKE_LENGTH ) {
+    if ( mSnakeBody->size() < constants::MAX_CELL_AMOUNT ) {
         mGrow = true;
-    } // if ( mSnakeBody->size() < constants::MAX_SNAKE_LENGTH)
+    } // if ( mSnakeBody->size() < constants::MAX_CELL_AMOUNT)
 } // Snake::grow(...)
 
 /**
