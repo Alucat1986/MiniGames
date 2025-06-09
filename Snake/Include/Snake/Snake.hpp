@@ -18,7 +18,6 @@
 #include <memory>
 
 namespace snake {
-
 using std::size_t;
 
 /**
