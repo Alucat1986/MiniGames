@@ -2,7 +2,7 @@
  * @file AssetsManager.cpp
  * @brief Contains the AssetsManager class implementation.
  * @author Alunya
- * @date 25.05.2025
+ * @date 09.06.2025
  */
 
 #include "Include/Graphics/AssetsManager.hpp"
@@ -29,12 +29,12 @@ using std::int16_t;
 /**
  * @brief Constructor.
  * @author Alunya
- * @date 25.05.2025
+ * @date 09.06.2025
  */
 AssetsManager::AssetsManager()
         : mAssetsPath( "Assets/assets.txt" ),
           mFonts( std::make_unique<std::unordered_map<std::string, sf::Font>>() ),
-          mTextures( std::make_unique<std::unordered_map<std::string, sf::Texture>>() ) {
+          mTextures( std::make_unique<std::unordered_map<std::string, TextureData>>() ) {
     mFonts->reserve( 5 );
     mTextures->reserve( 10 );
 
@@ -50,7 +50,7 @@ AssetsManager::AssetsManager()
         std::istringstream    stringStream( line );
         std::string           assetType, assetName;
         std::filesystem::path assetPath;
-        int16_t               frameCount;
+        int16_t               amountOfFrames;
         stringStream >> assetType >> assetPath >> assetName;
         assetPath = "Assets/" / assetPath;
 
@@ -59,10 +59,11 @@ AssetsManager::AssetsManager()
             mFonts->emplace( assetName, sf::Font( assetPath ) );
         } // if ( assetType == "FONT")
         else if ( assetType == "TEX" ) {
-            stringStream >> frameCount; /** @todo Gotta do something with this information. */
+            stringStream >> amountOfFrames;
             std::cout << "Loading texture: " << assetName << " from " << assetPath.string() << " with a framecount of "
-                      << frameCount << "\n";
-            mTextures->emplace( assetName, sf::Texture( assetPath ) );
+                      << amountOfFrames << "\n";
+            mTextures->emplace( assetName,
+                                TextureData{ .texture = sf::Texture( assetPath ), .frameCount = amountOfFrames } );
         } // else if ( assetType == "TEX" )
     } // while ( std::getline( fileToRead, line) )
 } // AssetManager::AssetManager(...)
@@ -70,24 +71,35 @@ AssetsManager::AssetsManager()
 /**
  * @brief Retrieves a font by its name.
  * @author Alunya
- * @date 25.05.2025
+ * @date 09.06.2025
  * @param[in] fontName The name of the font to retrieve.
  * @return sf::Font& A reference to the requested font.
  */
-sf::Font& AssetsManager::getFont( const std::string& fontName ) const {
+sf::Font& AssetsManager::font( const std::string& fontName ) const {
     return mFonts->at( fontName );
-} // sf::Font& AssetsManager::getFont( const std::string& fontName )
+} // sf::Font& AssetsManager::font(... ) const
 
 /**
  * @brief Retrieves a texture by its name.
  * @author Alunya
- * @date 25.05.2025
+ * @date 09.06.2025
  * @param[in] textureName The name of the texture to retrieve.
  * @return sf::Texture& A reference to the requested texture.
  */
-sf::Texture& AssetsManager::getTexture( const std::string& textureName ) const {
-    return mTextures->at( textureName );
-} // sf::Texture& AssetsManager::getTexture( const std::string& textureName ) const
+sf::Texture& AssetsManager::texture( const std::string& textureName ) const {
+    return mTextures->at( textureName ).texture;
+} // sf::Texture& AssetsManager::texture(...) const
+
+/**
+ * @brief Retrieves the frame count of a texture by its name.
+ * @author Alunya
+ * @date 09.06.2025
+ * @param[in] textureName The name of the texture to retrieve the frame count for.
+ * @return int16_t The frame count of the requested texture.
+ */
+int16_t AssetsManager::textureFrameCount( const std::string& textureName ) const {
+    return mTextures->at( textureName ).frameCount;
+} // int16_t AssetsManager::textureFrameCount(...) const
 
 // ****************************************************************************************************************** //
 //                                                       END                                                          //
