@@ -30,7 +30,7 @@ public:
     ~Animation() = default;
 
     void               update();
-    const sf::Sprite&  sprite() const;
+    sf::Sprite&        sprite();
     const std::string& name() const;
 
 private:

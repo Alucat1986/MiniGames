@@ -73,7 +73,7 @@ void Animation::update() {
  * @date 09.06.2025
  * @return A const reference to the current sprite of the animation.
  */
-const sf::Sprite& Animation::sprite() const {
+sf::Sprite& Animation::sprite() {
     return mSprite;
 } // sf::Sprite& Animation::sprite(...) const
 
