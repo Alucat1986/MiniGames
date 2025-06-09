@@ -2,17 +2,17 @@
  * @file Snake.hpp
  * @brief Contains the snake class declaration.
  * @author Alunya
- * @date 31.05.2025
+ * @date 09.06.2025
  */
 
 #ifndef SNAKE_HPP
 #define SNAKE_HPP
 
+#include "Include/Graphics/Animation.hpp"
 #include "Include/Graphics/AssetsManager.hpp"
 #include "Include/Grid/Grid.hpp"
 
 #include <SFML/Graphics/RenderWindow.hpp>
-#include <SFML/Graphics/Sprite.hpp>
 
 #include <list>
 #include <memory>
@@ -24,7 +24,7 @@ using std::size_t;
  * @class Snake
  * @brief Manages the snake, provides methods to grow the snake and move it.
  * @author Alunya
- * @date 31.05.2025
+ * @date 09.06.2025
  *
  * The snake class represents the players snake. It provides following functionality:
  * * moving
@@ -72,11 +72,11 @@ private:
     };
 
     struct SnakePart {
-        size_t     x;
-        size_t     y;
-        Direction  direction;
-        BodyPart   part;
-        sf::Sprite sprite;
+        size_t    x;
+        size_t    y;
+        Direction direction;
+        BodyPart  part;
+        Animation animation;
     };
 
     bool                 mDead;

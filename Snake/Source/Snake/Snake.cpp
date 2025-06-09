@@ -21,6 +21,7 @@
 #include <memory>
 
 namespace snake {
+constexpr std::uint32_t INTERVAL = 20;
 
 // ****************************************************************************************************************** //
 //                                                      PUBLIC                                                        //
@@ -29,7 +30,7 @@ namespace snake {
 /**
  * @brief Constructor.
  * @author Alunya
- * @date 31.05.2025
+ * @date 09.06.2025
  */
 Snake::Snake( const AssetsManager& assetsManager )
         : mDead( false ),
@@ -38,44 +39,54 @@ Snake::Snake( const AssetsManager& assetsManager )
           mCurrentTimeStamp( 0.0f ),
           mAssetsManager( assetsManager ),
           mSnakeBody( std::make_unique<std::list<SnakePart>>() ) {
-    mSnakeBody->emplace_back( SnakePart{ .x         = ( constants::CELL_COLUMNS / 2 ) - 4,
-                                         .y         = constants::CELL_ROWS / 2,
-                                         .direction = Direction::East,
-                                         .part      = BodyPart::Tail,
-                                         .sprite    = sf::Sprite( mAssetsManager.texture( "SnakeTail" ) ) } );
-    mSnakeBody->back().sprite.setTextureRect(
+    mSnakeBody->emplace_back(
+        SnakePart{ .x         = ( constants::CELL_COLUMNS / 2 ) - 4,
+                   .y         = constants::CELL_ROWS / 2,
+                   .direction = Direction::East,
+                   .part      = BodyPart::Tail,
+                   .animation = Animation( mAssetsManager.texture( "SnakeTail" ), "SnakeTail",
+                                           mAssetsManager.textureFrameCount( "SnakeTail" ), INTERVAL ) } );
+    mSnakeBody->back().animation.sprite().setTextureRect(
         { { 0, 0 }, { static_cast<int>( constants::CELL_SIZE ), static_cast<int>( constants::CELL_SIZE ) } } );
 
-    mSnakeBody->emplace_back( SnakePart{ .x         = ( constants::CELL_COLUMNS / 2 ) - 3,
-                                         .y         = constants::CELL_ROWS / 2,
-                                         .direction = Direction::East,
-                                         .part      = BodyPart::Mid,
-                                         .sprite    = sf::Sprite( mAssetsManager.texture( "SnakeMid" ) ) } );
-    mSnakeBody->back().sprite.setTextureRect(
+    mSnakeBody->emplace_back(
+        SnakePart{ .x         = ( constants::CELL_COLUMNS / 2 ) - 3,
+                   .y         = constants::CELL_ROWS / 2,
+                   .direction = Direction::East,
+                   .part      = BodyPart::Mid,
+                   .animation = Animation( mAssetsManager.texture( "SnakeMid" ), "SnakeMid",
+                                           mAssetsManager.textureFrameCount( "SnakeMid" ), INTERVAL ) } );
+    mSnakeBody->back().animation.sprite().setTextureRect(
         { { 0, 0 }, { static_cast<int>( constants::CELL_SIZE ), static_cast<int>( constants::CELL_SIZE ) } } );
 
-    mSnakeBody->emplace_back( SnakePart{ .x         = ( constants::CELL_COLUMNS / 2 ) - 2,
-                                         .y         = constants::CELL_ROWS / 2,
-                                         .direction = Direction::East,
-                                         .part      = BodyPart::Mid,
-                                         .sprite    = sf::Sprite( mAssetsManager.texture( "SnakeMid" ) ) } );
-    mSnakeBody->back().sprite.setTextureRect(
+    mSnakeBody->emplace_back(
+        SnakePart{ .x         = ( constants::CELL_COLUMNS / 2 ) - 2,
+                   .y         = constants::CELL_ROWS / 2,
+                   .direction = Direction::East,
+                   .part      = BodyPart::Mid,
+                   .animation = Animation( mAssetsManager.texture( "SnakeMid" ), "SnakeMid",
+                                           mAssetsManager.textureFrameCount( "SnakeMid" ), INTERVAL ) } );
+    mSnakeBody->back().animation.sprite().setTextureRect(
         { { 0, 0 }, { static_cast<int>( constants::CELL_SIZE ), static_cast<int>( constants::CELL_SIZE ) } } );
 
-    mSnakeBody->emplace_back( SnakePart{ .x         = ( constants::CELL_COLUMNS / 2 ) - 1,
-                                         .y         = constants::CELL_ROWS / 2,
-                                         .direction = Direction::East,
-                                         .part      = BodyPart::Mid,
-                                         .sprite    = sf::Sprite( mAssetsManager.texture( "SnakeMid" ) ) } );
-    mSnakeBody->back().sprite.setTextureRect(
+    mSnakeBody->emplace_back(
+        SnakePart{ .x         = ( constants::CELL_COLUMNS / 2 ) - 1,
+                   .y         = constants::CELL_ROWS / 2,
+                   .direction = Direction::East,
+                   .part      = BodyPart::Mid,
+                   .animation = Animation( mAssetsManager.texture( "SnakeMid" ), "SnakeMid",
+                                           mAssetsManager.textureFrameCount( "SnakeMid" ), INTERVAL ) } );
+    mSnakeBody->back().animation.sprite().setTextureRect(
         { { 0, 0 }, { static_cast<int>( constants::CELL_SIZE ), static_cast<int>( constants::CELL_SIZE ) } } );
 
-    mSnakeBody->emplace_back( SnakePart{ .x         = constants::CELL_COLUMNS / 2,
-                                         .y         = constants::CELL_ROWS / 2,
-                                         .direction = Direction::East,
-                                         .part      = BodyPart::Head,
-                                         .sprite    = sf::Sprite( mAssetsManager.texture( "SnakeHead" ) ) } );
-    mSnakeBody->back().sprite.setTextureRect(
+    mSnakeBody->emplace_back(
+        SnakePart{ .x         = constants::CELL_COLUMNS / 2,
+                   .y         = constants::CELL_ROWS / 2,
+                   .direction = Direction::East,
+                   .part      = BodyPart::Head,
+                   .animation = Animation( mAssetsManager.texture( "SnakeHead" ), "SnakeHead",
+                                           mAssetsManager.textureFrameCount( "SnakeHead" ), INTERVAL ) } );
+    mSnakeBody->back().animation.sprite().setTextureRect(
         { { 0, 0 }, { static_cast<int>( constants::CELL_SIZE ), static_cast<int>( constants::CELL_SIZE ) } } );
 
     rotateBodySprites();
@@ -101,6 +112,10 @@ void Snake::update( const float& deltaTime ) {
         rotateBodySprites();
         mCurrentTimeStamp -= mMoveTimeThreshold;
     } // if ( mCurrentTimeStamp >= mMoveTimeThreshold )
+
+    for ( auto& bodyPart : *mSnakeBody ) {
+        bodyPart.animation.update();
+    } // for ( auto& bodyPart : *mSnakeBody )
 } // void Snake::update(...)
 
 /**
@@ -113,19 +128,19 @@ void Snake::draw( sf::RenderWindow& window, const Grid& grid ) const {
     for ( auto& bodyPart : *mSnakeBody ) {
         switch ( bodyPart.part ) {
             case BodyPart::Head:
-                bodyPart.sprite.setPosition(
+                bodyPart.animation.sprite().setPosition(
                     grid.getCoordinates( { static_cast<float>( bodyPart.x ), static_cast<float>( bodyPart.y ) } ) );
                 break;
             case BodyPart::Mid:
-                bodyPart.sprite.setPosition(
+                bodyPart.animation.sprite().setPosition(
                     grid.getCoordinates( { static_cast<float>( bodyPart.x ), static_cast<float>( bodyPart.y ) } ) );
                 break;
             case BodyPart::Tail:
-                bodyPart.sprite.setPosition(
+                bodyPart.animation.sprite().setPosition(
                     grid.getCoordinates( { static_cast<float>( bodyPart.x ), static_cast<float>( bodyPart.y ) } ) );
                 break;
         } // switch ( bodyPart.part )
-        window.draw( bodyPart.sprite );
+        window.draw( bodyPart.animation.sprite() );
     } // for ( const auto& bodyPart : *mSnakeBody )
 } // void draw(...) const
 
@@ -168,11 +183,14 @@ void Snake::move() {
     std::list<SnakePart>::iterator snakeIterator = mSnakeBody->begin();
     if ( mGrow ) {
         std::advance( snakeIterator, 1 ); // Should never be mSnakeBody->end(), otherwise something went wrong.
-        mSnakeBody->emplace( snakeIterator, SnakePart{ .x         = snakeIterator->x,
-                                                       .y         = snakeIterator->y,
-                                                       .direction = snakeIterator->direction,
-                                                       .part      = BodyPart::Mid,
-                                                       .sprite = sf::Sprite( mAssetsManager.texture( "SnakeMid" ) ) } );
+        mSnakeBody->emplace(
+            snakeIterator,
+            SnakePart{ .x         = snakeIterator->x,
+                       .y         = snakeIterator->y,
+                       .direction = snakeIterator->direction,
+                       .part      = BodyPart::Mid,
+                       .animation = Animation( mAssetsManager.texture( "SnakeMid" ), "SnakeMid",
+                                               mAssetsManager.textureFrameCount( "SnakeMid" ), INTERVAL ) } );
         mGrow = false;
     } // if ( mGrow )
 
@@ -231,20 +249,20 @@ void Snake::rotateBodySprites() {
     for ( auto& bodyPart : *mSnakeBody ) {
         switch ( bodyPart.direction ) {
             case Direction::North:
-                bodyPart.sprite.setRotation( rotation - sf::degrees( 180.0f ) );
-                bodyPart.sprite.setOrigin( { constants::CELL_SIZE, constants::CELL_SIZE } );
+                bodyPart.animation.sprite().setRotation( rotation - sf::degrees( 180.0f ) );
+                bodyPart.animation.sprite().setOrigin( { constants::CELL_SIZE, constants::CELL_SIZE } );
                 break;
             case Direction::East:
-                bodyPart.sprite.setRotation( rotation - sf::degrees( 90.0f ) );
-                bodyPart.sprite.setOrigin( { constants::CELL_SIZE, 0.0f } );
+                bodyPart.animation.sprite().setRotation( rotation - sf::degrees( 90.0f ) );
+                bodyPart.animation.sprite().setOrigin( { constants::CELL_SIZE, 0.0f } );
                 break;
             case Direction::South:
-                bodyPart.sprite.setRotation( rotation );
-                bodyPart.sprite.setOrigin( { 0.0f, 0.0f } );
+                bodyPart.animation.sprite().setRotation( rotation );
+                bodyPart.animation.sprite().setOrigin( { 0.0f, 0.0f } );
                 break;
             case Direction::West:
-                bodyPart.sprite.setRotation( rotation + sf::degrees( 90.0f ) );
-                bodyPart.sprite.setOrigin( { 0.0f, constants::CELL_SIZE } );
+                bodyPart.animation.sprite().setRotation( rotation + sf::degrees( 90.0f ) );
+                bodyPart.animation.sprite().setOrigin( { 0.0f, constants::CELL_SIZE } );
                 break;
         } // switch ( bodyPart.direction )
     }
