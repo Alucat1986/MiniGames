@@ -21,7 +21,9 @@
 #include <memory>
 
 namespace snake {
+namespace {
 constexpr std::uint32_t INTERVAL = 20;
+} // namespace
 
 // ****************************************************************************************************************** //
 //                                                      PUBLIC                                                        //
