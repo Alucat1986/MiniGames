@@ -2,7 +2,7 @@
  * @file Snake.cpp
  * @brief Contains the snake class implementation.
  * @author Alunya
- * @date 09.06.2025
+ * @date 14.06.2025
  */
 
 #include "Include/Snake/Snake.hpp"
@@ -97,7 +97,7 @@ Snake::Snake( const AssetsManager& assetsManager )
 /**
  * @brief Updates the snakes state.
  * @author Alunya
- * @date 31.05.2025
+ * @date 14.06.2025
  * @param[in] deltaTime The time that has passed since the last update had been called.
  *
  * Is called by Game::update(). It moves the snake into the current direction by a cell and then checks if it collides
@@ -111,6 +111,7 @@ void Snake::update( const float& deltaTime ) {
      * corresponding action, aka grow, die or just move. */
     if ( mCurrentTimeStamp >= mMoveTimeThreshold ) {
         move();
+        checkForSnakeTurns();
         rotateBodySprites();
         mCurrentTimeStamp -= mMoveTimeThreshold;
     } // if ( mCurrentTimeStamp >= mMoveTimeThreshold )
@@ -269,6 +270,124 @@ void Snake::rotateBodySprites() {
         } // switch ( bodyPart.direction )
     }
 } // void Snake::rotateBodySprites(...)
+
+/**
+ * @brief Checks if the snake has turns within its body and replaces the actual Sprites.
+ * @author Alunya
+ * @date 14.06.2025
+ */
+void Snake::checkForSnakeTurns() {
+    auto iterator = mSnakeBody->begin();
+    std::advance( iterator, 1 );
+    for ( ; iterator != mSnakeBody->end(); std::advance( iterator, 1 ) ) {
+        if ( iterator->animation.name() == "SnakeHead" ) {
+            break;
+        } // if ( iterator->animation.name() == "SnakeHead" )
+
+        switch ( std::prev( iterator )->direction ) {
+            case Direction::North:
+                switch ( iterator->direction ) {
+                    case Direction::East:
+                        if ( iterator->animation.name() != "SnakeMidTurnRight" ) {
+                            iterator->animation =
+                                Animation( mAssetsManager.texture( "SnakeMidTurnRight" ), "SnakeMidTurnRight",
+                                           mAssetsManager.textureFrameCount( "SnakeMidTurnRight" ), INTERVAL );
+                        } // if ( iterator->animation.name() != "SnakeMidTurnRight" )
+                        break;
+                    case Direction::North:
+                    case Direction::South:
+                        if ( iterator->animation.name() != "SnakeMid" ) {
+                            iterator->animation = Animation( mAssetsManager.texture( "SnakeMid" ), "SnakeMid",
+                                                             mAssetsManager.textureFrameCount( "SnakeMid" ), INTERVAL );
+                        } // if ( iterator->animation.name() != "SnakeMid" )
+                        break;
+                    case Direction::West:
+                        if ( iterator->animation.name() != "SnakeMidTurnLeft" ) {
+                            iterator->animation =
+                                Animation( mAssetsManager.texture( "SnakeMidTurnLeft" ), "SnakeMidTurnLeft",
+                                           mAssetsManager.textureFrameCount( "SnakeMidTurnLeft" ), INTERVAL );
+                        } // if ( iterator->animation.name() != "SnakeMidTurnLeft" )
+                        break;
+                } // switch ( iterator->direction )
+                break;
+            case Direction::East:
+                switch ( iterator->direction ) {
+                    case Direction::South:
+                        if ( iterator->animation.name() != "SnakeMidTurnRight" ) {
+                            iterator->animation =
+                                Animation( mAssetsManager.texture( "SnakeMidTurnRight" ), "SnakeMidTurnRight",
+                                           mAssetsManager.textureFrameCount( "SnakeMidTurnRight" ), INTERVAL );
+                        } // if ( iterator->animation.name() != "SnakeMidTurnRight" )
+                        break;
+                    case Direction::East:
+                    case Direction::West:
+                        if ( iterator->animation.name() != "SnakeMid" ) {
+                            iterator->animation = Animation( mAssetsManager.texture( "SnakeMid" ), "SnakeMid",
+                                                             mAssetsManager.textureFrameCount( "SnakeMid" ), INTERVAL );
+                        } // if ( iterator->animation.name() != "SnakeMid" )
+                        break;
+                    case Direction::North:
+                        if ( iterator->animation.name() != "SnakeMidTurnLeft" ) {
+                            iterator->animation =
+                                Animation( mAssetsManager.texture( "SnakeMidTurnLeft" ), "SnakeMidTurnLeft",
+                                           mAssetsManager.textureFrameCount( "SnakeMidTurnLeft" ), INTERVAL );
+                        } // if ( iterator->animation.name() != "SnakeMidTurnLeft" )
+                        break;
+                } // switch ( iterator->direction )
+                break;
+            case Direction::South:
+                switch ( iterator->direction ) {
+                    case Direction::West:
+                        if ( iterator->animation.name() != "SnakeMidTurnRight" ) {
+                            iterator->animation =
+                                Animation( mAssetsManager.texture( "SnakeMidTurnRight" ), "SnakeMidTurnRight",
+                                           mAssetsManager.textureFrameCount( "SnakeMidTurnRight" ), INTERVAL );
+                        } // if ( iterator->animation.name() != "SnakeMidTurnRight" )
+                        break;
+                    case Direction::South:
+                    case Direction::North:
+                        if ( iterator->animation.name() != "SnakeMid" ) {
+                            iterator->animation = Animation( mAssetsManager.texture( "SnakeMid" ), "SnakeMid",
+                                                             mAssetsManager.textureFrameCount( "SnakeMid" ), INTERVAL );
+                        } // if ( iterator->animation.name() != "SnakeMid" )
+                        break;
+                    case Direction::East:
+                        if ( iterator->animation.name() != "SnakeMidTurnLeft" ) {
+                            iterator->animation =
+                                Animation( mAssetsManager.texture( "SnakeMidTurnLeft" ), "SnakeMidTurnLeft",
+                                           mAssetsManager.textureFrameCount( "SnakeMidTurnLeft" ), INTERVAL );
+                        } // if ( iterator->animation.name() != "SnakeMidTurnLeft" )
+                        break;
+                } // switch ( iterator->direction )
+                break;
+            case Direction::West:
+                switch ( iterator->direction ) {
+                    case Direction::North:
+                        if ( iterator->animation.name() != "SnakeMidTurnRight" ) {
+                            iterator->animation =
+                                Animation( mAssetsManager.texture( "SnakeMidTurnRight" ), "SnakeMidTurnRight",
+                                           mAssetsManager.textureFrameCount( "SnakeMidTurnRight" ), INTERVAL );
+                        } // if ( iterator->animation.name() != "SnakeMidTurnRight" )
+                        break;
+                    case Direction::East:
+                    case Direction::West:
+                        if ( iterator->animation.name() != "SnakeMid" ) {
+                            iterator->animation = Animation( mAssetsManager.texture( "SnakeMid" ), "SnakeMid",
+                                                             mAssetsManager.textureFrameCount( "SnakeMid" ), INTERVAL );
+                        } // if ( iterator->animation.name() != "SnakeMid" )
+                        break;
+                    case Direction::South:
+                        if ( iterator->animation.name() != "SnakeMidTurnLeft" ) {
+                            iterator->animation =
+                                Animation( mAssetsManager.texture( "SnakeMidTurnLeft" ), "SnakeMidTurnLeft",
+                                           mAssetsManager.textureFrameCount( "SnakeMidTurnLeft" ), INTERVAL );
+                        } // if ( iterator->animation.name() != "SnakeMidTurnLeft" )
+                        break;
+                } // switch ( iterator->direction )
+                break;
+        } // switch ( iterator->direction )
+    } // for ( auto iterator = mSnakeBody->begin(); iterator != mSnakeBody->end();  iterator++ )
+} // void Snake::checkForSnakeTurns(...)
 
 // ****************************************************************************************************************** //
 //                                                       END                                                          //
