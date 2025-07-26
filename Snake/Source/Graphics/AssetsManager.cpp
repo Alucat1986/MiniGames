@@ -2,10 +2,10 @@
  * @file AssetsManager.cpp
  * @brief Contains the AssetsManager class implementation.
  * @author Alunya
- * @date 09.06.2025
+ * @date 26.07.2025
  */
 
-#include "Include/Graphics/AssetsManager.hpp"
+#include "AssetsManager.hpp"
 
 #include <SFML/Graphics/Font.hpp>
 #include <SFML/Graphics/Texture.hpp>

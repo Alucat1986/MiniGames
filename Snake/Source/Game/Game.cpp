@@ -2,15 +2,15 @@
  * @file Game.cpp
  * @brief Contains the game class implementation.
  * @author Alunya
- * @date 31.05.2025
+ * @date 26.07.2025
  */
 
-#include "Include/Game/Game.hpp"
+#include "Game.hpp"
 
-#include "Include/Graphics/AssetsManager.hpp"
-#include "Include/Grid/Grid.hpp"
-#include "Include/Snake/Snake.hpp"
-#include "Include/Utils/Constants.hpp"
+#include "../Graphics/AssetsManager.hpp"
+#include "../Grid/Grid.hpp"
+#include "../Snake/Snake.hpp"
+#include "../Utils/Constants.hpp"
 
 #include <SFML/Graphics/Color.hpp>
 #include <SFML/Graphics/Font.hpp>

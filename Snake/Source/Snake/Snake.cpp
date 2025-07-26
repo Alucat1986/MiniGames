@@ -2,14 +2,14 @@
  * @file Snake.cpp
  * @brief Contains the snake class implementation.
  * @author Alunya
- * @date 14.06.2025
+ * @date 26.07.2025
  */
 
-#include "Include/Snake/Snake.hpp"
+#include "Snake.hpp"
 
-#include "Include/Graphics/AssetsManager.hpp"
-#include "Include/Grid/Grid.hpp"
-#include "Include/Utils/Constants.hpp"
+#include "../Graphics/AssetsManager.hpp"
+#include "../Grid/Grid.hpp"
+#include "../Utils/Constants.hpp"
 
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics/Sprite.hpp>

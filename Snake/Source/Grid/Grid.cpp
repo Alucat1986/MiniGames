@@ -2,12 +2,12 @@
  * @file Grid.cpp
  * @brief Contains the grid class implementation.
  * @author Alunya
- * @date 31.05.2025
+ * @date 26.07.2025
  */
 
-#include "Include/Grid/Grid.hpp"
+#include "Grid.hpp"
 
-#include "Include/Utils/Constants.hpp"
+#include "../Utils/Constants.hpp"
 
 #include <SFML/Graphics/Color.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>

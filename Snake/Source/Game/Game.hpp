@@ -2,15 +2,15 @@
  * @file Game.hpp
  * @brief Contains the game class declaration.
  * @author Alunya
- * @date 31.05.2025
+ * @date 26.07.2025
  */
 
 #ifndef GAME_HPP
 #define GAME_HPP
 
-#include "Include/Graphics/AssetsManager.hpp"
-#include "Include/Grid/Grid.hpp"
-#include "Include/Snake/Snake.hpp"
+#include "../Graphics/AssetsManager.hpp"
+#include "../Grid/Grid.hpp"
+#include "../Snake/Snake.hpp"
 
 #include <SFML/Graphics/Font.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>

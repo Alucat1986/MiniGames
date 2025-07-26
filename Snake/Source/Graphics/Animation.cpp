@@ -2,12 +2,12 @@
  * @file Animation.cpp
  * @brief Contains the Animation class implementation.
  * @author Alunya
- * @date 09.06.2025
+ * @date 26.07.2025
  */
 
-#include "Include/Graphics/Animation.hpp"
+#include "Animation.hpp"
 
-#include "Include/Utils/Constants.hpp"
+#include "../Utils/Constants.hpp"
 
 #include <SFML/Graphics/Rect.hpp>
 #include <SFML/Graphics/Sprite.hpp>

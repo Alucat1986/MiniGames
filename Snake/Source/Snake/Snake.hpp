@@ -2,15 +2,15 @@
  * @file Snake.hpp
  * @brief Contains the snake class declaration.
  * @author Alunya
- * @date 14.06.2025
+ * @date 26.07.2025
  */
 
 #ifndef SNAKE_HPP
 #define SNAKE_HPP
 
-#include "Include/Graphics/Animation.hpp"
-#include "Include/Graphics/AssetsManager.hpp"
-#include "Include/Grid/Grid.hpp"
+#include "../Graphics/Animation.hpp"
+#include "../Graphics/AssetsManager.hpp"
+#include "../Grid/Grid.hpp"
 
 #include <SFML/Graphics/RenderWindow.hpp>
 
