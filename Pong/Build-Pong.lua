@@ -13,7 +13,6 @@ project "Pong"
     }
 
     includedirs {
-        "src",
         "../3rdParty/SFML/include"
     }
 

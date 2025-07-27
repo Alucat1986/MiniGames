@@ -13,7 +13,6 @@ project "Snake"
     }
 
     includedirs {
-        "Source",
         "../3rdParty/SFML/include"
     }
 
